@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  setup:
+    uses: zhumeisongsong/shared-actions/.github/workflows/reusable-pnpm-setup.yml@main
+
+  test:
+    needs: setup
+    uses: zhumeisongsong/shared-actions/.github/workflows/reusable-nx-test.yml@main
+
+  lint:
+    needs: setup
+    uses: zhumeisongsong/shared-actions/.github/workflows/reusable-nx-lint.yml@main
+    
+  type-check:
+    needs: setup
+    uses: zhumeisongsong/shared-actions/.github/workflows/reusable-nx-type-check.yml@main
