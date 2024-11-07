@@ -1,51 +1,67 @@
-import {
-  gatewayConfig,
-  userSubGraph,
-  taskSubGraph,
-} from './applications-config';
+describe('Service Configurations', () => {
+  const originalEnv = process.env;
 
-describe('applicationsConfig', () => {
-  describe('environment variables', () => {
-    const originalEnv = process.env;
+  beforeEach(() => {
+    jest.resetModules();
+    process.env = { ...originalEnv };
+  });
 
-    beforeEach(() => {
-      jest.resetModules();
-      process.env = { ...originalEnv };
+  afterEach(() => {
+    process.env = originalEnv;
+  });
+
+  it('should use default values when environment variables are not set', () => {
+    const {
+      gatewayConfig,
+      userSubGraph,
+      taskSubGraph,
+    } = require('./applications-config');
+
+    expect(gatewayConfig).toEqual({
+      host: 'localhost',
+      port: '3333',
     });
 
-    afterAll(() => {
-      process.env = originalEnv;
+    expect(userSubGraph).toEqual({
+      host: 'localhost',
+      port: '15001',
     });
 
-    it('should use environment variables when provided', () => {
-      process.env['GATEWAY_HOST'] = 'custom-host';
-      process.env['GATEWAY_PORT'] = '4000';
-      expect(gatewayConfig.host).toBe('custom-host');
-      expect(gatewayConfig.port).toBe(4000);
-    });
-
-    it('should use default values when environment variables are not set', () => {
-      delete process.env['GATEWAY_HOST'];
-      delete process.env['GATEWAY_PORT'];
-      expect(gatewayConfig.host).toBeDefined();
-      expect(gatewayConfig.port).toBeDefined();
+    expect(taskSubGraph).toEqual({
+      host: 'localhost',
+      port: '15002',
     });
   });
 
-  describe('configuration objects', () => {
-    it('should have required properties for gateway config', () => {
-      expect(gatewayConfig).toHaveProperty('host');
-      expect(gatewayConfig).toHaveProperty('port');
+  it('should use environment variables when they are set', () => {
+    process.env['GATEWAY_HOST'] = 'gateway.example.com';
+    process.env['GATEWAY_PORT'] = '4000';
+    process.env['USER_HOST'] = 'user.example.com';
+    process.env['USER_PORT'] = '5000';
+    process.env['TASK_HOST'] = 'task.example.com';
+    process.env['TASK_PORT'] = '6000';
+
+    jest.resetModules();
+
+    const {
+      gatewayConfig,
+      userSubGraph,
+      taskSubGraph,
+    } = require('./applications-config');
+
+    expect(gatewayConfig).toEqual({
+      host: 'gateway.example.com',
+      port: '4000',
     });
 
-    it('should have required properties for user subgraph', () => {
-      expect(userSubGraph).toHaveProperty('host');
-      expect(userSubGraph).toHaveProperty('port');
+    expect(userSubGraph).toEqual({
+      host: 'user.example.com',
+      port: '5000',
     });
 
-    it('should have required properties for task subgraph', () => {
-      expect(taskSubGraph).toHaveProperty('host');
-      expect(taskSubGraph).toHaveProperty('port');
+    expect(taskSubGraph).toEqual({
+      host: 'task.example.com',
+      port: '6000',
     });
   });
 });
