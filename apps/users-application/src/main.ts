@@ -14,7 +14,9 @@ async function bootstrap() {
   const port = userSubGraph.port;
 
   await app.listen(port);
-  Logger.log(`🚀 Application is running on: ${userSubGraph.host}:${port}`);
+  Logger.log(
+    `🚀 Application is running on: http://${userSubGraph.host}:${port}`
+  );
 }
 
 bootstrap();
