@@ -14,9 +14,7 @@ async function bootstrap() {
   const port = gatewayConfig.port;
 
   await app.listen(port);
-  Logger.log(
-    `🚀 Application is running on: ${gatewayConfig.host}:${port}`
-  );
+  Logger.log(`🚀 Application is running on: ${gatewayConfig.host}:${port}`);
 }
 
 bootstrap();
