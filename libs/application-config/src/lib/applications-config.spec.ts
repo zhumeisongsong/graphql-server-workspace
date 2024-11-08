@@ -18,19 +18,19 @@ describe('Service Configurations', () => {
     } = require('./applications-config');
 
     expect(gatewayConfig).toEqual({
-      host: 'localhost',
+      host: 'http://localhost',
       name: 'gateway',
       port: '3333',
     });
 
     expect(userSubGraph).toEqual({
-      host: 'localhost',
+      host: 'http://localhost',
       name: 'user',
       port: '15001',
     });
 
     expect(taskSubGraph).toEqual({
-      host: 'localhost',
+      host: 'http://localhost',
       name: 'task',
       port: '15002',
     });
