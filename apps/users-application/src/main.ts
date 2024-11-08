@@ -15,7 +15,7 @@ async function bootstrap() {
 
   await app.listen(port);
   Logger.log(
-    `🚀 Application is running on: http://${userSubGraph.host}:${port}`
+    `🚀 Application is running on: ${userSubGraph.host}:${port}`
   );
 }
 
