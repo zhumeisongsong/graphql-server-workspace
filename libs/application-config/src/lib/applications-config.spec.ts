@@ -19,16 +19,19 @@ describe('Service Configurations', () => {
 
     expect(gatewayConfig).toEqual({
       host: 'localhost',
+      name: 'gateway',
       port: '3333',
     });
 
     expect(userSubGraph).toEqual({
       host: 'localhost',
+      name: 'user',
       port: '15001',
     });
 
     expect(taskSubGraph).toEqual({
       host: 'localhost',
+      name: 'task',
       port: '15002',
     });
   });
@@ -51,16 +54,19 @@ describe('Service Configurations', () => {
 
     expect(gatewayConfig).toEqual({
       host: 'gateway.example.com',
+      name: 'gateway',
       port: '4000',
     });
 
     expect(userSubGraph).toEqual({
       host: 'user.example.com',
+      name: 'user',
       port: '5000',
     });
 
     expect(taskSubGraph).toEqual({
       host: 'task.example.com',
+      name: 'task',
       port: '6000',
     });
   });
