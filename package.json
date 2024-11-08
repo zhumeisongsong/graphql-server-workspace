@@ -44,7 +44,7 @@
     "@swc/core": "~1.5.29",
     "@swc/helpers": "~0.5.13",
     "@types/jest": "^29.5.14",
-    "@types/node": "~18.16.20",
+    "@types/node": "~22.9.0",
     "@zhumeisong/git-cz-config": "^1.2.0",
     "eslint": "^9.14.0",
     "eslint-config-prettier": "^9.1.0",
