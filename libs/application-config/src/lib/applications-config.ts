@@ -4,7 +4,7 @@ interface ApplicationConfig {
   name: string;
 }
 
-const DEFAULT_HOST = 'localhost';
+const DEFAULT_HOST = 'http://localhost';
 
 const DEFAULT_PORT = {
   user: '15001',
