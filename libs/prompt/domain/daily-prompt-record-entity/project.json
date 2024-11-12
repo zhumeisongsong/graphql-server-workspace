@@ -1,0 +1,9 @@
+{
+  "name": "daily-prompt-record-entity",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/prompt/domain/daily-prompt-record-entity/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project daily-prompt-record-entity --web",
+  "targets": {}
+}
