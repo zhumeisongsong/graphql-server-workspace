@@ -1,6 +1,17 @@
+type WellbeingCategory = 
+  | 'physical'  
+  | 'mental'    
+  | 'social'    
+  | 'emotional' 
+  | 'mindfulness' 
+  | 'productivity' 
+  | 'self-care' 
+  | 'gratitude' 
+  | 'creativity'; 
+
 export interface WellbeingPromptEntity {
   id: string;
   content: string;
-  category: string; //TODO: Change to enum
+  category: WellbeingCategory;
   createdAt: Date;
 }
