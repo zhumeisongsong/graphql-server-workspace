@@ -1,4 +1,4 @@
-export interface DailyPromptRecordEntity {
+export interface UserPromptLogEntity {
   id: string;
   promptId: string;
   userId: string;

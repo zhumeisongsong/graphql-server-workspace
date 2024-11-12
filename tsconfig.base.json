@@ -18,8 +18,8 @@
       "@graphql-federation-workspace/applications-config": [
         "libs/application-config/src/index.ts"
       ],
-      "@prompt/daily-prompt-record-entity": [
-        "libs/prompt/domain/daily-prompt-record-entity/src/index.ts"
+      "@prompt/user-prompt-log-entity": [
+        "libs/prompt/domain/user-prompt-log-entity/src/index.ts"
       ],
       "@prompt/wellbeing-prompt-entity": [
         "libs/prompt/domain/wellbeing-prompt-entity/src/index.ts"
