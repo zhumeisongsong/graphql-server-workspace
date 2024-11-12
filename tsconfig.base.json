@@ -17,6 +17,9 @@
     "paths": {
       "@graphql-federation-workspace/applications-config": [
         "libs/application-config/src/index.ts"
+      ],
+      "@prompt/wellbeing-prompt-entity": [
+        "libs/prompt/domain/wellbeing-prompt-entity/src/index.ts"
       ]
     }
   },
