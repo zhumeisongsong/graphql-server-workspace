@@ -1,8 +1,8 @@
-import {type DailyPromptRecordEntity } from './daily-prompt-record-entity';
+import {type UserPromptLogEntity } from './user-prompt-log-entity';
 
-describe('DailyPromptRecordEntity', () => {
+describe('UserPromptLogEntity', () => {
   it('should have all required properties', () => {
-    const record: DailyPromptRecordEntity = {
+    const record: UserPromptLogEntity = {
       id: '1',
       promptId: 'prompt1',
       userId: 'user1',
@@ -18,7 +18,7 @@ describe('DailyPromptRecordEntity', () => {
   });
 
   it('should have correct types for properties', () => {
-    const record: DailyPromptRecordEntity = {
+    const record: UserPromptLogEntity = {
       id: '1',
       promptId: 'prompt1',
       userId: 'user1',

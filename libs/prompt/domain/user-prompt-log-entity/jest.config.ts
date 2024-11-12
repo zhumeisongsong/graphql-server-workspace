@@ -1,5 +1,5 @@
 export default {
-  displayName: 'daily-prompt-record-entity',
+  displayName: 'user-prompt-log-entity',
   preset: '../../../../jest.preset.js',
   testEnvironment: 'node',
   transform: {
@@ -7,5 +7,5 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory:
-    '../../../../coverage/libs/prompt/domain/daily-prompt-record-entity',
+    '../../../../coverage/libs/prompt/domain/user-prompt-log-entity',
 };
