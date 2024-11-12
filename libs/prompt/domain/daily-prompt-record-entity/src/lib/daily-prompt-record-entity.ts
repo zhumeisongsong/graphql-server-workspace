@@ -3,5 +3,5 @@ export interface DailyPromptRecordEntity {
   promptId: string;
   userId: string;
   createdAt: Date;
-  completedAt: Date;
+  completedAt?: Date;
 }
