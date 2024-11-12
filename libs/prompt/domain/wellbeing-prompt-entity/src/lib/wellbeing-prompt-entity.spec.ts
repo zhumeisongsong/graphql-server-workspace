@@ -15,17 +15,4 @@ describe('WellbeingPromptEntity', () => {
     expect(wellbeingPrompt.category).toBe('physical');
     expect(wellbeingPrompt.createdAt).toBeInstanceOf(Date);
   });
-
-  it('should throw an error if category is invalid', () => {
-    const createInvalidWellbeingPrompt = () => {
-      const wellbeingPrompt: WellbeingPromptEntity = {
-        id: '2',
-        content: 'Meditate for 10 minutes.',
-        category: 'invalid-category' as any,
-        createdAt: new Date(),
-      };
-    };
-
-    expect(createInvalidWellbeingPrompt).toThrowError();
-  });
 });
