@@ -1,20 +1,38 @@
 import { IntrospectAndCompose } from '@apollo/gateway';
+import { gatewayConfig, userAppConfig } from '@libs/config';
 import { ApolloGatewayDriver, ApolloGatewayDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
-import { subgraphsConfig } from '@graphql-federation-workspace/applications-config';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 @Module({
   imports: [
-    GraphQLModule.forRoot<ApolloGatewayDriverConfig>({
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [gatewayConfig, userAppConfig],
+    }),
+    GraphQLModule.forRootAsync<ApolloGatewayDriverConfig>({
+      imports: [ConfigModule],
+      inject: [ConfigService],
       driver: ApolloGatewayDriver,
-      gateway: {
-        supergraphSdl: new IntrospectAndCompose({
-          subgraphs: subgraphsConfig,
-        }),
+      useFactory: (configService: ConfigService) => {
+        const userAppConfig = configService.get('userApp');
+        return {
+          driver: ApolloGatewayDriver,
+          gateway: {
+            supergraphSdl: new IntrospectAndCompose({
+              subgraphs: [
+                {
+                  name: userAppConfig.name,
+                  url: `${userAppConfig.host}:${userAppConfig.port}/graphql`,
+                },
+              ],
+            }),
+          },
+        };
       },
     }),
   ],
