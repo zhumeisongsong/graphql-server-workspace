@@ -27,7 +27,7 @@ import { AppService } from './app.service';
               subgraphs: [
                 {
                   name: userAppConfig.name,
-                  url: `${userAppConfig.host}:${userAppConfig.port}/graphql`,
+                  url: `${userAppConfig.protocol}://${userAppConfig.host}:${userAppConfig.port}/graphql`,
                 },
               ],
             }),

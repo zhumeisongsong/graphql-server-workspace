@@ -14,11 +14,11 @@ async function bootstrap() {
 
   const configService = app.get(ConfigService);
   const config = configService.get('userApp');
-  const host = config.host;
-  const port = config.port;
 
-  await app.listen(port);
-  Logger.log(`🚀 Application is running on: ${host}:${port}`);
+  await app.listen(config.port);
+  Logger.log(
+    `    🚀 Application is running on: ${config.protocol}://${config.host}:${config.port}`,
+  );
 }
 
 bootstrap();

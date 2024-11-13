@@ -4,16 +4,26 @@ describe('Config Tests', () => {
   describe('gatewayConfig', () => {
     it('should return default values when environment variables are not set', () => {
       const config = gatewayConfig();
-      expect(config.host).toBe('http://localhost');
-      expect(config.port).toBe('3333');
+      expect(config).toEqual({
+        protocol: 'http',
+        host: 'localhost',
+        port: '3333',
+      });
     });
 
-    it('should return environment values when environment variables are set', () => {
-      process.env['GATEWAY_HOST'] = 'http://gateway-host';
-      process.env['GATEWAY_PORT'] = '4000';
+    it('should return environment variable values when they are set', () => {
+      process.env['PROTOCOL'] = 'https';
+      process.env['GATEWAY_HOST'] = 'gateway.example.com';
+      process.env['GATEWAY_PORT'] = '4444';
+
       const config = gatewayConfig();
-      expect(config.host).toBe('http://gateway-host');
-      expect(config.port).toBe('4000');
+      expect(config).toEqual({
+        protocol: 'https',
+        host: 'gateway.example.com',
+        port: '4444',
+      });
+
+      delete process.env['PROTOCOL'];
       delete process.env['GATEWAY_HOST'];
       delete process.env['GATEWAY_PORT'];
     });
@@ -22,18 +32,28 @@ describe('Config Tests', () => {
   describe('userAppConfig', () => {
     it('should return default values when environment variables are not set', () => {
       const config = userAppConfig();
-      expect(config.host).toBe('http://localhost');
-      expect(config.port).toBe('15001');
-      expect(config.name).toBe('user');
+      expect(config).toEqual({
+        protocol: 'http',
+        host: 'localhost',
+        port: '15001',
+        name: 'user',
+      });
     });
 
-    it('should return environment values when environment variables are set', () => {
-      process.env['USER_HOST'] = 'http://user-host';
-      process.env['USER_PORT'] = '5000';
+    it('should return environment variable values when they are set', () => {
+      process.env['PROTOCOL'] = 'https';
+      process.env['USER_HOST'] = 'user.example.com';
+      process.env['USER_PORT'] = '5555';
+
       const config = userAppConfig();
-      expect(config.host).toBe('http://user-host');
-      expect(config.port).toBe('5000');
-      expect(config.name).toBe('user');
+      expect(config).toEqual({
+        protocol: 'https',
+        host: 'user.example.com',
+        port: '5555',
+        name: 'user',
+      });
+
+      delete process.env['PROTOCOL'];
       delete process.env['USER_HOST'];
       delete process.env['USER_PORT'];
     });
