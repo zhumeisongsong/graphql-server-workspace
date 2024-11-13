@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@graphql-federation-workspace/applications-config": [
-        "libs/application-config/src/index.ts"
+      "@libs/config": [
+        "libs/config/src/index.ts"
       ],
       "@prompt/user-prompt-log-entity": [
         "libs/prompt/domain/user-prompt-log-entity/src/index.ts"

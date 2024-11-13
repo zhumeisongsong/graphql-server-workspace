@@ -4,17 +4,21 @@
  */
 
 import { Logger } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
-import { userSubGraph } from '@graphql-federation-workspace/applications-config';
 
 import { AppModule } from './app/app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const port = userSubGraph.port;
 
-  await app.listen(port);
-  Logger.log(`🚀 Application is running on: ${userSubGraph.host}:${port}`);
+  const configService = app.get(ConfigService);
+  const config = configService.get('userApp');
+
+  await app.listen(config.port);
+  Logger.log(
+    `    🚀 Application is running on: ${config.protocol}://${config.host}:${config.port}`,
+  );
 }
 
 bootstrap();
