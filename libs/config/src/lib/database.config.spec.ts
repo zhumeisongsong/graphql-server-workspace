@@ -18,7 +18,7 @@ describe('databaseConfig', () => {
 
     const config = databaseConfig();
     expect(config.host).toBe('localhost');
-    expect(config.port).toBe('3306');
+    expect(config.port).toBe(3306);
   });
 
   it('should return the default port if DATABASE_PORT is not set', () => {
