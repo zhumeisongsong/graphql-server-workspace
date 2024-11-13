@@ -2,16 +2,16 @@ import { gatewayConfig, userAppConfig } from './applications.config';
 
 describe('Config Tests', () => {
   describe('gatewayConfig', () => {
-    it('should return default values when environment variables are not set', () => {
+    it('should return default gateway config when no environment variables are set', () => {
       const config = gatewayConfig();
       expect(config).toEqual({
         protocol: 'http',
         host: 'localhost',
-        port: '3333',
+        port: 3333,
       });
     });
 
-    it('should return environment variable values when they are set', () => {
+    it('should return gateway config with environment variables', () => {
       process.env['PROTOCOL'] = 'https';
       process.env['GATEWAY_HOST'] = 'gateway.example.com';
       process.env['GATEWAY_PORT'] = '4444';
@@ -20,7 +20,7 @@ describe('Config Tests', () => {
       expect(config).toEqual({
         protocol: 'https',
         host: 'gateway.example.com',
-        port: '4444',
+        port: 4444,
       });
 
       delete process.env['PROTOCOL'];
@@ -30,17 +30,17 @@ describe('Config Tests', () => {
   });
 
   describe('userAppConfig', () => {
-    it('should return default values when environment variables are not set', () => {
+    it('should return default user app config when no environment variables are set', () => {
       const config = userAppConfig();
       expect(config).toEqual({
         protocol: 'http',
         host: 'localhost',
-        port: '15001',
+        port: 15001,
         name: 'user',
       });
     });
 
-    it('should return environment variable values when they are set', () => {
+    it('should return user app config with environment variables', () => {
       process.env['PROTOCOL'] = 'https';
       process.env['USER_HOST'] = 'user.example.com';
       process.env['USER_PORT'] = '5555';
@@ -49,7 +49,7 @@ describe('Config Tests', () => {
       expect(config).toEqual({
         protocol: 'https',
         host: 'user.example.com',
-        port: '5555',
+        port: 5555,
         name: 'user',
       });
 
