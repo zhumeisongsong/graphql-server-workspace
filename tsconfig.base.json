@@ -15,15 +15,14 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@libs/config": [
-        "libs/config/src/index.ts"
-      ],
+      "@libs/config": ["libs/config/src/index.ts"],
       "@prompt/user-prompt-log-entity": [
         "libs/prompt/domain/user-prompt-log-entity/src/index.ts"
       ],
       "@prompt/wellbeing-prompt-entity": [
         "libs/prompt/domain/wellbeing-prompt-entity/src/index.ts"
-      ]
+      ],
+      "@user/domain": ["libs/user/domain/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
