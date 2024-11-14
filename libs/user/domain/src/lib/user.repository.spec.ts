@@ -10,10 +10,6 @@ class MockUserRepository implements UserRepository {
   async findById(id: string): Promise<User | null> {
     return this.users.find((user) => user.id === id) || null;
   }
-
-  async findAll(): Promise<User[]> {
-    return this.users;
-  }
 }
 
 describe('UserRepository', () => {
@@ -33,11 +29,4 @@ describe('UserRepository', () => {
     expect(user).toBeNull();
   });
 
-  test('findAll should return all users', async () => {
-    const users = await userRepository.findAll();
-    expect(users).toEqual([
-      { id: '1', name: 'John Doe' },
-      { id: '2', name: 'Jane Doe' },
-    ]);
-  });
 });

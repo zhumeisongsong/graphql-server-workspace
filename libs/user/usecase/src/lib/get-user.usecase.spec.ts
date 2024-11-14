@@ -8,7 +8,6 @@ describe('GetUserUsecase', () => {
   beforeEach(() => {
     userRepository = {
       findById: jest.fn(),
-      findAll: jest.fn(),
     } as unknown as jest.Mocked<UserRepository>;
 
     getUserUsecase = new GetUserUsecase(userRepository);
@@ -32,18 +31,6 @@ describe('GetUserUsecase', () => {
 
       expect(result).toBeNull();
       expect(userRepository.findById).toHaveBeenCalledWith('1');
-    });
-  });
-
-  describe('executeAll', () => {
-    it('should return all users', async () => {
-      const users = [{ id: '1', name: 'John Doe' }, { id: '2', name: 'Jane Doe' }];
-      userRepository.findAll.mockResolvedValue(users);
-
-      const result = await getUserUsecase.executeAll();
-
-      expect(result).toEqual(users);
-      expect(userRepository.findAll).toHaveBeenCalled();
     });
   });
 });
