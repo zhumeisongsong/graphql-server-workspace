@@ -1,0 +1,9 @@
+{
+  "name": "user-usecase",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/user/usecase/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project user-usecase --web",
+  "targets": {}
+}
