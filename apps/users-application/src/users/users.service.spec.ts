@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { User } from '@user/domain';
+
 import { UsersService } from './users.service';
-import { User } from './models/user.model';
 
 describe('UsersService', () => {
   let service: UsersService;
@@ -18,12 +19,12 @@ describe('UsersService', () => {
   });
 
   it('should return a user by id', () => {
-    const user: User = service.findById(1);
-    expect(user).toEqual({ id: 1, name: 'John Doe' });
+    const user: User = service.findById('1');
+    expect(user).toEqual({ id: '1', name: 'John Doe' });
   });
 
   it('should return undefined if user is not found', () => {
-    const user: User = service.findById(3);
+    const user: User = service.findById('3');
     expect(user).toBeUndefined();
   });
 });

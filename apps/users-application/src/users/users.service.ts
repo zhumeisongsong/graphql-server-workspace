@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { User } from './models/user.model';
+import { User } from '@user/domain';
 
 @Injectable()
 export class UsersService {
   private users: User[] = [
-    { id: 1, name: 'John Doe' },
-    { id: 2, name: 'Richard Roe' },
+    { id: '1', name: 'John Doe' },
+    { id: '2', name: 'Richard Roe' },
   ];
 
-  findById(id: number): User | undefined {
-    return this.users.find((user) => user.id === Number(id));
+  findById(id: string): User | undefined {
+    return this.users.find((user) => user.id === id);
   }
 }
