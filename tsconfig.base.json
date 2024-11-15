@@ -18,7 +18,9 @@
       "@libs/config": ["libs/config/src/index.ts"],
       "@prompt/domain": ["libs/prompt/domain/src/index.ts"],
       "@user/domain": ["libs/user/domain/src/index.ts"],
-      "@user/infrastructure": ["libs/user/infrastructure/src/index.ts"],
+      "@user/infrastructure-mongoose": [
+        "libs/user/infrastructure/mongoose/src/index.ts"
+      ],
       "@user/usecase": ["libs/user/usecase/src/index.ts"]
     }
   },
