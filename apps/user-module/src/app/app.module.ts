@@ -1,10 +1,10 @@
 import { userAppConfig } from '@libs/config';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { UserModule } from '@user/application';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersModule } from '../users/users.module';
 
 @Module({
   imports: [
@@ -12,7 +12,7 @@ import { UsersModule } from '../users/users.module';
       isGlobal: true,
       load: [userAppConfig],
     }),
-    UsersModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],

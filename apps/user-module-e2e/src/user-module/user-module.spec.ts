@@ -5,6 +5,6 @@ describe('GET /', () => {
     const res = await axios.get(`/`);
 
     expect(res.status).toBe(200);
-    expect(res.data).toEqual({ message: 'Hello User Service' });
+    expect(res.data).toEqual({ message: 'Hello User Module' });
   });
 });
