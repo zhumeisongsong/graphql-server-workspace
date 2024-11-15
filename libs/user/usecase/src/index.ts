@@ -1,1 +1,1 @@
-export * from './lib/user-usecase';
+export * from './lib/get-user.usecase';
