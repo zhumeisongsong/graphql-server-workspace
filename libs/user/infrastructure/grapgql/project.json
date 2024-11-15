@@ -1,0 +1,9 @@
+{
+  "name": "user-infrastructure-graphql",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/user/infrastructure/graphql/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project user-infrastructure-graphql --web",
+  "targets": {}
+}
