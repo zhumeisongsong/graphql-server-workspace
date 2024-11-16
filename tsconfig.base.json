@@ -19,9 +19,6 @@
       "@prompt/domain": ["libs/prompt/domain/src/index.ts"],
       "@user/application": ["libs/user/application/src/index.ts"],
       "@user/domain": ["libs/user/domain/src/index.ts"],
-      "@user/infrastructure-graphql": [
-        "libs/user/infrastructure/graphql/src/index.ts"
-      ],
       "@user/infrastructure-mongoose": [
         "libs/user/infrastructure/mongoose/src/index.ts"
       ],

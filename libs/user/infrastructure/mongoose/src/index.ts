@@ -1,1 +1,2 @@
-export * from './lib/user-infrastructure-mongoose';
+export * from './lib/mongoose-user.repository';
+export * from './lib/user.schema';
