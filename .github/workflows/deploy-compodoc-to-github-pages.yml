@@ -18,8 +18,8 @@ jobs:
   setup:
     uses: zhumeisongsong/shared-actions/.github/workflows/reusable-pnpm-setup.yml@main
 
-  build:
-    name: Build
+  compodoc:
+    name: compodoc
     needs: setup
     runs-on: ubuntu-latest
     steps:
@@ -33,12 +33,21 @@ jobs:
 
       - name: Generate Compodoc
         run: pnpm run compodoc
+        continue-on-error: false
+        
+      - name: Verify documentation generation
+        run: |
+          if [ ! -d "documentation" ]; then
+            echo "Documentation directory not found!"
+            exit 1
+          fi
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: documentation
+        if: success()
 
   deploy:
-    needs: build
+    needs: compodoc
     uses: zhumeisongsong/shared-actions/.github/workflows/reusable-static-html-deploy-github-pages.yml@main
