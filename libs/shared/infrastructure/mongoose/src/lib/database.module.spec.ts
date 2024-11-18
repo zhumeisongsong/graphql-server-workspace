@@ -8,9 +8,9 @@ describe('DatabaseModule', () => {
   it('should configure MongoDB connection using config service values', async () => {
     const mockConfigService = {
       get: jest.fn().mockReturnValue({
-        host: 'test-host',
+        host: 'localhost',
         port: 27017,
-        name: 'test-db'
+        name: 'test'
       })
     };
 
