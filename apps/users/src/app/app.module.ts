@@ -1,4 +1,4 @@
-import { userAppConfig } from '@libs/config';
+import { databaseConfig, userAppConfig } from '@shared/config';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
@@ -10,7 +10,7 @@ import { UsersModule } from '../users/users.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [userAppConfig],
+      load: [userAppConfig, databaseConfig],
     }),
     UsersModule,
   ],

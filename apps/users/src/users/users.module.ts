@@ -7,6 +7,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { UsersResolver } from '@users/presentation-resolver';
 import { UsersService } from '@users/application';
 import { ApolloServerPluginInlineTrace } from '@apollo/server/plugin/inlineTrace';
+import { DatabaseModule } from '@shared/infrastructure-mongoose';
 
 @Module({
   providers: [UsersResolver, UsersService],
@@ -25,6 +26,7 @@ import { ApolloServerPluginInlineTrace } from '@apollo/server/plugin/inlineTrace
       sortSchema: true,
       plugins: [ApolloServerPluginInlineTrace()],
     }),
+    DatabaseModule,
   ],
 })
 export class UsersModule {}

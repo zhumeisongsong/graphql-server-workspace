@@ -1,5 +1,5 @@
 import { IntrospectAndCompose } from '@apollo/gateway';
-import { gatewayConfig, userAppConfig } from '@libs/config';
+import { gatewayConfig, userAppConfig } from '@shared/config';
 import { ApolloGatewayDriver, ApolloGatewayDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';

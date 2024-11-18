@@ -15,8 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@libs/config": ["libs/config/src/index.ts"],
       "@prompt/domain": ["libs/prompt/domain/src/index.ts"],
+      "@shared/config": ["libs/shared/config/src/index.ts"],
+      "@shared/infrastructure-mongoose": [
+        "libs/shared/infrastructure/mongoose/src/index.ts"
+      ],
       "@user/domain": ["libs/user/domain/src/index.ts"],
       "@users/application": ["libs/users/application/src/index.ts"],
       "@users/presentation-dto": ["libs/users/presentation/dto/src/index.ts"],
