@@ -10,8 +10,9 @@ export type DatabaseConfig = z.infer<typeof databaseSchema>;
 
 export const databaseConfig = registerAs('database', () => {
   const config = {
-    host: process.env['DATABASE_HOST'],
-    port: process.env['DATABASE_PORT'] || 5432,
+    host: process.env['DATABASE_HOST'] || 'localhost',
+    port: process.env['DATABASE_PORT'] || 27017,
+    name: process.env['DATABASE_NAME'] || '',
   };
 
   return databaseSchema.parse(config);
