@@ -18,7 +18,8 @@
       "@libs/config": ["libs/config/src/index.ts"],
       "@prompt/domain": ["libs/prompt/domain/src/index.ts"],
       "@user/domain": ["libs/user/domain/src/index.ts"],
-      "@users/application": ["libs/users/application/src/index.ts"]
+      "@users/application": ["libs/users/application/src/index.ts"],
+      "@users/presentation": ["libs/users/presentation/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
