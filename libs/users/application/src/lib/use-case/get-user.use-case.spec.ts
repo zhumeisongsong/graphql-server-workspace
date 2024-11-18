@@ -1,8 +1,8 @@
-import { GetUserUsecase } from './get-user.usecase';
+import { GetUserUseCase } from './get-user.use-case';
 import { UserRepository } from '@user/domain';
 
-describe('GetUserUsecase', () => {
-  let getUserUsecase: GetUserUsecase;
+describe('GetUserUseCase', () => {
+  let getUserUseCase: GetUserUseCase;
   let userRepository: jest.Mocked<UserRepository>;
 
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe('GetUserUsecase', () => {
       findById: jest.fn(),
     } as unknown as jest.Mocked<UserRepository>;
 
-    getUserUsecase = new GetUserUsecase(userRepository);
+    getUserUseCase = new GetUserUseCase(userRepository);
   });
 
   describe('execute', () => {
@@ -18,7 +18,7 @@ describe('GetUserUsecase', () => {
       const user = { id: '1', name: 'John Doe' };
       userRepository.findById.mockResolvedValue(user);
 
-      const result = await getUserUsecase.execute('1');
+      const result = await getUserUseCase.execute('1');
 
       expect(result).toEqual(user);
       expect(userRepository.findById).toHaveBeenCalledWith('1');
@@ -27,7 +27,7 @@ describe('GetUserUsecase', () => {
     it('should return null when user is not found', async () => {
       userRepository.findById.mockResolvedValue(null);
 
-      const result = await getUserUsecase.execute('1');
+      const result = await getUserUseCase.execute('1');
 
       expect(result).toBeNull();
       expect(userRepository.findById).toHaveBeenCalledWith('1');

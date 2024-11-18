@@ -1,10 +1,10 @@
 export default {
-  displayName: 'user-usecase',
+  displayName: 'users-application',
   preset: '../../../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../../coverage/libs/user/usecase',
+  coverageDirectory: '../../../coverage/libs/users/application',
 };
