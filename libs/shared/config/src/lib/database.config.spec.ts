@@ -43,6 +43,6 @@ describe('databaseConfig', () => {
     delete process.env['DATABASE_NAME'];
 
     const config = databaseConfig();
-    expect(config.name).toBe('');
+    expect(config.name).toBe('main');
   });
 });

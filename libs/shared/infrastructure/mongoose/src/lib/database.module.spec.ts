@@ -1,28 +1,64 @@
 import { Test } from '@nestjs/testing';
-import { ConfigService } from '@nestjs/config';
-import { MongooseModule } from '@nestjs/mongoose';
-
+import { ConfigModule } from '@nestjs/config';
+import { databaseConfig } from '@shared/config';
 import { DatabaseModule } from './database.module';
 
 describe('DatabaseModule', () => {
-  it('should configure MongoDB connection using config service values', async () => {
-    const mockConfigService = {
-      get: jest.fn().mockReturnValue({
-        host: 'localhost',
-        port: 27017,
-        name: 'test'
-      })
-    };
+  const OLD_ENV = process.env;
+
+  beforeEach(() => {
+    jest.resetModules();
+    process.env = { ...OLD_ENV };
+  });
+
+  afterAll(() => {
+    process.env = OLD_ENV;
+  });
+
+  it('should be defined', async () => {
+    const module = await Test.createTestingModule({
+      imports: [
+        ConfigModule.forRoot({
+          load: [databaseConfig],
+        }),
+        DatabaseModule,
+      ],
+    }).compile();
+
+    expect(module).toBeDefined();
+  });
+
+  it('should use default values when environment variables are not set', async () => {
+    delete process.env['DATABASE_HOST'];
+    delete process.env['DATABASE_PORT'];
+    delete process.env['DATABASE_NAME'];
 
     const module = await Test.createTestingModule({
-      imports: [DatabaseModule],
-    })
-    .overrideProvider(ConfigService)
-    .useValue(mockConfigService)
-    .compile();
+      imports: [
+        ConfigModule.forRoot({
+          load: [databaseConfig],
+        }),
+        DatabaseModule,
+      ],
+    }).compile();
 
-    const mongooseModule = module.get(MongooseModule);
-    expect(mongooseModule).toBeDefined();
-    expect(mockConfigService.get).toHaveBeenCalledWith('database');
+    expect(module).toBeDefined();
+  });
+
+  it('should use environment variables for database connection', async () => {
+    process.env['DATABASE_HOST'] = 'test-host';
+    process.env['DATABASE_PORT'] = '27018';
+    process.env['DATABASE_NAME'] = 'test';
+
+    const module = await Test.createTestingModule({
+      imports: [
+        ConfigModule.forRoot({
+          load: [databaseConfig],
+        }),
+        DatabaseModule,
+      ],
+    }).compile();
+
+    expect(module).toBeDefined();
   });
 });

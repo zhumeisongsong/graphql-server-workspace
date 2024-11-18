@@ -13,7 +13,7 @@ export const databaseConfig = registerAs('database', () => {
   const config = {
     host: process.env['DATABASE_HOST'] || 'localhost',
     port: process.env['DATABASE_PORT'] || 27017,
-    name: process.env['DATABASE_NAME'] || '',
+    name: process.env['DATABASE_NAME'] || 'main',
   };
 
   return databaseSchema.parse(config);
