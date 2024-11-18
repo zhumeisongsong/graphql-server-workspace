@@ -1,9 +1,0 @@
-{
-  "name": "users-presentation",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/users/presentation/src",
-  "projectType": "library",
-  "tags": [],
-  "// targets": "to see all targets run: nx show project users-presentation --web",
-  "targets": {}
-}
