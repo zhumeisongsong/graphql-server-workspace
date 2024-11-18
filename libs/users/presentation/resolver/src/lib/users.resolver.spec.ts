@@ -41,7 +41,7 @@ describe('UsersResolver', () => {
     it('should return undefined if user not found', () => {
       jest.spyOn(service, 'findById').mockReturnValue(undefined);
 
-      expect(resolver.getUser('2')).toBeUndefined();
+      expect(resolver.getUser('2')).toBeNull();
       expect(service.findById).toHaveBeenCalledWith('2');
     });
   });
