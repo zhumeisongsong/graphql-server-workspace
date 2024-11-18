@@ -50,14 +50,18 @@ describe('UsersResolver', () => {
       const user: User = { id: '1', name: 'John Doe' };
       jest.spyOn(service, 'findById').mockReturnValue(user);
 
-      expect(resolver.resolveReference({ __typename: 'User', id: '1' })).toEqual(user);
+      expect(
+        resolver.resolveReference({ __typename: 'User', id: '1' }),
+      ).toEqual(user);
       expect(service.findById).toHaveBeenCalledWith('1');
     });
 
     it('should return undefined if user not found by reference id', () => {
       jest.spyOn(service, 'findById').mockReturnValue(undefined);
 
-      expect(resolver.resolveReference({ __typename: 'User', id: '2' })).toBeUndefined();
+      expect(
+        resolver.resolveReference({ __typename: 'User', id: '2' }),
+      ).toBeUndefined();
       expect(service.findById).toHaveBeenCalledWith('2');
     });
   });
