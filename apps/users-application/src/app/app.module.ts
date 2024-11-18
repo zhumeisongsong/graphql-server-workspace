@@ -1,4 +1,4 @@
-import { userAppConfig } from '@libs/config';
+import { userAppConfig } from '@shared/config';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
