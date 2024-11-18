@@ -8,10 +8,10 @@ import { ConfigService } from '@nestjs/config';
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => {
         const databaseConfig = configService.get('database');
+        
         return {
-          // uri: `mongodb://${databaseConfig.host}:${databaseConfig.port}`,
-          uri: `mongodb://localhost:27017`,
-          // dbName: databaseConfig.name,
+          uri: `mongodb://${databaseConfig.host}:${databaseConfig.port}`,
+          dbName: databaseConfig.name,
         };
       },
     }),
