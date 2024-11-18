@@ -16,7 +16,9 @@ describe('AppController', () => {
   describe('getData', () => {
     it('should return "Hello User Service"', () => {
       const appController = app.get<AppController>(AppController);
-      expect(appController.getData()).toEqual({ message: 'Hello User Service' });
+      expect(appController.getData()).toEqual({
+        message: 'Hello User Service',
+      });
     });
   });
 });

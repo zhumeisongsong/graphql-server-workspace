@@ -1,7 +1,7 @@
 {
-  "name": "users-application",
+  "name": "users",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/users-application/src",
+  "sourceRoot": "apps/users/src",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -10,15 +10,15 @@
       "defaultConfiguration": "development",
       "dependsOn": ["build"],
       "options": {
-        "buildTarget": "users-application:build",
+        "buildTarget": "users:build",
         "runBuildTargetDependencies": false
       },
       "configurations": {
         "development": {
-          "buildTarget": "users-application:build:development"
+          "buildTarget": "users:build:development"
         },
         "production": {
-          "buildTarget": "users-application:build:production"
+          "buildTarget": "users:build:production"
         }
       }
     }
