@@ -15,13 +15,23 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@libs/config": ["libs/config/src/index.ts"],
       "@prompt/domain": ["libs/prompt/domain/src/index.ts"],
+      "@shared/config": ["libs/shared/config/src/index.ts"],
+      "@shared/infrastructure-mongoose": [
+        "libs/shared/infrastructure/mongoose/src/index.ts"
+      ],
       "@user/domain": ["libs/user/domain/src/index.ts"],
       "@user/infrastructure-mongoose": [
-        "libs/user/infrastructure/mongoose/src/index.ts"
+        "users/infrastructure/mongoose/src/index.ts"
       ],
-      "@user/usecase": ["libs/user/usecase/src/index.ts"]
+      "@users/application": ["libs/users/application/src/index.ts"],
+      "@users/infrastructure-mongoose": [
+        "libs/users/infrastructure/mongoose/src/index.ts"
+      ],
+      "@users/presentation-dto": ["libs/users/presentation/dto/src/index.ts"],
+      "@users/presentation-resolver": [
+        "libs/users/presentation/resolver/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
