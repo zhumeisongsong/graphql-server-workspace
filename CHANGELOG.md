@@ -1,3 +1,17 @@
+# [1.1.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.0.0...v1.1.0) (2024-11-19)
+
+
+### Bug Fixes
+
+* 🐛 remove use less ts path ([d7d0e64](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/d7d0e640442985a71cc7a0da9b8a9dd4a10998e1))
+
+
+### Features
+
+* ✨ add lib of @user/infrastructure-mongoose ([f6958d8](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/f6958d8e67d4ec1279b19d615d1bc73779da1318))
+* ✨ initial user infrastructure ([1944c6f](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/1944c6fe0c9ac745c5afd127be3f64c09e6ec146))
+* ✨ remove user-infrastructure-mongoose ([9da264e](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/9da264e677fc22cfec45c73f46171a5b8787c132))
+
 # 1.0.0 (2024-11-19)
 
 
