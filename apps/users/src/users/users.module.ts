@@ -5,12 +5,12 @@ import {
 } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { UsersService } from '@users/application';
+import { UsersService, GetUserUseCase } from '@users/application';
 import { UsersResolver } from '@users/interface-adapters';
 import { DatabaseModule } from '@shared/infrastructure-mongoose';
 
 @Module({
-  providers: [UsersResolver, UsersService],
+  providers: [UsersResolver, UsersService, GetUserUseCase],
   imports: [
     GraphQLModule.forRoot<ApolloFederationDriverConfig>({
       driver: ApolloFederationDriver,
