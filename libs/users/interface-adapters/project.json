@@ -1,0 +1,9 @@
+{
+  "name": "users-interface-adapters",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/users/interface-adapters/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project users-interface-adapters --web",
+  "targets": {}
+}
