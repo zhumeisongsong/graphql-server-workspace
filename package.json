@@ -41,6 +41,8 @@
     "@nx/web": "20.1.0",
     "@nx/webpack": "20.1.0",
     "@nx/workspace": "20.1.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "@swc-node/register": "~1.10.0",
     "@swc/core": "~1.9.0",
     "@swc/helpers": "~0.5.13",
@@ -69,7 +71,10 @@
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
-      "@semantic-release/github"
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/github",
+      "@semantic-release/git"
     ]
   },
   "packageManager": "pnpm@9.12.3",
