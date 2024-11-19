@@ -1,4 +1,4 @@
-export * from './lib/use-case/get-user.use-case';
+export * from './lib/use-cases/get-user.use-case';
 
 // service
 export * from './lib/users.service';
