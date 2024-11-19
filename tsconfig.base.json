@@ -21,9 +21,6 @@
         "libs/shared/infrastructure/mongoose/src/index.ts"
       ],
       "@user/domain": ["libs/user/domain/src/index.ts"],
-      "@user/infrastructure-mongoose": [
-        "users/infrastructure/mongoose/src/index.ts"
-      ],
       "@users/application": ["libs/users/application/src/index.ts"],
       "@users/infrastructure-mongoose": [
         "libs/users/infrastructure/mongoose/src/index.ts"
