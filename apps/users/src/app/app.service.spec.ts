@@ -14,8 +14,8 @@ describe('AppService', () => {
   });
 
   describe('getData', () => {
-    it('should return "Hello User Service"', () => {
-      expect(service.getData()).toEqual({ message: 'Hello User Service' });
+    it('should return "Hello Users Module"', () => {
+      expect(service.getData()).toEqual({ message: 'Hello Users Module' });
     });
   });
 });

@@ -1,12 +1,12 @@
+import { ApolloServerPluginInlineTrace } from '@apollo/server/plugin/inlineTrace';
 import {
   ApolloFederationDriver,
   ApolloFederationDriverConfig,
 } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { UsersResolver } from '@users/presentation-resolver';
 import { UsersService } from '@users/application';
-import { ApolloServerPluginInlineTrace } from '@apollo/server/plugin/inlineTrace';
+import { UsersResolver } from '@users/interface-adapters';
 import { DatabaseModule } from '@shared/infrastructure-mongoose';
 
 @Module({
