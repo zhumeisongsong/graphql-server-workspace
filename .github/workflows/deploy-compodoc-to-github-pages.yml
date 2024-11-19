@@ -1,0 +1,53 @@
+name: Deploy Compodoc to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  setup:
+    uses: zhumeisongsong/shared-actions/.github/workflows/reusable-pnpm-setup.yml@main
+
+  compodoc:
+    name: compodoc
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Restore pnpm store and install dependencies
+        uses: zhumeisongsong/shared-actions/.github/actions/pnpm@main
+
+      - name: Generate Compodoc
+        run: pnpm run compodoc
+        continue-on-error: false
+        
+      - name: Verify documentation generation
+        run: |
+          if [ ! -d "documentation" ]; then
+            echo "Documentation directory not found!"
+            exit 1
+          fi
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: documentation
+        if: success()
+
+  deploy:
+    needs: compodoc
+    uses: zhumeisongsong/shared-actions/.github/workflows/reusable-static-html-deploy-github-pages.yml@main
