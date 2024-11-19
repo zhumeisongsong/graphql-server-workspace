@@ -3,7 +3,7 @@ import { getModelToken } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { MongooseUserRepository } from './mongoose-user.repository';
 import { UserDocument } from './user.schema';
-import { User } from '@user/domain';
+import { User } from '@users/domain';
 
 describe('MongooseUserRepository', () => {
   let repository: MongooseUserRepository;

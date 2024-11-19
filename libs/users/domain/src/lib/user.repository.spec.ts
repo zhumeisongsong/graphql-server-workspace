@@ -28,5 +28,4 @@ describe('UserRepository', () => {
     const user = await userRepository.findById('3');
     expect(user).toBeNull();
   });
-
 });

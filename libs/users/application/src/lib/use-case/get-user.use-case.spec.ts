@@ -1,5 +1,5 @@
 import { GetUserUseCase } from './get-user.use-case';
-import { UserRepository } from '@user/domain';
+import { UserRepository } from '@users/domain';
 
 describe('GetUserUseCase', () => {
   let getUserUseCase: GetUserUseCase;

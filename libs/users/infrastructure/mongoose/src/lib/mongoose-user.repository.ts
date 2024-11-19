@@ -1,5 +1,5 @@
 import { InjectModel } from '@nestjs/mongoose';
-import { User, UserRepository } from '@user/domain';
+import { User, UserRepository } from '@users/domain';
 import { Model } from 'mongoose';
 
 import { UserDocument } from './user.schema';
