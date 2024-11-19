@@ -27,7 +27,7 @@ describe('UsersService', () => {
     expect(result).toEqual(user);
   });
 
-  it('should return undefined if user is not found', async () => {
+  it('should return null if user is not found', async () => {
     jest.spyOn(service, 'findById').mockResolvedValue(null);
 
     const result = await service.findById('1');
