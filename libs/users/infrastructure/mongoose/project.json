@@ -1,0 +1,9 @@
+{
+  "name": "users-infrastructure-mongoose",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/users/infrastructure/mongoose/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project users-infrastructure-mongoose --web",
+  "targets": {}
+}
