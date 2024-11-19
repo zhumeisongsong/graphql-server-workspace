@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { UsersService } from '@users/application';
 import { User } from '@users/domain';
 
-import { UsersResolver } from '../../../../presentation/resolver/src/lib/users.resolver';
+import { UsersResolver } from './users.resolver';
 
 describe('UsersResolver', () => {
   let resolver: UsersResolver;

@@ -1,7 +1,8 @@
 import { Args, ID, Query, Resolver, ResolveReference } from '@nestjs/graphql';
 import { UsersService } from '@users/application';
 import { User } from '@users/domain';
-import { UserDto } from '@users/interface-adapters';
+
+import { UserDto } from '../dto/user.dto';
 
 @Resolver(() => UserDto)
 export class UsersResolver {
