@@ -64,6 +64,10 @@ You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx 
 
 ## Useful links
 
+Move a project to another folder in the workspace:
+
+`nx g @nx/workspace:move --project xxx --destination root/xxx/xxx`
+
 Learn more:
 
 - [Learn more about this workspace setup](https://nx.dev/nx-api/nest?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
