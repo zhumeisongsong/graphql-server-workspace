@@ -1,5 +1,5 @@
 import { User } from './user.entity';
 
-export interface UserRepository {
+export interface UsersRepository {
   findById(id: string): Promise<User | null>;
 }
