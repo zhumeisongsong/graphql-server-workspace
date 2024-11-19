@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { User } from '@user/domain';
+import { User } from '@users/domain';
 
 import { UsersService } from './users.service';
 

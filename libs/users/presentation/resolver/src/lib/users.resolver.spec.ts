@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UsersService } from '@users/application';
-import { User } from '@user/domain';
+import { User } from '@users/domain';
 
 import { UsersResolver } from './users.resolver';
 

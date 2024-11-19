@@ -1,4 +1,4 @@
-import { User, UserRepository } from '@user/domain';
+import { User, UserRepository } from '@users/domain';
 
 export class GetUserUseCase {
   constructor(private readonly userRepository: UserRepository) {}
