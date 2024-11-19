@@ -1,18 +1,18 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getModelToken } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { MongooseUserRepository } from './mongoose-user.repository';
+import { MongooseUsersRepository } from './mongoose-users.repository';
 import { UserDocument } from './user.schema';
 import { User } from '@users/domain';
 
-describe('MongooseUserRepository', () => {
-  let repository: MongooseUserRepository;
+describe('MongooseUsersRepository', () => {
+  let repository: MongooseUsersRepository;
   let userModel: Model<UserDocument>;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
-        MongooseUserRepository,
+        MongooseUsersRepository,
         {
           provide: getModelToken(UserDocument.name),
           useValue: {
@@ -22,7 +22,7 @@ describe('MongooseUserRepository', () => {
       ],
     }).compile();
 
-    repository = module.get<MongooseUserRepository>(MongooseUserRepository);
+    repository = module.get<MongooseUsersRepository>(MongooseUsersRepository);
     userModel = module.get<Model<UserDocument>>(getModelToken(UserDocument.name));
   });
 
