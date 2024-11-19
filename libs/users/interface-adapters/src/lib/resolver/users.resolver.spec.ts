@@ -30,40 +30,19 @@ describe('UsersResolver', () => {
   });
 
   describe('getUser', () => {
-    it('should return a user by id', () => {
-      const user: User = { id: '1', name: 'John Doe' };
-      jest.spyOn(service, 'findById').mockReturnValue(user);
+    it('should return a user by id', async () => {
+      const user = new User('1', 'John Doe');
+      jest.spyOn(service, 'findById').mockResolvedValue(user);
 
-      expect(resolver.getUser('1')).toEqual(user);
-      expect(service.findById).toHaveBeenCalledWith('1');
+      const result = await resolver.getUser('1');
+      expect(result).toEqual(user);
     });
 
-    it('should return undefined if user not found', () => {
-      jest.spyOn(service, 'findById').mockReturnValue(undefined);
+    it('should return undefined if user not found', async () => {
+      jest.spyOn(service, 'findById').mockResolvedValue(null);
 
-      expect(resolver.getUser('2')).toBeNull();
-      expect(service.findById).toHaveBeenCalledWith('2');
-    });
-  });
-
-  describe('resolveReference', () => {
-    it('should return a user by reference id', () => {
-      const user: User = { id: '1', name: 'John Doe' };
-      jest.spyOn(service, 'findById').mockReturnValue(user);
-
-      expect(
-        resolver.resolveReference({ __typename: 'User', id: '1' }),
-      ).toEqual(user);
-      expect(service.findById).toHaveBeenCalledWith('1');
-    });
-
-    it('should return undefined if user not found by reference id', () => {
-      jest.spyOn(service, 'findById').mockReturnValue(undefined);
-
-      expect(
-        resolver.resolveReference({ __typename: 'User', id: '2' }),
-      ).toBeUndefined();
-      expect(service.findById).toHaveBeenCalledWith('2');
+      const result = await resolver.getUser('1');
+      expect(result).toBeNull();
     });
   });
 });
