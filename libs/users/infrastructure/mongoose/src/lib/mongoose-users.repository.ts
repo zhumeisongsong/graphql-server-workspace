@@ -1,22 +1,24 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UsersRepository } from '@users/domain';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 
 import { UserDocument } from './user.schema';
 
-@Injectable() 
+@Injectable()
 export class MongooseUsersRepository implements UsersRepository {
   constructor(
     @InjectModel(UserDocument.name) private userModel: Model<UserDocument>,
   ) {}
 
   async findById(id: string): Promise<User | null> {
-    const userDoc = await this.userModel.findById(id).exec();
 
-    if (!userDoc) {
+    const _id = new Types.ObjectId(id);
+    const userDocument = await this.userModel.findById(_id).exec();
+
+    if (!userDocument) {
       return null;
     }
-    return new User(userDoc.id, userDoc.name);
+    return new User(userDocument.id, userDocument.name);
   }
 }
