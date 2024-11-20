@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.2.0...v1.2.1) (2024-11-20)
+
+
+### Bug Fixes
+
+* 🐛 id for MongooseUsersRepository is not objectId ([b1990b9](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/b1990b96413b36cde1eab5e94081b9fd8a2f47f9))
+
 # [1.2.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.1.0...v1.2.0) (2024-11-20)
 
 
