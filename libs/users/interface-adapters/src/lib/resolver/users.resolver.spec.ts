@@ -38,7 +38,7 @@ describe('UsersResolver', () => {
       expect(result).toEqual(user);
     });
 
-    it('should return undefined if user not found', async () => {
+    it('should return null if user not found', async () => {
       jest.spyOn(service, 'findById').mockResolvedValue(null);
 
       const result = await resolver.getUser('1');
