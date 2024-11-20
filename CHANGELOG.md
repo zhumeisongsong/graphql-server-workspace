@@ -1,3 +1,39 @@
+## [1.2.1](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.2.0...v1.2.1) (2024-11-20)
+
+
+### Bug Fixes
+
+* 🐛 id for MongooseUsersRepository is not objectId ([b1990b9](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/b1990b96413b36cde1eab5e94081b9fd8a2f47f9))
+
+# [1.2.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.1.0...v1.2.0) (2024-11-20)
+
+
+### Bug Fixes
+
+* 🐛 Inject GetUserUseCase in UsersModule ([bb583de](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/bb583de18104d259ae2b9bff5e0fe9d9fb2189ab))
+* 🐛 Missing await for async repository call ([84db568](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/84db5681af6a7f89c954a3ebc28788b53aa5fff5))
+
+
+### Features
+
+* ✨ getUserUseCase in UsersService ([66310ac](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/66310ace6425babe7052e6686b4efa64826da026))
+* ✨ import MongooseModule and provide USERS_REPOSITORY ([b386cdb](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/b386cdb7a08a48d1e56d15c6a63014ae0839881c))
+* ✨ make GetUserUseCase be injectbale ([fae29b5](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/fae29b58feeac38075b9fdb3b813661c4146a9df))
+
+# [1.1.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.0.0...v1.1.0) (2024-11-19)
+
+
+### Bug Fixes
+
+* 🐛 remove use less ts path ([d7d0e64](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/d7d0e640442985a71cc7a0da9b8a9dd4a10998e1))
+
+
+### Features
+
+* ✨ add lib of @user/infrastructure-mongoose ([f6958d8](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/f6958d8e67d4ec1279b19d615d1bc73779da1318))
+* ✨ initial user infrastructure ([1944c6f](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/1944c6fe0c9ac745c5afd127be3f64c09e6ec146))
+* ✨ remove user-infrastructure-mongoose ([9da264e](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/9da264e677fc22cfec45c73f46171a5b8787c132))
+
 # 1.0.0 (2024-11-19)
 
 
