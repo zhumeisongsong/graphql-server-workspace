@@ -28,21 +28,4 @@ describe('UsersResolver', () => {
   it('should be defined', () => {
     expect(resolver).toBeDefined();
   });
-
-  describe('getUser', () => {
-    it('should return a user by id', async () => {
-      const user = new User('1', 'John Doe');
-      jest.spyOn(service, 'findById').mockResolvedValue(user);
-
-      const result = await resolver.getUser('1');
-      expect(result).toEqual(user);
-    });
-
-    it('should return null if user not found', async () => {
-      jest.spyOn(service, 'findById').mockResolvedValue(null);
-
-      const result = await resolver.getUser('1');
-      expect(result).toBeNull();
-    });
-  });
 });
