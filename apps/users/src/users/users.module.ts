@@ -5,12 +5,27 @@ import {
 } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
+import { DatabaseModule } from '@shared/infrastructure-mongoose';
 import { UsersService, GetUserUseCase } from '@users/application';
 import { UsersResolver } from '@users/interface-adapters';
-import { DatabaseModule } from '@shared/infrastructure-mongoose';
+import {
+  MongooseUsersRepository,
+  UserDocument,
+  UserSchema,
+} from '@users/infrastructure-mongoose';
+import { MongooseModule } from '@nestjs/mongoose';
+import { USERS_REPOSITORY } from '@users/domain';
 
 @Module({
-  providers: [UsersResolver, UsersService, GetUserUseCase],
+  providers: [
+    UsersResolver,
+    UsersService,
+    GetUserUseCase,
+    {
+      provide: USERS_REPOSITORY,
+      useClass: MongooseUsersRepository,
+    },
+  ],
   imports: [
     GraphQLModule.forRoot<ApolloFederationDriverConfig>({
       driver: ApolloFederationDriver,
@@ -27,6 +42,7 @@ import { DatabaseModule } from '@shared/infrastructure-mongoose';
       plugins: [ApolloServerPluginInlineTrace()],
     }),
     DatabaseModule,
+    MongooseModule.forFeature([{ name: UserDocument.name, schema: UserSchema }])
   ],
 })
 export class UsersModule {}
