@@ -1,36 +1,36 @@
 import { GetUserUseCase } from './get-user.use-case';
-import { UserRepository } from '@users/domain';
+import { UsersRepository } from '@users/domain';
 
 describe('GetUserUseCase', () => {
   let getUserUseCase: GetUserUseCase;
-  let userRepository: jest.Mocked<UserRepository>;
+  let usersRepository: jest.Mocked<UsersRepository>;
 
   beforeEach(() => {
-    userRepository = {
+    usersRepository = {
       findById: jest.fn(),
-    } as unknown as jest.Mocked<UserRepository>;
+    } as unknown as jest.Mocked<UsersRepository>;
 
-    getUserUseCase = new GetUserUseCase(userRepository);
+    getUserUseCase = new GetUserUseCase(usersRepository);
   });
 
   describe('execute', () => {
     it('should return a user when found', async () => {
       const user = { id: '1', name: 'John Doe' };
-      userRepository.findById.mockResolvedValue(user);
+      usersRepository.findById.mockResolvedValue(user);
 
       const result = await getUserUseCase.execute('1');
 
       expect(result).toEqual(user);
-      expect(userRepository.findById).toHaveBeenCalledWith('1');
+      expect(usersRepository.findById).toHaveBeenCalledWith('1');
     });
 
     it('should return null when user is not found', async () => {
-      userRepository.findById.mockResolvedValue(null);
+      usersRepository.findById.mockResolvedValue(null);
 
       const result = await getUserUseCase.execute('1');
 
       expect(result).toBeNull();
-      expect(userRepository.findById).toHaveBeenCalledWith('1');
+      expect(usersRepository.findById).toHaveBeenCalledWith('1');
     });
   });
 });
