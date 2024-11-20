@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.2.1...v1.2.2) (2024-11-20)
+
+
+### Bug Fixes
+
+* 🐛 new UserDto when getUser in Resolver ([2bfa005](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/2bfa0051edb8f0245d6781b0d56257e64db3c853))
+
 ## [1.2.1](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.2.0...v1.2.1) (2024-11-20)
 
 
