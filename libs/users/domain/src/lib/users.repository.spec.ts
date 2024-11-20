@@ -1,7 +1,7 @@
-import { UserRepository } from './user.repository';
+import { UsersRepository } from './users.repository';
 import { User } from './user.entity';
 
-class MockUserRepository implements UserRepository {
+class MockUsersRepository implements UsersRepository {
   private users: User[] = [
     { id: '1', name: 'John Doe' },
     { id: '2', name: 'Jane Doe' },
@@ -12,20 +12,20 @@ class MockUserRepository implements UserRepository {
   }
 }
 
-describe('UserRepository', () => {
-  let userRepository: UserRepository;
+describe('UsersRepository', () => {
+  let usersRepository: UsersRepository;
 
   beforeEach(() => {
-    userRepository = new MockUserRepository();
+    usersRepository = new MockUsersRepository();
   });
 
   test('findById should return a user by id', async () => {
-    const user = await userRepository.findById('1');
+    const user = await usersRepository.findById('1');
     expect(user).toEqual({ id: '1', name: 'John Doe' });
   });
 
   test('findById should return null if user not found', async () => {
-    const user = await userRepository.findById('3');
+    const user = await usersRepository.findById('3');
     expect(user).toBeNull();
   });
 });
