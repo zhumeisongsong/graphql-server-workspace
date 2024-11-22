@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.2.2...v1.2.3) (2024-11-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependencies ([089b93d](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/089b93d5afa70712ca5224fa04033130f5299415))
+
 ## [1.2.2](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.2.1...v1.2.2) (2024-11-20)
 
 
