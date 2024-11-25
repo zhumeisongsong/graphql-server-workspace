@@ -9,5 +9,8 @@ describe('UserDto', () => {
     const userDto = new UserDto(id, email, firstName, lastName);
 
     expect(userDto).toBeDefined();
+    expect(userDto.id).toBe(id);
+    expect(userDto.email).toBe(email);
+    expect(userDto.firstName).toBe(firstName);
   });
 });
