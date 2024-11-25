@@ -12,13 +12,17 @@ export class MongooseUsersRepository implements UsersRepository {
   ) {}
 
   async findById(id: string): Promise<User | null> {
-
     const _id = new Types.ObjectId(id);
     const userDocument = await this.userModel.findById(_id).exec();
 
     if (!userDocument) {
       return null;
     }
-    return new User(userDocument.id, userDocument.name);
+    return new User(
+      userDocument.id,
+      userDocument.email,
+      userDocument.firstName,
+      userDocument.lastName,
+    );
   }
 }
