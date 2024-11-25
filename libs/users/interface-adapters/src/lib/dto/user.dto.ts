@@ -6,10 +6,23 @@ export class UserDto {
   id: string;
 
   @Field()
-  name: string;
+  email: string;
 
-  constructor(id: string, name: string) {
+  @Field()
+  firstName: string | null;
+
+  @Field()
+  lastName: string | null;
+
+  constructor(
+    id: string,
+    email: string,
+    firstName: string | null,
+    lastName: string | null,
+  ) {
     this.id = id;
-    this.name = name;
+    this.email = email;
+    this.firstName = firstName;
+    this.lastName = lastName;
   }
 }
