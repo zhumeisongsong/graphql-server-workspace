@@ -12,13 +12,31 @@ export class MongooseUsersRepository implements UsersRepository {
   ) {}
 
   async findById(id: string): Promise<User | null> {
-
     const _id = new Types.ObjectId(id);
     const userDocument = await this.userModel.findById(_id).exec();
 
     if (!userDocument) {
       return null;
     }
-    return new User(userDocument.id, userDocument.name);
+    return new User(
+      userDocument.id,
+      userDocument.lastName,
+      userDocument.firstName,
+      userDocument.email,
+      userDocument.password,
+    );
+  }
+
+  async findByEmail(email: string): Promise<User | null> {
+    const userDocument = await this.userModel.findOne({ email }).exec();
+    return userDocument
+      ? new User(
+          userDocument.id,
+          userDocument.lastName,
+          userDocument.firstName,
+          userDocument.email,
+          userDocument.password,
+        )
+      : null;
   }
 }
