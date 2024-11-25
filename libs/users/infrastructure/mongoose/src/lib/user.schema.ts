@@ -7,10 +7,9 @@ export class UserDocument extends Document {
   @Prop({ required: true, unique: true, match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })
   email!: string;
 
-  @Prop({ required: true, nullable: true })
+  @Prop({ required: false})
   firstName!: string;
-
-  @Prop({ required: true, nullable: true })
+  @Prop({ required: false })
   lastName!: string;
 }
 
