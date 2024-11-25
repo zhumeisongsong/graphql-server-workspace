@@ -3,7 +3,8 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class UserDocument extends Document {
-  @Prop({ required: true })
+  // refactor: move match regex to a shared lib
+  @Prop({ required: true, unique: true, match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })
   email!: string;
 
   @Prop({ required: true, nullable: true })
