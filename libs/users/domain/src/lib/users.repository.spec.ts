@@ -3,8 +3,13 @@ import { User } from './user.entity';
 
 class MockUsersRepository implements UsersRepository {
   private users: User[] = [
-    { id: '1', name: 'John Doe' },
-    { id: '2', name: 'Jane Doe' },
+    { id: '1', email: 'john@example.com', firstName: 'John', lastName: 'Doe' },
+    {
+      id: '2',
+      email: 'jane@example.com',
+      firstName: 'Jane',
+      lastName: 'Smith',
+    },
   ];
 
   async findById(id: string): Promise<User | null> {
@@ -21,7 +26,12 @@ describe('UsersRepository', () => {
 
   test('findById should return a user by id', async () => {
     const user = await usersRepository.findById('1');
-    expect(user).toEqual({ id: '1', name: 'John Doe' });
+    expect(user).toEqual({
+      id: '1',
+      email: 'john@example.com',
+      firstName: 'John',
+      lastName: 'Doe'
+    });
   });
 
   test('findById should return null if user not found', async () => {
