@@ -8,13 +8,15 @@ export class UsersResolver {
   constructor(private usersService: UsersService) {}
 
   @Query(() => UserDto, { nullable: true })
-  async getUser(@Args({ name: 'id', type: () => ID }) id: string): Promise<UserDto | null> {
+  async getUser(
+    @Args({ name: 'id', type: () => ID }) id: string,
+  ): Promise<UserDto | null> {
     const user = await this.usersService.findById(id);
 
     if (!user) {
       return null;
     }
 
-    return new UserDto(user.id, user.name);
+    return new UserDto(user.id, user.firstName, user.lastName, user.email);
   }
 }

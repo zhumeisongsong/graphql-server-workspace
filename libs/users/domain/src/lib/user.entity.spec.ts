@@ -1,15 +1,39 @@
 import { User } from './user.entity';
 
 describe('User Entity', () => {
-  it('should create a user with id and name', () => {
-    const user = new User('1', 'John Doe');
-    expect(user.id).toBe('1');
-    expect(user.name).toBe('John Doe');
+  it('should create a user with all required properties', () => {
+    const user = new User(
+      'test-id',
+      'John',
+      'Doe',
+      'john@example.com',
+      'password123',
+    );
+
+    expect(user.id).toBe('test-id');
+    expect(user.firstName).toBe('John');
+    expect(user.lastName).toBe('Doe');
+    expect(user.email).toBe('john@example.com');
+    expect(user.password).toBe('password123');
   });
 
-  it('should allow updating the name', () => {
-    const user = new User('1', 'John Doe');
-    user.name = 'Jane Doe';
-    expect(user.name).toBe('Jane Doe');
+  it('should have all properties as defined in the constructor', () => {
+    const userData = {
+      id: 'user-123',
+      firstName: 'Jane',
+      lastName: 'Smith',
+      email: 'jane@example.com',
+      password: 'securepass',
+    };
+
+    const user = new User(
+      userData.id,
+      userData.firstName,
+      userData.lastName,
+      userData.email,
+      userData.password,
+    );
+
+    expect(user).toEqual(userData);
   });
 });

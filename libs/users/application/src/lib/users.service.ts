@@ -10,4 +10,8 @@ export class UsersService {
   async findById(id: string): Promise<User | null> {
     return this.getUserUseCase.execute(id);
   }
+
+  async findByEmail(email: string): Promise<User | null> {
+    return this.getUserUseCase.execute(email);
+  }
 }

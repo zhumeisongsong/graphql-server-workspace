@@ -8,13 +8,18 @@ describe('GetUserUseCase', () => {
   beforeEach(() => {
     usersRepository = {
       findById: jest.fn(),
+      findByEmail: jest.fn()
     };
     getUserUseCase = new GetUserUseCase(usersRepository);
   });
 
   describe('execute', () => {
     it('should return user when found', async () => {
-      const mockUser = { id: '1', name: 'John Doe' };
+      const mockUser = { id: '1',
+       firstName: 'Test',
+       lastName: 'User', 
+       email: 'test@example.com'
+       };
       (usersRepository.findById as jest.Mock).mockResolvedValue(mockUser);
 
       const result = await getUserUseCase.execute('1');
