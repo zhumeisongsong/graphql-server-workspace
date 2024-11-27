@@ -1,3 +1,20 @@
+# [1.3.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.2.4...v1.3.0) (2024-11-27)
+
+
+### Bug Fixes
+
+* 🐛 same contradictory constraints as firstName field ([656402c](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/656402ce9025a249f17b160c89f3379ca75b3f96))
+
+
+### Features
+
+* ✨ Add email format validation and uniqueness constraint ([382e302](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/382e302ee6ab7ae12b787d7e8654b62adec36e25))
+* ✨ Add validation decorators，class-validator to DTO ([a4e2dd6](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/a4e2dd6509478e7f5db804bbd9b2329091c8fcab))
+* ✨ update user attributes to nullable ([ca27362](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/ca27362cc225186b62126ace8f3540a0727429cd))
+* ✨ update user entity in domain ([e59cd6e](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/e59cd6e3ca26ed63a00c306708b9a47fed69b315))
+* ✨ update UserDocument ([5699cd5](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/5699cd55a805c08bf6971d7f214fcdbaa4e23b5a))
+* ✨ update UserDto in resolver layer ([b66a109](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/b66a109e7b1260a7c5a4249b6c0d7e178046d4c9))
+
 ## [1.2.4](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.2.3...v1.2.4) (2024-11-25)
 
 
