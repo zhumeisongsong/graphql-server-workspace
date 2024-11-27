@@ -14,7 +14,12 @@ describe('GetUserUseCase', () => {
 
   describe('execute', () => {
     it('should return user when found', async () => {
-      const mockUser = { id: '1', name: 'John Doe' };
+      const mockUser = {
+        id: '1',
+        email: 'test@example.com',
+        firstName: 'John',
+        lastName: 'Doe',
+      };
       (usersRepository.findById as jest.Mock).mockResolvedValue(mockUser);
 
       const result = await getUserUseCase.execute('1');

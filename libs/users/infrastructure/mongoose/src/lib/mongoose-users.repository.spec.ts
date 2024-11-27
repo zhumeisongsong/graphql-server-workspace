@@ -23,13 +23,17 @@ describe('MongooseUsersRepository', () => {
     }).compile();
 
     repository = module.get<MongooseUsersRepository>(MongooseUsersRepository);
-    userModel = module.get<Model<UserDocument>>(getModelToken(UserDocument.name));
+    userModel = module.get<Model<UserDocument>>(
+      getModelToken(UserDocument.name),
+    );
   });
 
   it('should return a user when found', async () => {
     const mockUser = {
       id: '507f1f77bcf86cd799439011',
-      name: 'Test User',
+      email: 'john@example.com',
+      firstName: 'John',
+      lastName: 'Doe',
     };
 
     jest.spyOn(userModel, 'findById').mockReturnValue({
@@ -39,7 +43,9 @@ describe('MongooseUsersRepository', () => {
     const user = await repository.findById(mockUser.id);
     expect(user).toBeInstanceOf(User);
     expect(user?.id).toBe(mockUser.id);
-    expect(user?.name).toBe(mockUser.name);
+    expect(user?.email).toBe(mockUser.email);
+    expect(user?.firstName).toBe(mockUser.firstName);
+    expect(user?.lastName).toBe(mockUser.lastName);
   });
 
   it('should return null when user is not found', async () => {

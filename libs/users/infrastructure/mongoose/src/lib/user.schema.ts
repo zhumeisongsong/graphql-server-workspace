@@ -3,8 +3,14 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class UserDocument extends Document {
-  @Prop({ required: true })
-  name!: string;
+  // refactor: move match regex to a shared lib
+  @Prop({ required: true, unique: true, match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })
+  email!: string;
+
+  @Prop({ required: false})
+  firstName!: string;
+  @Prop({ required: false })
+  lastName!: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(UserDocument);

@@ -30,7 +30,12 @@ describe('UsersService', () => {
 
   describe('findById', () => {
     it('should return a user if found', async () => {
-      const user: User = { id: '1', name: 'John Doe' };
+      const user: User = {
+        id: '1',
+        email: 'test@example.com',
+        firstName: 'John',
+        lastName: 'Doe',
+      };
       jest.spyOn(getUserUseCase, 'execute').mockResolvedValue(user);
 
       const result = await service.findById('1');

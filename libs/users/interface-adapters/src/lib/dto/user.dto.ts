@@ -1,3 +1,4 @@
+import { IsEmail, IsString } from 'class-validator';
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
@@ -6,10 +7,26 @@ export class UserDto {
   id: string;
 
   @Field()
-  name: string;
+  @IsEmail()
+  email: string;
 
-  constructor(id: string, name: string) {
+  @Field()
+  @IsString()
+  firstName?: string | null;
+
+  @Field()
+  @IsString()
+  lastName: string | null;
+
+  constructor(
+    id: string,
+    email: string,
+    firstName: string | null,
+    lastName: string | null,
+  ) {
     this.id = id;
-    this.name = name;
+    this.email = email;
+    this.firstName = firstName;
+    this.lastName = lastName;
   }
 }
