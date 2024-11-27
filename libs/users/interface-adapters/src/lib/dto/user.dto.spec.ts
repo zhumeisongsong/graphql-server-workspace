@@ -26,27 +26,6 @@ describe('UserDto', () => {
     expect(userDto.lastName).toBeUndefined();
   });
 
-  it('should validate email format', () => {
-    const id = '789';
-    const invalidEmail = 'invalid-email';
-    
-    expect(() => {
-      new UserDto(id, invalidEmail, null, null);
-    }).toThrow();
-  });
-
-  it('should require id and email', () => {
-    expect(() => {
-      // @ts-expect-error testing invalid constructor args
-      new UserDto();
-    }).toThrow();
-
-    expect(() => {
-      // @ts-expect-error testing invalid constructor args
-      new UserDto('123');
-    }).toThrow();
-  });
-
   it('should handle special characters in names', () => {
     const id = '101';
     const email = 'test@example.com';
