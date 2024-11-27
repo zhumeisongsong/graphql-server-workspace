@@ -22,8 +22,8 @@ describe('UserDto', () => {
     expect(userDto).toBeDefined();
     expect(userDto.id).toBe(id);
     expect(userDto.email).toBe(email);
-    expect(userDto.firstName).toBeUndefined();
-    expect(userDto.lastName).toBeUndefined();
+    expect(userDto.firstName).toBeNull();
+    expect(userDto.lastName).toBeNull();
   });
 
   it('should handle special characters in names', () => {
