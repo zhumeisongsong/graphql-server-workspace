@@ -83,21 +83,4 @@ export class AwsCognitoService {
       throw new Error('An unknown error occurred');
     }
   }
-
-  async getUser(
-    accessToken: string,
-  ): Promise<AWS.CognitoIdentityServiceProvider.GetUserResponse> {
-    const params: AWS.CognitoIdentityServiceProvider.GetUserRequest = {
-      AccessToken: accessToken,
-    };
-
-    try {
-      return await this.cognito.getUser(params).promise();
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        throw new Error(error.message);
-      }
-      throw new Error('An unknown error occurred');
-    }
-  }
 }
