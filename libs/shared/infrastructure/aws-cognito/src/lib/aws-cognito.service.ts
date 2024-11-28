@@ -1,19 +1,25 @@
-import { Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+  Logger,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import * as AWS from 'aws-sdk';
 
 @Injectable()
 export class AwsCognitoService {
   private cognito: AWS.CognitoIdentityServiceProvider;
+  private readonly logger = new Logger(AwsCognitoService.name);
 
   constructor() {
-    AWS.config.update({
+    // Initial CognitoIdentityServiceProvider instance
+    this.cognito = new AWS.CognitoIdentityServiceProvider({
       region: process.env['AWS_REGION'],
       accessKeyId: process.env['AWS_ACCESS_KEY_ID'],
       secretAccessKey: process.env['AWS_SECRET_ACCESS_KEY'],
     });
-
-    // Initial CognitoIdentityServiceProvider instance
-    this.cognito = new AWS.CognitoIdentityServiceProvider();
   }
 
   async signUp(
@@ -85,18 +91,34 @@ export class AwsCognitoService {
   }
 
   async confirmSignUp(email: string): Promise<void> {
+    if (!email) {
+      // TODO: refactor this to use a custom exception
+      throw new BadRequestException('Email is required');
+    }
+
     const params: AWS.CognitoIdentityServiceProvider.AdminConfirmSignUpRequest =
       {
         UserPoolId: process.env['COGNITO_USER_POOL_ID'] || '',
         Username: email,
+        // ConfirmationCode: confirmationCode, // If using adminConfirmSignUp is appropriate
       };
 
     try {
       await this.cognito.adminConfirmSignUp(params).promise();
     } catch (error: unknown) {
+      // TODO: refactor this to use a custom exception
       if (error instanceof Error) {
-        throw new Error(error.message);
+        switch (error.name) {
+          case 'UserNotFoundException':
+            throw new NotFoundException('User not found');
+          case 'NotAuthorizedException':
+            throw new UnauthorizedException('Not authorized to confirm user');
+          default:
+            this.logger.error(error);
+            throw new InternalServerErrorException('Failed to confirm user');
+        }
       }
+      throw new InternalServerErrorException('Failed to confirm user');
     }
   }
 }
