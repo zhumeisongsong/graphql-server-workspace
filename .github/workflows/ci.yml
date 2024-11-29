@@ -4,6 +4,12 @@ on:
   pull_request:
   workflow_dispatch:
 
+env:
+  AWS_REGION: ${{ vars.AWS_REGION }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  COGNITO_CLIENT_ID: ${{ vars.COGNITO_CLIENT_ID }}
+
 jobs:
   setup:
     uses: zhumeisongsong/shared-actions/.github/workflows/reusable-pnpm-setup.yml@main
@@ -15,7 +21,7 @@ jobs:
   lint:
     needs: setup
     uses: zhumeisongsong/shared-actions/.github/workflows/reusable-nx-lint-affected.yml@main
-    
+
   type-check:
     needs: setup
     uses: zhumeisongsong/shared-actions/.github/workflows/reusable-nx-type-check-affected.yml@main
