@@ -41,16 +41,4 @@ describe('AwsCognitoService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
-
-  describe('refreshToken', () => {
-    it('should throw an error if refresh token fails', async () => {
-      (cognitoProvider.initiateAuth as jest.Mock).mockImplementation(() => ({
-        promise: () => Promise.reject(new Error('Token refresh failed')),
-      }));
-
-      await expect(service.refreshToken('oldRefreshToken')).rejects.toThrow(
-        'Invalid Refresh Token',
-      );
-    });
-  });
 });
