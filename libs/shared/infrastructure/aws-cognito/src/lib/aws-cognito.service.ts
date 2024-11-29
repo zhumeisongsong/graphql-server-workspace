@@ -158,21 +158,20 @@ export class AwsCognitoService {
     }
   }
 
-  async confirmSignUp(email: string): Promise<void> {
+  async confirmSignUp(email: string, confirmationCode: string): Promise<void> {
     if (!email) {
       // TODO: refactor this to use a custom exception
       throw new BadRequestException('Email is required');
     }
 
-    const params: AWS.CognitoIdentityServiceProvider.AdminConfirmSignUpRequest =
-      {
-        UserPoolId: process.env['COGNITO_USER_POOL_ID'] || '',
-        Username: email,
-        // ConfirmationCode: confirmationCode, // If using adminConfirmSignUp is appropriate
-      };
+    const params: AWS.CognitoIdentityServiceProvider.ConfirmSignUpRequest = {
+      ClientId: process.env['COGNITO_CLIENT_ID'] || '',
+      Username: email,
+      ConfirmationCode: confirmationCode,
+    };
 
     try {
-      await this.cognito.adminConfirmSignUp(params).promise();
+      await this.cognito.confirmSignUp(params).promise();
     } catch (error: unknown) {
       // TODO: refactor this to use a custom exception
       if (error instanceof Error) {
