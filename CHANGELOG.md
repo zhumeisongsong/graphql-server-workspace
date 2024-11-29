@@ -1,3 +1,26 @@
+# [1.4.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.3.0...v1.4.0) (2024-11-29)
+
+
+### Bug Fixes
+
+* 🐛 error spell of cognito ([e9d076e](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/e9d076e631d628444b2359f7df8f048559ce2256))
+* 🐛 remove getUser from AwsCognitoService ([3eed341](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/3eed341505875f9c3a244513eee8ca4b5e4dcdfb))
+
+
+### Features
+
+* ✨ add AwsCognitoService ([94ca82f](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/94ca82f59e898ed7d8a0e9e0a0bfde1d33e6fc81))
+* ✨ Add token validation and improve error handling ([5a1fca5](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/5a1fca54e844e7d8aed26a4af2c9730de3fab78c))
+* ✨ enhance error handler of signIn ([f4407db](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/f4407db0f974f3d7708c32847d9c668519adf42c))
+* ✨ Enhance password validation rules ([e9ccacc](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/e9ccacc7f34305fa7aab0702520613f3c5715202))
+* ✨ Enhance refresh token validation ([16b84f2](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/16b84f21322ba354c426380c594d7cc3b68a9cf6))
+* ✨ Enhance security and error handling in signup flow ([8daf4cf](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/8daf4cfd3eb07383a5887b825cae98146e94153a))
+* ✨ Fix error handling of confirmSignUp ([db2544f](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/db2544ffc48f0fc858ce4698cbba69158d7dc075))
+* ✨ Fix inconsistent password validation error messages ([eb3250d](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/eb3250d9d58f821c66014375e6173e011adc5c71))
+* ✨ initial aws cognito lib ([0ba9dca](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/0ba9dca2ea06cee76fdc1af644490b68ff6aefac))
+* ✨ Prevent silent failures in ClientId handling ([2ac841a](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/2ac841aeb19831d50b61e235677c180a3adab3ca))
+* ✨ Uncomment the rate limiting decorators ([067e1a9](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/067e1a945ecf58baf81822943a0f1e40188d6ea3))
+
 # [1.3.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.2.4...v1.3.0) (2024-11-27)
 
 
