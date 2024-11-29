@@ -104,9 +104,17 @@ export class AwsCognitoService {
     }
   }
 
+  private validateRefreshToken(token: string): void {
+    if (!token || token.length < 1) {
+      throw new BadRequestException('Invalid refresh token');
+    }
+  }
+
   async refreshToken(
     refreshToken: string,
   ): Promise<AWS.CognitoIdentityServiceProvider.InitiateAuthResponse> {
+    this.validateRefreshToken(refreshToken);
+
     const params: AWS.CognitoIdentityServiceProvider.InitiateAuthRequest = {
       AuthFlow: 'REFRESH_TOKEN_AUTH',
       ClientId: process.env['COGNITO_CLIENT_ID'] || '',
@@ -119,9 +127,15 @@ export class AwsCognitoService {
       return await this.cognito.initiateAuth(params).promise();
     } catch (error: unknown) {
       if (error instanceof Error) {
-        throw new Error(error.message);
+        switch (error.name) {
+          case 'NotAuthorizedException':
+            throw new UnauthorizedException('Invalid refresh token');
+          default:
+            this.logger.error(error);
+            throw new InternalServerErrorException('Token refresh failed');
+        }
       }
-      throw new Error('An unknown error occurred');
+      throw new InternalServerErrorException('Token refresh failed');
     }
   }
 
