@@ -55,7 +55,11 @@ export class AwsCognitoService {
     this.validatePassword(password);
 
     const params: AWS.CognitoIdentityServiceProvider.SignUpRequest = {
-      ClientId: process.env['COGNITO_CLIENT_ID'] || '',
+      ClientId:
+        process.env['COGNITO_CLIENT_ID'] ??
+        (() => {
+          throw new Error('COGNITO_CLIENT_ID environment variable is required');
+        })(),
       Username: email,
       Password: password,
       UserAttributes: [
