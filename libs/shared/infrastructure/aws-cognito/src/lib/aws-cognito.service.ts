@@ -25,18 +25,33 @@ export class AwsCognitoService {
   }
 
   private validatePassword(password: string): void {
-    if (password.length < 8) {
+    if (password.length < 8 || password.length > 50) {
       throw new BadRequestException(
         'Password must be at least 8 characters long',
+        'Password must be between 8 and 100 characters long',
       );
     }
-    // Add more password strength rules as needed
+
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasNumbers = /\d/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    if (!hasUpperCase || !hasLowerCase || !hasNumbers || !hasSpecialChar) {
+      throw new BadRequestException(
+        'Password must contain uppercase, lowercase, numbers, and special characters',
+      );
+    }
   }
 
   async signUp(
     email: string,
     password: string,
   ): Promise<AWS.CognitoIdentityServiceProvider.SignUpResponse> {
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      throw new BadRequestException('Invalid email format');
+    }
+
     this.validatePassword(password);
 
     const params: AWS.CognitoIdentityServiceProvider.SignUpRequest = {
