@@ -15,7 +15,7 @@ jobs:
   lint:
     needs: setup
     uses: zhumeisongsong/shared-actions/.github/workflows/reusable-nx-lint-affected.yml@main
-    
+
   type-check:
     needs: setup
     uses: zhumeisongsong/shared-actions/.github/workflows/reusable-nx-type-check-affected.yml@main

@@ -1,0 +1,9 @@
+{
+  "name": "aws-cognito",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/infrastructure/aws-cognito/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project aws-cognito --web",
+  "targets": {}
+}
