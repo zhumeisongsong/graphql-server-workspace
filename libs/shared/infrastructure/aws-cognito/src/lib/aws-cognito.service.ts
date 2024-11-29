@@ -1,5 +1,6 @@
 import {
   BadRequestException,
+  ForbiddenException,
   Injectable,
   InternalServerErrorException,
   Logger,
@@ -46,6 +47,8 @@ export class AwsCognitoService {
     }
   }
 
+  //   @UseGuards(ThrottlerGuard)
+  //  @Throttle(5, 60) // 5 attempts per minute
   async signIn(
     email: string,
     password: string,
@@ -62,10 +65,23 @@ export class AwsCognitoService {
     try {
       return await this.cognito.initiateAuth(params).promise();
     } catch (error: unknown) {
+      // TODO: refactor this to use a custom exception
       if (error instanceof Error) {
-        throw new Error(error.message);
+        switch (error.name) {
+          case 'NotAuthorizedException':
+            throw new UnauthorizedException('Invalid credentials');
+          case 'UserNotFoundException':
+            // Use same message as invalid credentials to prevent user enumeration
+            throw new UnauthorizedException('Invalid credentials');
+          case 'UserNotConfirmedException':
+            throw new ForbiddenException('User not confirmed');
+          default:
+            // Log the error internally but return generic message
+            this.logger.error(error);
+            throw new InternalServerErrorException('Authentication failed');
+        }
       }
-      throw new Error('An unknown error occurred');
+      throw new InternalServerErrorException('Authentication failed');
     }
   }
 
