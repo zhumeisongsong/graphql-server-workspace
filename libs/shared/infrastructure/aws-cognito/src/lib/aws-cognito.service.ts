@@ -7,7 +7,9 @@ import {
   Logger,
   NotFoundException,
   UnauthorizedException,
+  UseGuards,
 } from '@nestjs/common';
+import { Throttle, ThrottlerGuard } from '@nestjs/throttler';
 import * as AWS from 'aws-sdk';
 
 @Injectable()
@@ -85,8 +87,10 @@ export class AwsCognitoService {
     }
   }
 
-  //   @UseGuards(ThrottlerGuard)
-  //  @Throttle(5, 60) // 5 attempts per minute
+  @UseGuards(ThrottlerGuard)
+  @Throttle({
+    limit: { ttl: 30000, limit: 5 },
+  }) // 5 attempts per 30s
   async signIn(
     email: string,
     password: string,
