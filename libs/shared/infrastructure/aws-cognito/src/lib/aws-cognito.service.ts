@@ -124,8 +124,21 @@ export class AwsCognitoService {
   }
 
   private validateRefreshToken(token: string): void {
-    if (!token || token.length < 1) {
+    if (!token || typeof token !== 'string') {
       throw new BadRequestException('Invalid refresh token');
+    }
+
+    // Check if token follows JWT format (three parts separated by dots)
+    const parts = token.split('.');
+    if (parts.length !== 3) {
+      throw new BadRequestException('Invalid token format');
+    }
+
+    // Check if each part is base64 encoded
+    try {
+      parts.forEach((part) => Buffer.from(part, 'base64').toString());
+    } catch {
+      throw new BadRequestException('Invalid token encoding');
     }
   }
 
