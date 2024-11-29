@@ -1,5 +1,6 @@
 import {
   BadRequestException,
+  ConflictException,
   ForbiddenException,
   Injectable,
   InternalServerErrorException,
@@ -23,17 +24,28 @@ export class AwsCognitoService {
     });
   }
 
+  private validatePassword(password: string): void {
+    if (password.length < 8) {
+      throw new BadRequestException(
+        'Password must be at least 8 characters long',
+      );
+    }
+    // Add more password strength rules as needed
+  }
+
   async signUp(
     email: string,
     password: string,
   ): Promise<AWS.CognitoIdentityServiceProvider.SignUpResponse> {
+    this.validatePassword(password);
+
     const params: AWS.CognitoIdentityServiceProvider.SignUpRequest = {
       ClientId: process.env['COGNITO_CLIENT_ID'] || '',
       Username: email,
       Password: password,
       UserAttributes: [
         { Name: 'email', Value: email },
-        { Name: 'email_verified', Value: 'true' },
+        // { Name: 'email_verified', Value: 'true' }, // TODO: add this once we have a verification process
       ],
     };
 
@@ -41,9 +53,16 @@ export class AwsCognitoService {
       return await this.cognito.signUp(params).promise();
     } catch (error: unknown) {
       if (error instanceof Error) {
-        throw new Error(error.message);
+        switch (error.name) {
+          case 'UsernameExistsException':
+            throw new ConflictException('User already exists');
+          case 'InvalidPasswordException':
+            throw new BadRequestException('Invalid password format');
+          default:
+            throw new InternalServerErrorException(error.message);
+        }
       }
-      throw new Error('An unknown error occurred');
+      throw new InternalServerErrorException('An unknown error occurred');
     }
   }
 
