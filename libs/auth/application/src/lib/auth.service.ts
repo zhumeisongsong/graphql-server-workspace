@@ -18,11 +18,22 @@ export class AuthService {
   }> {
     try {
       await this.awsCognitoService.signIn(email, pass);
+    } catch (error) {
+      throw new UnauthorizedException(error); // TODO: return error code
+    }
+
+    try {
       const user = await this.usersService.findByEmail(email);
+
+      if (!user) {
+        throw 'User is not found after validated user credentials'; // TODO: return error code
+      }
+
       const accessToken = await this.jwtService.signAsync({
         sub: user.id,
-        username: user.email,
+        email: user.email,
       });
+
       return {
         accessToken,
       };

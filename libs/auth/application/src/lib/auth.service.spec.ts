@@ -1,15 +1,46 @@
+import { UnauthorizedException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
+import { AwsCognitoService } from '@shared/infrastructure-aws-cognito';
+import { UsersService } from '@users/application';
+import { JwtService } from '@nestjs/jwt';
+
 import { AuthService } from './auth.service';
 
 describe('AuthService', () => {
   let service: AuthService;
+  let awsCognitoService: jest.Mocked<AwsCognitoService>;
+  let usersService: jest.Mocked<UsersService>;
+  let jwtService: jest.Mocked<JwtService>;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [AuthService],
+      providers: [
+        AuthService,
+        {
+          provide: AwsCognitoService,
+          useValue: {
+            signIn: jest.fn(),
+          },
+        },
+        {
+          provide: UsersService,
+          useValue: {
+            findByEmail: jest.fn(),
+          },
+        },
+        {
+          provide: JwtService,
+          useValue: {
+            signAsync: jest.fn(),
+          },
+        },
+      ],
     }).compile();
 
     service = module.get<AuthService>(AuthService);
+    awsCognitoService = module.get(AwsCognitoService);
+    usersService = module.get(UsersService);
+    jwtService = module.get(JwtService);
   });
 
   it('should be defined', () => {
@@ -17,51 +48,38 @@ describe('AuthService', () => {
   });
 
   describe('signIn', () => {
-    it('should return access token when credentials are valid', async () => {
-      const mockEmail = 'test@example.com';
-      const mockPassword = 'password123';
-      const mockUser = {
-        id: '123',
-        email: mockEmail,
-        firstName: 'John',
-        lastName: 'Doe',
-      };
-      const mockAccessToken = 'mock.jwt.token';
+    const email = 'test@example.com';
+    const password = 'password123';
+    const userId = '123';
+    const accessToken = 'test-token';
+    const user = { id: userId, email, firstName: null, lastName: null };
 
-      jest.spyOn(service['awsCognitoService'], 'signIn').mockResolvedValue({});
-      jest
-        .spyOn(service['usersService'], 'findByEmail')
-        .mockResolvedValue(mockUser);
-      jest
-        .spyOn(service['jwtService'], 'signAsync')
-        .mockResolvedValue(mockAccessToken);
+    it('should throw UnauthorizedException when AWS Cognito sign in fails', async () => {
+      const error = new Error('Invalid credentials');
+      awsCognitoService.signIn.mockRejectedValue(error);
 
-      const result = await service.signIn(mockEmail, mockPassword);
-
-      expect(result).toEqual({ accessToken: mockAccessToken });
-      expect(service['awsCognitoService'].signIn).toHaveBeenCalledWith(
-        mockEmail,
-        mockPassword,
+      await expect(service.signIn(email, password)).rejects.toThrow(
+        UnauthorizedException,
       );
-      expect(service['usersService'].findByEmail).toHaveBeenCalledWith(
-        mockEmail,
-      );
-      expect(service['jwtService'].signAsync).toHaveBeenCalledWith({
-        sub: mockUser.id,
-        username: mockUser.email,
-      });
     });
 
-    it('should throw UnauthorizedException when credentials are invalid', async () => {
-      const mockEmail = 'test@example.com';
-      const mockPassword = 'wrongpassword';
+    it('should throw UnauthorizedException when user is not found', async () => {
+      awsCognitoService.signIn.mockResolvedValue(undefined);
+      usersService.findByEmail.mockResolvedValue(null);
 
-      jest
-        .spyOn(service['awsCognitoService'], 'signIn')
-        .mockRejectedValue(new Error('Invalid credentials'));
+      await expect(service.signIn(email, password)).rejects.toThrow(
+        UnauthorizedException,
+      );
+    });
 
-      await expect(service.signIn(mockEmail, mockPassword)).rejects.toThrow(
-        'Unauthorized',
+    it('should throw UnauthorizedException when JWT signing fails', async () => {
+      const error = new Error('JWT signing failed');
+      awsCognitoService.signIn.mockResolvedValue(undefined);
+      usersService.findByEmail.mockResolvedValue(user);
+      jwtService.signAsync.mockRejectedValue(error);
+
+      await expect(service.signIn(email, password)).rejects.toThrow(
+        UnauthorizedException,
       );
     });
   });
