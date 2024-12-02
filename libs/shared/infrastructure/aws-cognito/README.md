@@ -1,4 +1,4 @@
-# aws-cognito
+# shared-infrastructure-aws-cognito
 
 This library was generated with [Nx](https://nx.dev).
 

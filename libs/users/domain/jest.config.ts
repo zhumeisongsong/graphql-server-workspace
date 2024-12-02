@@ -1,5 +1,5 @@
 export default {
-  displayName: 'domain',
+  displayName: 'users-domain',
   preset: '../../../jest.preset.js',
   testEnvironment: 'node',
   transform: {

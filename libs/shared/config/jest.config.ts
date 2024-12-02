@@ -1,5 +1,5 @@
 export default {
-  displayName: 'config',
+  displayName: 'shared-config',
   preset: '../../../jest.preset.js',
   testEnvironment: 'node',
   transform: {
