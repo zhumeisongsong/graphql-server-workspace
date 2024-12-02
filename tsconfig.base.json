@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@auth/application": ["libs/auth/application/src/index.ts"],
       "@auth/interface-adapters": ["libs/auth/interface-adapters/src/index.ts"],
       "@prompt/domain": ["libs/prompt/domain/src/index.ts"],
       "@shared/config": ["libs/shared/config/src/index.ts"],
