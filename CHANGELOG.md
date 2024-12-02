@@ -1,3 +1,19 @@
+# [1.5.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.4.1...v1.5.0) (2024-12-02)
+
+
+### Bug Fixes
+
+* 🐛 Add required dependencies to the auth module ([07b0d47](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/07b0d476b372d9d4940293ad4e6a050bbf599c05))
+* 🐛 lint error ([f314ce9](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/f314ce993b74985c777e23b86ae8fccd7b085bc4))
+
+
+### Features
+
+* ✨ add AuthResolver ([07dd0a0](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/07dd0a0826d5e2a2bf67ea5c7939b5e2d0a874d8))
+* ✨ initial @auth/interface-adapters ([ff5bace](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/ff5bacecacd967c84dcc9750f292317c95fe48eb))
+* ✨ initial auth application ([e51d448](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/e51d448e7820925489db5316a324403e4039dc05))
+* ✨ initial AuthService with hard code ([e2a36c5](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/e2a36c5692dac4a46c7fb1ea5893e35d7bf0ba9a))
+
 ## [1.4.1](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.4.0...v1.4.1) (2024-12-02)
 
 
