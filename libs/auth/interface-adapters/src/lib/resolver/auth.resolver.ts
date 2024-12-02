@@ -11,7 +11,9 @@ export class AuthResolver {
   async signIn(
     @Args({ name: 'signInInput', type: () => SignInInputDto })
     signInInput: SignInInputDto,
-  ): Promise<any> {
-    return this.authService.signIn(signInInput);
+  ): Promise<{
+    accessToken: string;
+  }> {
+    return this.authService.signIn(signInInput.email, signInInput.password);
   }
 }

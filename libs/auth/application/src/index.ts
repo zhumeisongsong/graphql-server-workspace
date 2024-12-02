@@ -1,1 +1,1 @@
-export * from './lib/auth-application';
+export * from './lib/auth.service';
