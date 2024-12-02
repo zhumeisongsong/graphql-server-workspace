@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.4.0...v1.4.1) (2024-12-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependencies ([5417a58](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/5417a587533bf3140031fb1f48b2cbb5c94a801b))
+
 # [1.4.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.3.0...v1.4.0) (2024-11-29)
 
 
