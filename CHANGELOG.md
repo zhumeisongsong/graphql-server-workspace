@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.5.0...v1.6.0) (2024-12-02)
+
+
+### Features
+
+* ✨ use awsCognitoService in AuthService ([c4c5889](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/c4c5889cf9ed915699a629a85d312d3b4d153a33))
+
 # [1.5.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.4.1...v1.5.0) (2024-12-02)
 
 
