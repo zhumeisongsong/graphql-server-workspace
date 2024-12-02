@@ -1,5 +1,4 @@
 export class AuthService {
-  constructor() {}
 
   async signIn(
     username: string,
