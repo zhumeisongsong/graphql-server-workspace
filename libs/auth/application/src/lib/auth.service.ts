@@ -1,4 +1,4 @@
-import { UnauthorizedException } from '@nestjs/common';
+import { Logger, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from '@users/application';
 import { JwtService } from '@nestjs/jwt';
 import { AwsCognitoService } from '@shared/infrastructure-aws-cognito';
@@ -8,6 +8,7 @@ export class AuthService {
     private awsCognitoService: AwsCognitoService,
     private usersService: UsersService,
     private jwtService: JwtService,
+    private readonly logger = new Logger(AuthService.name),
   ) {}
 
   async signIn(
@@ -19,6 +20,7 @@ export class AuthService {
     try {
       await this.awsCognitoService.signIn(email, pass);
     } catch (error) {
+      this.logger.error('SignIn error:', error);
       throw new UnauthorizedException(error); // TODO: return error code
     }
 
@@ -38,7 +40,7 @@ export class AuthService {
         accessToken,
       };
     } catch (error) {
-      throw new UnauthorizedException(error);
+      throw new UnauthorizedException('Invalid credentials'); // TODO: return error code
     }
   }
 }

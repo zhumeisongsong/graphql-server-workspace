@@ -32,7 +32,7 @@ export class AwsCognitoService {
     try {
       return await this.cognito.signUp(params).promise();
     } catch (error) {
-      this.logger.error(error);
+      this.logger.error('signUp', error);
       throw error;
     }
   }
@@ -53,7 +53,7 @@ export class AwsCognitoService {
     try {
       return await this.cognito.initiateAuth(params).promise();
     } catch (error) {
-      this.logger.error(error);
+      this.logger.error('signIn', error);
       throw error;
     }
   }
@@ -72,7 +72,7 @@ export class AwsCognitoService {
     try {
       return await this.cognito.initiateAuth(params).promise();
     } catch (error) {
-      this.logger.error(error);
+      this.logger.error('refreshToken', error);
       throw error;
     }
   }
@@ -87,7 +87,7 @@ export class AwsCognitoService {
     try {
       await this.cognito.confirmSignUp(params).promise();
     } catch (error) {
-      this.logger.error(error);
+      this.logger.error('confirmSignUp', error);
       throw error;
     }
   }
