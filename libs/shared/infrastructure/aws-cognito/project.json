@@ -1,5 +1,5 @@
 {
-  "name": "aws-cognito",
+  "name": "shared-infrastructure-aws-cognito",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/infrastructure/aws-cognito/src",
   "projectType": "library",

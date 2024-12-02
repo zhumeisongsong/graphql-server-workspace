@@ -1,5 +1,5 @@
 export default {
-  displayName: 'aws-cognito',
+  displayName: 'shared-infrastructure-aws-cognito',
   preset: '../../../../jest.preset.js',
   testEnvironment: 'node',
   transform: {

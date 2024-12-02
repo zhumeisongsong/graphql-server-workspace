@@ -19,6 +19,9 @@
       "@auth/interface-adapters": ["libs/auth/interface-adapters/src/index.ts"],
       "@prompt/domain": ["libs/prompt/domain/src/index.ts"],
       "@shared/config": ["libs/shared/config/src/index.ts"],
+      "@shared/infrastructure-aws-cognito": [
+        "libs/shared/infrastructure/aws-cognito/src/index.ts"
+      ],
       "@shared/infrastructure-mongoose": [
         "libs/shared/infrastructure/mongoose/src/index.ts"
       ],
@@ -29,8 +32,7 @@
       ],
       "@users/interface-adapters": [
         "libs/users/interface-adapters/src/index.ts"
-      ],
-      "aws-cognito": ["libs/shared/infrastructure/aws-cognito/src/index.ts"]
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
