@@ -1,21 +1,33 @@
+import { UnauthorizedException } from '@nestjs/common';
+import { UsersService } from '@users/application';
+import { JwtService } from '@nestjs/jwt';
 import { AwsCognitoService } from '@shared/infrastructure-aws-cognito';
 
 export class AuthService {
-  constructor(private readonly awsCognitoService: AwsCognitoService) {}
+  constructor(
+    private awsCognitoService: AwsCognitoService,
+    private usersService: UsersService,
+    private jwtService: JwtService,
+  ) {}
+
   async signIn(
-    username: string,
+    email: string,
     pass: string,
   ): Promise<{
     accessToken: string;
   }> {
-    // TODO: Implement sign in
-    // Step 1: Validate user credentials via AWS Cognito
-    const authResponse = await this.awsCognitoService.signIn(username, pass);
-    // Step 2: Retrieve user from the database
-    // Step 3: Generate a custom JWT access token
-
-    return {
-      accessToken: 'accessToken',
-    };
+    try {
+      await this.awsCognitoService.signIn(email, pass);
+      const user = await this.usersService.findByEmail(email);
+      const accessToken = await this.jwtService.signAsync({
+        sub: user.id,
+        username: user.email,
+      });
+      return {
+        accessToken,
+      };
+    } catch (error) {
+      throw new UnauthorizedException(error);
+    }
   }
 }
