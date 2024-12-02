@@ -1,3 +1,16 @@
+# [1.7.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.6.0...v1.7.0) (2024-12-02)
+
+
+### Bug Fixes
+
+* 🐛 error handler of AuthService ([c6d19d5](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/c6d19d528ae0ef058e9042230b23cd9432c5edaa))
+* 🐛 return accessToken instead of hard code ([45fb656](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/45fb6565767534ea7f8c4019541227a4c3c31f36))
+
+
+### Features
+
+* ✨ Avoid exposing internal error details in exceptions ([71f2c28](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/71f2c2884547755df4fd44cf42a0af82ada654aa))
+
 # [1.6.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.5.0...v1.6.0) (2024-12-02)
 
 
