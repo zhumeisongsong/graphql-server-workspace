@@ -1,21 +1,46 @@
+import { Logger, UnauthorizedException } from '@nestjs/common';
+import { UsersService } from '@users/application';
+import { JwtService } from '@nestjs/jwt';
 import { AwsCognitoService } from '@shared/infrastructure-aws-cognito';
 
 export class AuthService {
-  constructor(private readonly awsCognitoService: AwsCognitoService) {}
+  constructor(
+    private awsCognitoService: AwsCognitoService,
+    private usersService: UsersService,
+    private jwtService: JwtService,
+    private readonly logger = new Logger(AuthService.name),
+  ) {}
+
   async signIn(
-    username: string,
+    email: string,
     pass: string,
   ): Promise<{
     accessToken: string;
   }> {
-    // TODO: Implement sign in
-    // Step 1: Validate user credentials via AWS Cognito
-    const authResponse = await this.awsCognitoService.signIn(username, pass);
-    // Step 2: Retrieve user from the database
-    // Step 3: Generate a custom JWT access token
+    try {
+      await this.awsCognitoService.signIn(email, pass);
+    } catch (error) {
+      this.logger.error('SignIn error:', error);
+      throw new UnauthorizedException(error); // TODO: return error code
+    }
 
-    return {
-      accessToken: 'accessToken',
-    };
+    try {
+      const user = await this.usersService.findByEmail(email);
+
+      if (!user) {
+        throw 'User is not found after validated user credentials'; // TODO: return error code
+      }
+
+      const accessToken = await this.jwtService.signAsync({
+        sub: user.id,
+        email: user.email,
+      });
+
+      return {
+        accessToken,
+      };
+    } catch (error) {
+      throw new UnauthorizedException('Invalid credentials'); // TODO: return error code
+    }
   }
 }
