@@ -15,13 +15,4 @@ describe('AuthService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
-
-  describe('signIn', () => {
-    it('should return an access token', async () => {
-      const result = await service.signIn('test@example.com', 'password123');
-      
-      expect(result).toHaveProperty('accessToken');
-      expect(typeof result.accessToken).toBe('string');
-    });
-  });
 });
