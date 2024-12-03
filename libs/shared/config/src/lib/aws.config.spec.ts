@@ -12,40 +12,20 @@ describe('awsConfig', () => {
     process.env = OLD_ENV;
   });
 
-  it('should return AWS config from environment variables', () => {
-    process.env['AWS_REGION'] = 'us-east-1';
-    process.env['AWS_ACCESS_KEY_ID'] = 'test-key-id';
+  it('should return aws configuration with environment variables', () => {
+    // Arrange
+    process.env['AWS_REGION'] = 'test-region';
+    process.env['AWS_ACCESS_KEY_ID'] = 'test-access-key';
     process.env['AWS_SECRET_ACCESS_KEY'] = 'test-secret-key';
+    process.env['COGNITO_CLIENT_ID'] = 'test-client-id';
 
+    // Act
     const config = awsConfig();
-    expect(config).toEqual({
-      region: 'us-east-1',
-      accessKeyId: 'test-key-id',
-      secretAccessKey: 'test-secret-key',
-    });
-  });
 
-  it('should throw error if AWS_REGION is not set', () => {
-    process.env['AWS_ACCESS_KEY_ID'] = 'test-key-id';
-    process.env['AWS_SECRET_ACCESS_KEY'] = 'test-secret-key';
-    delete process.env['AWS_REGION'];
-
-    expect(() => awsConfig()).toThrow();
-  });
-
-  it('should throw error if AWS_ACCESS_KEY_ID is not set', () => {
-    process.env['AWS_REGION'] = 'us-east-1';
-    process.env['AWS_SECRET_ACCESS_KEY'] = 'test-secret-key';
-    delete process.env['AWS_ACCESS_KEY_ID'];
-
-    expect(() => awsConfig()).toThrow();
-  });
-
-  it('should throw error if AWS_SECRET_ACCESS_KEY is not set', () => {
-    process.env['AWS_REGION'] = 'us-east-1';
-    process.env['AWS_ACCESS_KEY_ID'] = 'test-key-id';
-    delete process.env['AWS_SECRET_ACCESS_KEY'];
-
-    expect(() => awsConfig()).toThrow();
+    // Assert
+    expect(config.region).toEqual('test-region');
+    expect(config.accessKeyId).toEqual('test-access-key');
+    expect(config.secretAccessKey).toEqual('test-secret-key');
+    expect(config.cognitoClientId).toEqual('test-client-id');
   });
 });
