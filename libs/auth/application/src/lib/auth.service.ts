@@ -1,15 +1,16 @@
-import { Logger, UnauthorizedException } from '@nestjs/common';
+import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from '@users/application';
 import { JwtService } from '@nestjs/jwt';
 import { AwsCognitoService } from '@shared/infrastructure-aws-cognito';
 
 // Implement the authentication logic
+@Injectable()
 export class AuthService {
+  private readonly logger = new Logger(AuthService.name);
   constructor(
     private awsCognitoService: AwsCognitoService,
     private usersService: UsersService,
     private jwtService: JwtService,
-    private readonly logger = new Logger(AuthService.name),
   ) {}
 
   // Retrieving a user and verifying the password

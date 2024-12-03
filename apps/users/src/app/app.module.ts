@@ -7,6 +7,7 @@ import {
   authConfig,
 } from '@shared/config';
 import { UsersModule } from '@users/interface-adapters';
+import { AuthModule } from '@auth/interface-adapters';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -18,6 +19,7 @@ import { AppService } from './app.service';
       load: [userAppConfig, databaseConfig, awsConfig, authConfig],
     }),
     UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
