@@ -10,11 +10,11 @@ export class UserDto {
   @IsEmail()
   email: string;
 
-  @Field()
+  @Field(() => String, { nullable: true })
   @IsString()
-  firstName?: string | null;
+  firstName: string | null;
 
-  @Field()
+  @Field(() => String, { nullable: true })
   @IsString()
   lastName: string | null;
 
