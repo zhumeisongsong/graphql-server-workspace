@@ -1,3 +1,21 @@
+# [1.10.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.9.0...v1.10.0) (2024-12-03)
+
+
+### Bug Fixes
+
+* 🐛 Add @IsOptional() Decorator for Nullable Fields ([5ca9dc8](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/5ca9dc86518ea4ce923fac9f491040b630073259))
+* 🐛 add Injectable decorator to AuthService ([bf13f1c](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/bf13f1c9e3e60a14bd8f5cc88b07e1908de3d16b))
+* 🐛 add InputType decorator ([092fc79](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/092fc797b0a06752570db1c09c30e480f9e48a5d))
+* 🐛 AuthModule is invalid ([257f49d](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/257f49d796cbc7f482a01d043eb50549dc14f27c))
+* 🐛 AuthModule is not valid ([edb09bb](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/edb09bbad1d948345720d488aea17e15152cbc9e))
+* 🐛 fix UserDto type ([ac2cdb4](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/ac2cdb42f76475842be5993d74a1a9339647145c))
+
+
+### Features
+
+* ✨ import AuthModule to User AppModule ([6cb1c40](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/6cb1c40eca76c109c75d14da16e6beb5ad5da337))
+* ✨ merge conflict ([0a79470](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/0a7947009e7224a30b79173639afe1bd02cc0997))
+
 # [1.9.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.8.0...v1.9.0) (2024-12-03)
 
 
