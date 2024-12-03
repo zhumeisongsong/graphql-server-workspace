@@ -1,9 +1,17 @@
 import { AuthService } from '@auth/application';
 import { Module } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
 import { JwtModule, JwtService } from '@nestjs/jwt';
 import { AwsCognitoService } from '@shared/infrastructure-aws-cognito';
-import { UsersService } from '@users/application';
+import { DatabaseModule } from '@shared/infrastructure-mongoose';
+import { GetUserUseCase, UsersService } from '@users/application';
+import { USERS_REPOSITORY } from '@users/domain';
+import {
+  MongooseUsersRepository,
+  UserDocument,
+  UserSchema,
+} from '@users/infrastructure-mongoose';
 import { UsersModule } from '@users/interface-adapters';
 
 import { AuthResolver } from './resolver/auth.resolver';
@@ -15,21 +23,32 @@ import { AuthResolver } from './resolver/auth.resolver';
     AwsCognitoService,
     UsersService,
     JwtService,
+    GetUserUseCase,
+    {
+      provide: USERS_REPOSITORY,
+      useClass: MongooseUsersRepository,
+    },
   ],
   imports: [
     UsersModule,
     JwtModule.registerAsync({
       global: true,
+      imports: [ConfigModule],
+      inject: [ConfigService],
       useFactory: (configService: ConfigService) => {
-        const jwtConfig = configService.get('jwt');
+        const authConfig = configService.get('auth');
+
         return {
-          secret: jwtConfig.secret,
+          secret: authConfig.secret,
           signOptions: { expiresIn: '60s' },
         };
       },
-      inject: [ConfigService],
     }),
+    DatabaseModule,
+    MongooseModule.forFeature([
+      { name: UserDocument.name, schema: UserSchema },
+    ]),
   ],
-  exports: [],
+  exports: [AuthService],
 })
 export class AuthModule {}
