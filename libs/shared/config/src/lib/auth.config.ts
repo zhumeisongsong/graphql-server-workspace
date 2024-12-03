@@ -2,7 +2,7 @@ import { registerAs } from '@nestjs/config';
 import { z } from 'zod';
 
 const authSchema = z.object({
-  secret: z.string().min(1).max(22),
+  secret: z.string().min(1)
 });
 
 export type AuthConfig = z.infer<typeof authSchema>;
