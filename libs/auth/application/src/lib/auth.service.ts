@@ -3,6 +3,7 @@ import { UsersService } from '@users/application';
 import { JwtService } from '@nestjs/jwt';
 import { AwsCognitoService } from '@shared/infrastructure-aws-cognito';
 
+// Implement the authentication logic
 export class AuthService {
   constructor(
     private awsCognitoService: AwsCognitoService,
@@ -11,6 +12,7 @@ export class AuthService {
     private readonly logger = new Logger(AuthService.name),
   ) {}
 
+  // Retrieving a user and verifying the password
   async signIn(
     email: string,
     pass: string,
