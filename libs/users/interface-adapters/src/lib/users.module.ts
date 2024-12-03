@@ -7,7 +7,6 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { DatabaseModule } from '@shared/infrastructure-mongoose';
 import { UsersService, GetUserUseCase } from '@users/application';
-import { UsersResolver } from '@users/interface-adapters';
 import {
   MongooseUsersRepository,
   UserDocument,
@@ -15,6 +14,8 @@ import {
 } from '@users/infrastructure-mongoose';
 import { MongooseModule } from '@nestjs/mongoose';
 import { USERS_REPOSITORY } from '@users/domain';
+
+import { UsersResolver } from './resolver/users.resolver';
 
 @Module({
   providers: [
