@@ -3,6 +3,7 @@ import { Resolver, Mutation, Args } from '@nestjs/graphql';
 
 import { SignInInputDto } from '../dto/sign-in-input.dto';
 
+// Expose the authentication endpoints
 @Resolver()
 export class AuthResolver {
   constructor(private authService: AuthService) {}
