@@ -44,5 +44,6 @@ import { USERS_REPOSITORY } from '@users/domain';
     DatabaseModule,
     MongooseModule.forFeature([{ name: UserDocument.name, schema: UserSchema }])
   ],
+  exports: [UsersService],
 })
 export class UsersModule {}
