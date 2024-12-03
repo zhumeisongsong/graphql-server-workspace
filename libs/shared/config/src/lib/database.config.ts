@@ -9,7 +9,7 @@ const databaseSchema = z.object({
 
 export type DatabaseConfig = z.infer<typeof databaseSchema>;
 
-export const databaseConfig = registerAs('database', () => {
+export const databaseConfig = registerAs('database', (): DatabaseConfig => {
   const config = {
     host: process.env['DATABASE_HOST'] || 'localhost',
     port: process.env['DATABASE_PORT'] || 27017,

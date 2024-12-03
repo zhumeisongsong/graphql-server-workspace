@@ -1,11 +1,14 @@
 import { registerAs } from '@nestjs/config';
+import { z } from 'zod';
 
-interface ServiceConfig {
-  protocol: string;
-  host: string;
-  port: number;
-  name?: string;
-}
+const serviceSchema = z.object({
+  protocol: z.string().min(1),
+  host: z.string().min(1),
+  port: z.coerce.number().int().min(1).max(65535),
+  name: z.string().optional(),
+});
+
+export type ServiceConfig = z.infer<typeof serviceSchema>;
 
 const DEFAULT_PROTOCOL = 'http' as const;
 const DEFAULT_HOST = 'localhost' as const;

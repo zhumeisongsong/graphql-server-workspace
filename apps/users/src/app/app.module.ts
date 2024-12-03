@@ -1,8 +1,12 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { databaseConfig, userAppConfig } from '@shared/config';
-
-import { UsersModule } from '../users/users.module';
+import {
+  databaseConfig,
+  userAppConfig,
+  awsConfig,
+  authConfig,
+} from '@shared/config';
+import { UsersModule } from '@users/interface-adapters';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -11,7 +15,7 @@ import { AppService } from './app.service';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [userAppConfig, databaseConfig],
+      load: [userAppConfig, databaseConfig, awsConfig, authConfig],
     }),
     UsersModule,
   ],
