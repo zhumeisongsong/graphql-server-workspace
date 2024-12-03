@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.8.0...v1.9.0) (2024-12-03)
+
+
+### Features
+
+* ✨ register JwtModule as global ([28194fd](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/28194fd732298f2d86886560987af61b4a77ab11))
+
 # [1.8.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.7.0...v1.8.0) (2024-12-03)
 
 
