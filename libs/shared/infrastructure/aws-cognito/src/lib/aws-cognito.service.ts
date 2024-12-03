@@ -1,17 +1,22 @@
 import { Injectable, Logger } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { awsConfig } from '@shared/config';
 import * as AWS from 'aws-sdk';
 
 @Injectable()
 export class AwsCognitoService {
-  private cognito: AWS.CognitoIdentityServiceProvider;
   private readonly logger = new Logger(AwsCognitoService.name);
+  // private readonly configService: ConfigService;
+  private cognito: AWS.CognitoIdentityServiceProvider;
 
-  constructor() {
+  constructor(private readonly configService: ConfigService) {
+    const awsConfig = this.configService.get('aws');
+
     // Initial CognitoIdentityServiceProvider instance
     this.cognito = new AWS.CognitoIdentityServiceProvider({
-      region: process.env['AWS_REGION'],
-      accessKeyId: process.env['AWS_ACCESS_KEY_ID'],
-      secretAccessKey: process.env['AWS_SECRET_ACCESS_KEY'],
+      region: awsConfig.region,
+      accessKeyId: awsConfig.accessKeyId,
+      secretAccessKey: awsConfig.secretAccessKey,
     });
   }
 
@@ -19,8 +24,9 @@ export class AwsCognitoService {
     email: string,
     password: string,
   ): Promise<AWS.CognitoIdentityServiceProvider.SignUpResponse> {
+    const awsConfig = this.configService.get('aws');
     const params: AWS.CognitoIdentityServiceProvider.SignUpRequest = {
-      ClientId: process.env['COGNITO_CLIENT_ID'] ?? '', // TODO: add this to the config
+      ClientId: awsConfig.cognitoClientId,
       Username: email,
       Password: password,
       UserAttributes: [
@@ -41,9 +47,10 @@ export class AwsCognitoService {
     email: string,
     password: string,
   ): Promise<AWS.CognitoIdentityServiceProvider.InitiateAuthResponse> {
+    const awsConfig = this.configService.get('aws');
     const params: AWS.CognitoIdentityServiceProvider.InitiateAuthRequest = {
       AuthFlow: 'USER_PASSWORD_AUTH',
-      ClientId: process.env['COGNITO_CLIENT_ID'] || '',
+      ClientId: awsConfig.cognitoClientId,
       AuthParameters: {
         USERNAME: email,
         PASSWORD: password,
@@ -61,9 +68,10 @@ export class AwsCognitoService {
   async refreshToken(
     refreshToken: string,
   ): Promise<AWS.CognitoIdentityServiceProvider.InitiateAuthResponse> {
+    const awsConfig = this.configService.get('aws');
     const params: AWS.CognitoIdentityServiceProvider.InitiateAuthRequest = {
       AuthFlow: 'REFRESH_TOKEN_AUTH',
-      ClientId: process.env['COGNITO_CLIENT_ID'] || '',
+      ClientId: awsConfig.cognitoClientId,
       AuthParameters: {
         REFRESH_TOKEN: refreshToken,
       },
@@ -78,8 +86,9 @@ export class AwsCognitoService {
   }
 
   async confirmSignUp(email: string, confirmationCode: string): Promise<void> {
+    const awsConfig = this.configService.get('aws');
     const params: AWS.CognitoIdentityServiceProvider.ConfirmSignUpRequest = {
-      ClientId: process.env['COGNITO_CLIENT_ID'] || '',
+      ClientId: awsConfig.cognitoClientId,
       Username: email,
       ConfirmationCode: confirmationCode,
     };
