@@ -1,3 +1,17 @@
+# [1.8.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.7.0...v1.8.0) (2024-12-03)
+
+
+### Bug Fixes
+
+* 🐛 fix import path to pass lint check ([a4b642c](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/a4b642c73665b5a6b7a0c208ddfe6ce8deb7ca8a))
+* 🐛 Remove overly restrictive JWT secret length constraint ([ca08b71](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/ca08b7111a1ad0d309c75e0d5e6c691eaf81ac4a))
+
+
+### Features
+
+* ✨ add auth and aws config ([f2cde2b](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/f2cde2b7271c8d622c61b42fad241ff27220d136))
+* ✨ import config ([de81caa](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/de81caa86111da3fc826b95ff00af3bdf878ddcd))
+
 # [1.7.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.6.0...v1.7.0) (2024-12-02)
 
 
