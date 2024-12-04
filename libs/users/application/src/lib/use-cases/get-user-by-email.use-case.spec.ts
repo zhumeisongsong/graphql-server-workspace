@@ -26,7 +26,7 @@ describe('GetUserByEmailUseCase', () => {
       const result = await getUserByEmailUseCase.execute('test@example.com');
 
       expect(result).toEqual(mockUser);
-      expect(usersRepository.findByEmail).toHaveBeenCalledWith('1');
+      expect(usersRepository.findByEmail).toHaveBeenCalledWith("test@example.com");
     });
 
     it('should return null when user not found', async () => {
@@ -35,7 +35,7 @@ describe('GetUserByEmailUseCase', () => {
       const result = await getUserByEmailUseCase.execute('test@example.com');
 
       expect(result).toBeNull();
-      expect(usersRepository.findByEmail).toHaveBeenCalledWith('1');
+      expect(usersRepository.findByEmail).toHaveBeenCalledWith("test@example.com");
     });
   });
 });
