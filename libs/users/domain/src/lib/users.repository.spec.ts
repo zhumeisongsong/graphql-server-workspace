@@ -15,6 +15,10 @@ class MockUsersRepository implements UsersRepository {
   async findById(id: string): Promise<User | null> {
     return this.users.find((user) => user.id === id) || null;
   }
+
+  async findByEmail(email: string): Promise<User | null> {
+    return this.users.find((user) => user.email === email) || null;
+  }
 }
 
 describe('UsersRepository', () => {
@@ -36,6 +40,21 @@ describe('UsersRepository', () => {
 
   test('findById should return null if user not found', async () => {
     const user = await usersRepository.findById('3');
+    expect(user).toBeNull();
+  });
+
+  test('findByEmail should return a user by email', async () => {
+    const user = await usersRepository.findByEmail('jane@example.com');
+    expect(user).toEqual({
+      id: '2',
+      email: 'jane@example.com',
+      firstName: 'Jane',
+      lastName: 'Smith',
+    });
+  });
+
+  test('findByEmail should return null if user not found', async () => {
+    const user = await usersRepository.findByEmail('nonexistent@example.com');
     expect(user).toBeNull();
   });
 });

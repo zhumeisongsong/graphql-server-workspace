@@ -5,7 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { JwtModule, JwtService } from '@nestjs/jwt';
 import { AwsCognitoService } from '@shared/infrastructure-aws-cognito';
 import { DatabaseModule } from '@shared/infrastructure-mongoose';
-import { GetUserUseCase, UsersService } from '@users/application';
+import { GetUserByEmailUseCase, GetUserByIdUseCase, UsersService } from '@users/application';
 import { USERS_REPOSITORY } from '@users/domain';
 import {
   MongooseUsersRepository,
@@ -23,7 +23,8 @@ import { AuthResolver } from './resolver/auth.resolver';
     AwsCognitoService,
     UsersService,
     JwtService,
-    GetUserUseCase,
+    GetUserByIdUseCase,
+    GetUserByEmailUseCase,
     {
       provide: USERS_REPOSITORY,
       useClass: MongooseUsersRepository,
