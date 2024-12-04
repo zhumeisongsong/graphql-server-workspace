@@ -8,6 +8,7 @@ describe('GetUserByIdUseCase', () => {
   beforeEach(() => {
     usersRepository = {
       findById: jest.fn(),
+      findByEmail: jest.fn(),
     };
     getUserByIdUseCase = new GetUserByIdUseCase(usersRepository);
   });
