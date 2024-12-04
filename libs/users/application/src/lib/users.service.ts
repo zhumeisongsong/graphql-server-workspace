@@ -1,18 +1,21 @@
 import { Injectable } from '@nestjs/common';
 import { User } from '@users/domain';
 
-import { GetUserUseCase } from './use-cases/get-user.use-case';
+import { GetUserByIdUseCase } from './use-cases/get-user-by-id.use-case';
+import { GetUserByEmailUseCase } from './use-cases/get-user-by-email.use-case';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly getUserUseCase: GetUserUseCase) {}
+  constructor(
+    private readonly getUserByIdUseCase: GetUserByIdUseCase,
+    private readonly getUserByEmailUseCase: GetUserByEmailUseCase,
+  ) {}
 
   async findById(id: string): Promise<User | null> {
-    return this.getUserUseCase.execute(id);
+    return this.getUserByIdUseCase.execute(id);
   }
 
   async findByEmail(email: string): Promise<User | null> {
-    // TODO: refactor getUserUseCase
-    return this.getUserUseCase.execute(email);
+    return this.getUserByEmailUseCase.execute(email);
   }
 }

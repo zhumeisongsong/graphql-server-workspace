@@ -25,4 +25,18 @@ export class MongooseUsersRepository implements UsersRepository {
       userDocument.lastName,
     );
   }
+
+  async findByEmail(email: string): Promise<User | null> {
+    const userDocument = await this.userModel.findOne({ email }).exec();
+
+    if (!userDocument) {
+      return null;
+    }
+    return new User(
+      userDocument.id,
+      userDocument.email,
+      userDocument.firstName,
+      userDocument.lastName,
+    );
+  }
 }
