@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.10.0...v1.11.0) (2024-12-04)
+
+
+### Features
+
+* ✨ add findByEmail use case ([dec50d6](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/dec50d620f4b31729eda9bc960f92dd65ce1ede2))
+
 # [1.10.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.9.0...v1.10.0) (2024-12-03)
 
 
