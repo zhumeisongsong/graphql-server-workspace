@@ -37,6 +37,7 @@ import { AppService } from './app.service';
       playground: process.env['NODE_ENV'] !== 'production',
       sortSchema: true,
       plugins: [ApolloServerPluginInlineTrace()],
+      context: ({ req }: { req: Request }) => ({ req }), // Make sure request is passed to the context
     }),
     UsersModule,
     AuthModule,
