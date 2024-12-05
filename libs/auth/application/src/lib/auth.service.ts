@@ -28,7 +28,7 @@ export class AuthService {
     try {
       const accessToken = await this.jwtService.signAsync({
         // sub: user.id, // TODO: Id from cognito
-        email: 'test@test.com',
+        email: email,
       });
 
       return {
