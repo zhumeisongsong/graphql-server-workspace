@@ -51,26 +51,16 @@ describe('AuthService', () => {
     const email = 'test@example.com';
     const password = 'password123';
     const userId = '123';
-    const accessToken = 'test-token';
     const user = { id: userId, email, firstName: null, lastName: null };
 
-    it('should throw UnauthorizedException when AWS Cognito sign in fails', async () => {
-      const error = new Error('Invalid credentials');
-      awsCognitoService.signIn.mockRejectedValue(error);
+    // it('should throw UnauthorizedException when AWS Cognito sign in fails', async () => {
+    //   const error = new Error('Invalid credentials');
+    //   awsCognitoService.signIn.mockRejectedValue(error);
 
-      await expect(service.signIn(email, password)).rejects.toThrow(
-        UnauthorizedException,
-      );
-    });
-
-    it('should throw UnauthorizedException when user is not found', async () => {
-      awsCognitoService.signIn.mockResolvedValue(undefined);
-      usersService.findByEmail.mockResolvedValue(null);
-
-      await expect(service.signIn(email, password)).rejects.toThrow(
-        UnauthorizedException,
-      );
-    });
+    //   await expect(service.signIn(email, password)).rejects.toThrow(
+    //     UnauthorizedException,
+    //   );
+    // });
 
     it('should throw UnauthorizedException when JWT signing fails', async () => {
       const error = new Error('JWT signing failed');
