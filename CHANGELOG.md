@@ -1,3 +1,11 @@
+## [1.11.1](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.11.0...v1.11.1) (2024-12-05)
+
+
+### Bug Fixes
+
+* 🐛 can not return access token ([c6bf72b](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/c6bf72b37a378e8540de42a31d6e8cff90536843))
+* 🐛 hard code ([9d96a99](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/9d96a9932a193cdfcb0268983132abdbca2fb05b))
+
 # [1.11.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.10.0...v1.11.0) (2024-12-04)
 
 
