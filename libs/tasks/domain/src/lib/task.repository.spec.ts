@@ -56,7 +56,10 @@ describe('TaskRepository', () => {
 
   describe('createUserTasks', () => {
     it('should create user tasks', async () => {
-      const tasks = [task];
+      const tasks = [{
+        id: 'task-1',
+        createdAt: new Date()
+      }];
       
       await mockTaskRepository.createUserTasks(user.id, tasks);
 
@@ -66,7 +69,10 @@ describe('TaskRepository', () => {
 
   describe('updateUserTasks', () => {
     it('should update user tasks', async () => {
-      const userTasks = [userTask];
+      const userTasks = [{
+        id: 'user-task-1',
+        updatedAt: new Date()
+      }];
       
       await mockTaskRepository.updateUserTasks(user.id, userTasks);
 
