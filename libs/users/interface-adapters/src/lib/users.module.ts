@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 import { DatabaseModule } from '@shared/infrastructure-mongoose';
 import { UsersService, GetUserByIdUseCase, GetUserByEmailUseCase } from '@users/application';
 import {
@@ -15,6 +16,7 @@ import { UsersResolver } from './resolver/users.resolver';
   providers: [
     UsersResolver,
     UsersService,
+    JwtService,
     GetUserByIdUseCase,
     GetUserByEmailUseCase,
     {
