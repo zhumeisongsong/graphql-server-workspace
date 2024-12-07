@@ -1,1 +1,1 @@
-export * from './lib/tasks-application';
+export * from './lib/tasks.service';
