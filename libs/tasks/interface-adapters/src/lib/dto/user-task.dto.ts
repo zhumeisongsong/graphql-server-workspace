@@ -15,7 +15,7 @@ export class UserTaskDto {
   updatedAt: Date | null;
 
   @Field(() => String)
-  taskId: String;
+  taskId: string;
 
   @Field(() => TaskDto, { nullable: true })
   task: TaskDto | null;
