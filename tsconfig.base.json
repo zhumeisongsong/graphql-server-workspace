@@ -25,6 +25,11 @@
       "@shared/infrastructure-mongoose": [
         "libs/shared/infrastructure/mongoose/src/index.ts"
       ],
+      "@tasks/application": ["libs/tasks/application/src/index.ts"],
+      "@tasks/domain": ["libs/tasks/domain/src/index.ts"],
+      "@tasks/interface-adapters": [
+        "libs/tasks/interface-adapters/src/index.ts"
+      ],
       "@users/application": ["libs/users/application/src/index.ts"],
       "@users/domain": ["libs/users/domain/src/index.ts"],
       "@users/infrastructure-mongoose": [
