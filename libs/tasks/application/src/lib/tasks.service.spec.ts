@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { Task, UserTask } from '@tasks/domain';
+
 import { TasksService } from './tasks.service';
 
 describe('TasksService', () => {
@@ -24,10 +24,17 @@ describe('TasksService', () => {
     });
   });
 
+  describe('findUserTasks', () => {
+    it('should return an array of user tasks', async () => {
+      const result = await service.findUserTasks('123');
+      expect(Array.isArray(result)).toBe(true);
+    });
+  });
+
   describe('createUserTasks', () => {
     it('should create user tasks and return success', async () => {
       const userId = '123';
-      const tasks: Task[] = [];
+      const tasks = [{ id: '3', createdAt: new Date() }];
       const result = await service.createUserTasks(userId, tasks);
       expect(result).toBe('success');
     });
@@ -36,7 +43,12 @@ describe('TasksService', () => {
   describe('updateUserTasks', () => {
     it('should update user tasks and return success', async () => {
       const userId = '123';
-      const userTasks: UserTask[] = [];
+      const userTasks = [
+        {
+          id: 'user-task-1',
+          updatedAt: new Date(),
+        },
+      ];
       const result = await service.updateUserTasks(userId, userTasks);
       expect(result).toBe('success');
     });

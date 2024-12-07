@@ -10,14 +10,25 @@ export class TasksService {
     return [];
   }
 
-  async createUserTasks(userId: string, tasks: Task[]): Promise<string> {
+  async findUserTasks(
+    userId: string,
+    range?: { from: Date; to: Date },
+  ): Promise<UserTask[]> {
+    // TODO: Implement this
+    return [];
+  }
+
+  async createUserTasks(
+    userId: string,
+    tasks: { id: string; createdAt: Date }[],
+  ): Promise<string> {
     // TODO: Implement this
     return 'success';
   }
 
   async updateUserTasks(
     userId: string,
-    userTasks: UserTask[],
+    userTasks: { id: string; updatedAt: Date }[],
   ): Promise<string> {
     // TODO: Implement this
     return 'success';
