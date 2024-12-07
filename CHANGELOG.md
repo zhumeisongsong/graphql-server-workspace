@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.11.1...v1.12.0) (2024-12-07)
+
+
+### Features
+
+* ✨ initial tasks application/domain/interface-adapters ([f035696](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/f0356965d21dfe02655007371de461a76c6a69ce))
+
 ## [1.11.1](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.11.0...v1.11.1) (2024-12-05)
 
 
