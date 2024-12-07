@@ -1,32 +1,40 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Test, TestingModule } from '@nestjs/testing';
 import { TasksService } from '@tasks/application';
 
-import { TaskDto } from '../dto/task.dto';
-import { CreateUserTaskDto } from '../dto/create-user-task.dto';
-import { UpdateUserTaskDto } from '../dto/update-user-task.dto';
+import { TasksResolver } from './tasks.resolver';
 
-@Resolver(() => TaskDto)
-export class TasksResolver {
-  constructor(private tasksService: TasksService) {}
+describe('TasksResolver', () => {
+  let resolver: TasksResolver;
+  let service: TasksService;
 
-  @Query(() => TaskDto, { nullable: true })
-  async getTasks(): Promise<TaskDto[]> {
-    return this.tasksService.findAll();
-  }
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [
+        TasksResolver,
+        {
+          provide: TasksService,
+          useValue: {
+            findAll: jest.fn(),
+            findUserTasks: jest.fn(),
+            createUserTasks: jest.fn(),
+            updateUserTasks: jest.fn()
+          },
+        },
+      ],
+    }).compile();
 
-  @Mutation(() => String)
-  async createUserTasks(
-    @Args('userId') userId: string,
-    @Args('tasks') tasks: CreateUserTaskDto[],
-  ): Promise<string> {
-    return this.tasksService.createUserTasks(userId, tasks);
-  }
+    resolver = module.get<TasksResolver>(TasksResolver);
+    service = module.get<TasksService>(TasksService);
+  });
 
-  @Mutation(() => String)
-  async updateUserTasks(
-    @Args('userId') userId: string,
-    @Args('userTasks') userTasks: UpdateUserTaskDto[],
-  ): Promise<string> {
-    return this.tasksService.updateUserTasks(userId, userTasks);
-  }
-}
+  it('should be defined', () => {
+    expect(resolver).toBeDefined();
+  });
+
+  describe('getTasks', () => {
+    it('should return all tasks', async () => {
+      const result = await resolver.getTasks();
+      expect(result).toEqual([]);
+    });
+  });
+});
