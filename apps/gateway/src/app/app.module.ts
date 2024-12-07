@@ -1,4 +1,4 @@
-import { IntrospectAndCompose } from '@apollo/gateway';
+import { IntrospectAndCompose, RemoteGraphQLDataSource } from '@apollo/gateway';
 import { gatewayConfig, userAppConfig } from '@shared/config';
 import { ApolloGatewayDriver, ApolloGatewayDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
@@ -31,6 +31,20 @@ import { AppService } from './app.service';
                 },
               ],
             }),
+            buildService: ({ url = '' }) => {
+              return new RemoteGraphQLDataSource({
+                url,
+                willSendRequest({ request, context }) {
+                  // rebuild header
+                  if (Object.keys(context).length > 0 && request.http) {
+                    request.http.headers.set(
+                      'Authorization',
+                      context['req']['headers']['authorization'],
+                    );
+                  }
+                },
+              });
+            },
           },
         };
       },
