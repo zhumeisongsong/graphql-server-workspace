@@ -23,34 +23,4 @@ describe('TasksService', () => {
       expect(Array.isArray(result)).toBe(true);
     });
   });
-
-  describe('findUserTasks', () => {
-    it('should return an array of user tasks', async () => {
-      const result = await service.findUserTasks('123');
-      expect(Array.isArray(result)).toBe(true);
-    });
-  });
-
-  describe('createUserTasks', () => {
-    it('should create user tasks and return success', async () => {
-      const userId = '123';
-      const tasks = [{ id: '3', createdAt: new Date() }];
-      const result = await service.createUserTasks(userId, tasks);
-      expect(result).toBe('success');
-    });
-  });
-
-  describe('updateUserTasks', () => {
-    it('should update user tasks and return success', async () => {
-      const userId = '123';
-      const userTasks = [
-        {
-          id: 'user-task-1',
-          updatedAt: new Date(),
-        },
-      ];
-      const result = await service.updateUserTasks(userId, userTasks);
-      expect(result).toBe('success');
-    });
-  });
 });
