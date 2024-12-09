@@ -42,7 +42,7 @@ describe('UsersService', () => {
       };
       (getUserByIdUseCase.execute as jest.Mock).mockResolvedValue(mockUser);
 
-      const result = await service.findById('1');
+      const result = await service.findOneById('1');
 
       expect(result).toEqual(mockUser);
       expect(getUserByIdUseCase.execute).toHaveBeenCalledWith('1');
@@ -51,7 +51,7 @@ describe('UsersService', () => {
     it('should return null when user not found', async () => {
       (getUserByIdUseCase.execute as jest.Mock).mockResolvedValue(null);
 
-      const result = await service.findById('1');
+      const result = await service.findOneById('1');
 
       expect(result).toBeNull();
       expect(getUserByIdUseCase.execute).toHaveBeenCalledWith('1');

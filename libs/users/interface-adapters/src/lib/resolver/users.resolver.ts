@@ -10,7 +10,7 @@ export class UsersResolver {
 
   @Query(() => UserDto, { nullable: true })
   async getUser(@Args({ name: 'id', type: () => ID }) id: string): Promise<UserDto | null> {
-    const user: User| null = await this.usersService.findById(id);
+    const user: User| null = await this.usersService.findOneById(id);
 
     if (!user) {
       return null;

@@ -9,6 +9,6 @@ export class GetUserByIdUseCase {
   ) {}
 
   async execute(id: string): Promise<User | null> {
-    return await this.usersRepository.findById(id);
+    return await this.usersRepository.findOneById(id);
   }
 }

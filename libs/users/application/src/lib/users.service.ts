@@ -11,11 +11,11 @@ export class UsersService {
     private readonly getUserByEmailUseCase: GetUserByEmailUseCase,
   ) {}
 
-  async findById(id: string): Promise<User | null> {
+  async findOneById(id: string): Promise<User | null> {
     return this.getUserByIdUseCase.execute(id);
   }
 
-  async findByEmail(email: string): Promise<User | null> {
+  async findOneByEmail(email: string): Promise<User | null> {
     return this.getUserByEmailUseCase.execute(email);
   }
 }

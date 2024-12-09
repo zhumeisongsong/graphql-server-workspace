@@ -16,7 +16,7 @@ describe('MongooseUsersRepository', () => {
         {
           provide: getModelToken(UserDocument.name),
           useValue: {
-            findById: jest.fn(),
+            findOneById: jest.fn(),
           },
         },
       ],
@@ -36,11 +36,11 @@ describe('MongooseUsersRepository', () => {
       lastName: 'Doe',
     };
 
-    jest.spyOn(userModel, 'findById').mockReturnValue({
+    jest.spyOn(userModel, 'findOneById').mockReturnValue({
       exec: jest.fn().mockResolvedValue(mockUser),
     } as any);
 
-    const user = await repository.findById(mockUser.id);
+    const user = await repository.findOneById(mockUser.id);
     expect(user).toBeInstanceOf(User);
     expect(user?.id).toBe(mockUser.id);
     expect(user?.email).toBe(mockUser.email);
@@ -49,11 +49,11 @@ describe('MongooseUsersRepository', () => {
   });
 
   it('should return null when user is not found', async () => {
-    jest.spyOn(userModel, 'findById').mockReturnValue({
+    jest.spyOn(userModel, 'findOneById').mockReturnValue({
       exec: jest.fn().mockResolvedValue(null),
     } as any);
 
-    const user = await repository.findById('507f1f77bcf86cd799439011');
+    const user = await repository.findOneById('507f1f77bcf86cd799439011');
     expect(user).toBeNull();
   });
 });
