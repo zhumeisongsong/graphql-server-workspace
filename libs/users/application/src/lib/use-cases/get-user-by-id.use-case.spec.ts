@@ -7,8 +7,8 @@ describe('GetUserByIdUseCase', () => {
 
   beforeEach(() => {
     usersRepository = {
-      findById: jest.fn(),
-      findByEmail: jest.fn(),
+      findOneById: jest.fn(),
+      findOneByEmail: jest.fn(),
     };
     getUserByIdUseCase = new GetUserByIdUseCase(usersRepository);
   });
@@ -21,21 +21,21 @@ describe('GetUserByIdUseCase', () => {
         firstName: 'John',
         lastName: 'Doe',
       };
-      (usersRepository.findById as jest.Mock).mockResolvedValue(mockUser);
+      (usersRepository.findOneById as jest.Mock).mockResolvedValue(mockUser);
 
       const result = await getUserByIdUseCase.execute('1');
 
       expect(result).toEqual(mockUser);
-      expect(usersRepository.findById).toHaveBeenCalledWith('1');
+      expect(usersRepository.findOneById).toHaveBeenCalledWith('1');
     });
 
     it('should return null when user not found', async () => {
-      (usersRepository.findById as jest.Mock).mockResolvedValue(null);
+      (usersRepository.findOneById as jest.Mock).mockResolvedValue(null);
 
       const result = await getUserByIdUseCase.execute('1');
 
       expect(result).toBeNull();
-      expect(usersRepository.findById).toHaveBeenCalledWith('1');
+      expect(usersRepository.findOneById).toHaveBeenCalledWith('1');
     });
   });
 });

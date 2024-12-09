@@ -9,6 +9,6 @@ export class GetUserByEmailUseCase {
   ) {}
 
   async execute(email: string): Promise<User | null> {
-    return this.usersRepository.findByEmail(email);
+    return this.usersRepository.findOneByEmail(email);
   }
 }

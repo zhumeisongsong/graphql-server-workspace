@@ -1,1 +1,1 @@
-export * from './lib/tasks-interface-adapters';
+export * from './lib/tasks.module';

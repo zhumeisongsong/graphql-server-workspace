@@ -11,9 +11,9 @@ export class MongooseUsersRepository implements UsersRepository {
     @InjectModel(UserDocument.name) private userModel: Model<UserDocument>,
   ) {}
 
-  async findById(id: string): Promise<User | null> {
+  async findOneById(id: string): Promise<User | null> {
     const _id = new Types.ObjectId(id);
-    const userDocument = await this.userModel.findById(_id).exec();
+    const userDocument = await this.userModel.findOne(_id).exec();
 
     if (!userDocument) {
       return null;
@@ -26,7 +26,7 @@ export class MongooseUsersRepository implements UsersRepository {
     );
   }
 
-  async findByEmail(email: string): Promise<User | null> {
+  async findOneByEmail(email: string): Promise<User | null> {
     const userDocument = await this.userModel.findOne({ email }).exec();
 
     if (!userDocument) {
