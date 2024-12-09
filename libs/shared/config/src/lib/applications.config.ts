@@ -13,8 +13,8 @@ export type ServiceConfig = z.infer<typeof serviceSchema>;
 const DEFAULT_PROTOCOL = 'http' as const;
 const DEFAULT_HOST = 'localhost' as const;
 const DEFAULT_PORT = {
-  user: 15001,
-  task: 15002,
+  users: 15001,
+  tasks: 15002,
   gateway: 3333,
 } as const;
 
@@ -29,14 +29,26 @@ export const gatewayConfig = registerAs(
   }),
 );
 
-export const userAppConfig = registerAs(
-  'userApp',
+export const usersAppConfig = registerAs(
+  'usersApp',
   (): ServiceConfig => ({
     protocol: process.env['PROTOCOL'] ?? DEFAULT_PROTOCOL,
-    host: process.env['USER_HOST'] ?? DEFAULT_HOST,
-    port: process.env['USER_PORT']
-      ? Number(process.env['USER_PORT'])
-      : DEFAULT_PORT.user,
-    name: 'user',
+    host: process.env['USERS_HOST'] ?? DEFAULT_HOST,
+    port: process.env['USERS_PORT']
+      ? Number(process.env['USERS_PORT'])
+      : DEFAULT_PORT.users,
+    name: 'users',
+  }),
+);
+
+export const tasksAppConfig = registerAs(
+  'tasksApp',
+  (): ServiceConfig => ({
+    protocol: process.env['PROTOCOL'] ?? DEFAULT_PROTOCOL,
+    host: process.env['TASKS_HOST'] ?? DEFAULT_HOST,
+    port: process.env['TASKS_PORT']
+      ? Number(process.env['TASKS_PORT'])
+      : DEFAULT_PORT.tasks,
+    name: 'tasks',
   }),
 );

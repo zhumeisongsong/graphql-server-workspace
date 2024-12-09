@@ -1,4 +1,4 @@
-import { gatewayConfig, userAppConfig } from './applications.config';
+import { gatewayConfig, tasksAppConfig, usersAppConfig } from './applications.config';
 
 describe('Config Tests', () => {
   describe('gatewayConfig', () => {
@@ -29,33 +29,59 @@ describe('Config Tests', () => {
     });
   });
 
-  describe('userAppConfig', () => {
+  describe('usersAppConfig', () => {
     it('should return default user app config when no environment variables are set', () => {
-      const config = userAppConfig();
+      const config = usersAppConfig();
       expect(config).toEqual({
         protocol: 'http',
         host: 'localhost',
         port: 15001,
-        name: 'user',
+        name: 'users',
       });
     });
 
     it('should return user app config with environment variables', () => {
       process.env['PROTOCOL'] = 'https';
-      process.env['USER_HOST'] = 'user.example.com';
-      process.env['USER_PORT'] = '5555';
+      process.env['USERS_HOST'] = 'user.example.com';
+      process.env['USERS_PORT'] = '5555';
 
-      const config = userAppConfig();
+      const config = usersAppConfig();
       expect(config).toEqual({
         protocol: 'https',
-        host: 'user.example.com',
+        host: 'users.example.com',
         port: 5555,
-        name: 'user',
+        name: 'users',
       });
 
       delete process.env['PROTOCOL'];
-      delete process.env['USER_HOST'];
-      delete process.env['USER_PORT'];
+      delete process.env['USERS_HOST'];
+      delete process.env['USERS_PORT'];
+    });
+  });
+
+  describe('tasksAppConfig', () => {
+    it('should return default tasks app config when no environment variables are set', () => {
+      const config = tasksAppConfig();
+      expect(config).toEqual({
+        protocol: 'http',
+        host: 'localhost',
+        port: 15002,
+        name: 'tasks',
+      });
+    });
+
+    it('should return tasks app config with environment variables', () => {
+      process.env['PROTOCOL'] = 'https';
+      process.env['TASKS_HOST'] = 'tasks.example.com';
+      process.env['TASKS_PORT'] = '6666';
+
+      const config = tasksAppConfig();
+      expect(config).toEqual({
+        protocol: 'https',
+        host: 'tasks.example.com',
+        port: 6666,
+        name: 'tasks',
+      });
     });
   });
 });
