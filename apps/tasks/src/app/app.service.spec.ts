@@ -13,7 +13,7 @@ describe('AppService', () => {
   });
 
   describe('getData', () => {
-    it('should return "Hello API"', () => {
+    it('should return "Hello Tasks Module"', () => {
       expect(service.getData()).toEqual({ message: 'Hello Tasks Module' });
     });
   });
