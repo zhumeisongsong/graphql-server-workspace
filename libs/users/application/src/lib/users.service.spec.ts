@@ -68,7 +68,7 @@ describe('UsersService', () => {
       };
       (getUserByEmailUseCase.execute as jest.Mock).mockResolvedValue(mockUser);
 
-      const result = await service.findByEmail('test@example.com');
+      const result = await service.findOneByEmail('test@example.com');
 
       expect(result).toEqual(mockUser);
       expect(getUserByEmailUseCase.execute).toHaveBeenCalledWith('test@example.com');
@@ -77,7 +77,7 @@ describe('UsersService', () => {
     it('should return null when user not found', async () => {
       (getUserByEmailUseCase.execute as jest.Mock).mockResolvedValue(null);
 
-      const result = await service.findByEmail('test@example.com');
+      const result = await service.findOneByEmail('test@example.com');
 
       expect(result).toBeNull();
       expect(getUserByEmailUseCase.execute).toHaveBeenCalledWith('test@example.com');
