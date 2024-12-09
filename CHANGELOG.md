@@ -1,3 +1,26 @@
+# [1.13.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.12.0...v1.13.0) (2024-12-09)
+
+
+### Bug Fixes
+
+* 🐛 delete empty constructor ([a40db58](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/a40db58045f985426d1e113a6d95370f08f7fb5e))
+* 🐛 findOneByEmail to findByEmail ([26523ad](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/26523ad766797eac43843237acd731e5455aa787))
+* 🐛 fix TaskRepository definition ([48646b7](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/48646b7e1fe0b999226bf5c0d46efa39e89b54c1))
+* 🐛 Prefer using the primitive `string` as a type name ([ba44970](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/ba44970c36acfcdc5d6003d9a197b1f301c7a11e))
+
+
+### Features
+
+* ✨ add args validation to findUserTasks ([d171615](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/d1716159e42e500a9c0e0bf11b651b93e861d3c3))
+* ✨ add findUserTasks and fix create/update user tasks ([d58a708](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/d58a7082fe7ecb4c926cc6f86f0e7515801c0cde))
+* ✨ add hard code users service ([c483610](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/c483610b386b34ddd3616ef20d4c9f1bd88fa057))
+* ✨ add mock TasksService ([0732c1a](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/0732c1a85e0611512d70ed48c1807c47b898fe1d))
+* ✨ add task resolvers logic ([934ee65](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/934ee653c165049a4d86d096c9e99c72767fe4ba))
+* ✨ add tasks domain ([efb88cd](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/efb88cdc67b951b9198dc3e8af8f8f9aba912bb5))
+* ✨ Add validation decorators for TaskDto ([2ef1c11](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/2ef1c11cb73f97fdbe1f3323938a559abdf1df8d))
+* ✨ Add validation decorators to UserTaskDto ([d2ba8cb](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/d2ba8cb1d853d51da5d650f937b15607520cf589))
+* ✨ Add validation for the id field ([7ee3959](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/7ee395926f59ec69fba7fd514ff5b4cd96a5bdb2))
+
 # [1.12.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.11.1...v1.12.0) (2024-12-07)
 
 
