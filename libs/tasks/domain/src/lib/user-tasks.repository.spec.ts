@@ -34,15 +34,6 @@ describe('UserTasksRepository', () => {
       expect(Array.isArray(tasks)).toBe(true);
       expect(tasks.every((task) => task instanceof Task)).toBe(true);
     });
-
-    it('should return tasks within date range when provided', async () => {
-      const range = {
-        from: new Date('2023-01-01'),
-        to: new Date('2023-12-31'),
-      };
-      const tasks = await repository.findAll('user-1', range);
-      expect(Array.isArray(tasks)).toBe(true);
-    });
   });
 
   describe('createSome', () => {

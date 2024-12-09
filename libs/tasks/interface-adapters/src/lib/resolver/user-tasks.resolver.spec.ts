@@ -31,11 +31,10 @@ describe('UserTasksResolver', () => {
   });
 
   describe('findUserTasks', () => {
-    it('should return user tasks for given userId and range', async () => {
+    it('should return user tasks for given userId', async () => {
       const userId = 'test-user-id';
-      const range = { from: new Date(), to: new Date() };
-      const result = await resolver.getUserTasks(userId, range);
-      expect(service.findMany).toHaveBeenCalledWith(userId, range);
+      const result = await resolver.getUserTasks(userId);
+      expect(service.findMany).toHaveBeenCalledWith(userId);
       expect(result).toEqual([]);
     });
   });
