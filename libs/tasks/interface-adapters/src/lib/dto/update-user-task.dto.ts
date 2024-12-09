@@ -1,15 +1,16 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { IsNotEmpty } from 'class-validator';
 
-@InputType()
-export class UpdateUserTaskDto {
-  @Field(() => String)
-  id: string;
+import { BaseTaskDto } from './base-task.dto';
 
+@InputType({ description: 'Input type for updating a user task' })
+export class UpdateUserTaskDto extends BaseTaskDto {
   @Field(() => Date)
-  updatedAt: Date;
+  @IsNotEmpty()
+  updatedAt: Date = new Date();
 
   constructor(id: string, updatedAt: Date) {
-    this.id = id;
+    super(id);
     this.updatedAt = updatedAt;
   }
 }
