@@ -1,3 +1,13 @@
+# [1.14.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.13.0...v1.14.0) (2024-12-09)
+
+
+### Features
+
+* ✨ add AppModule of tasks app ([7b88157](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/7b88157ad0e18d16fec1d6c0b5c27ffe3a58a77b))
+* ✨ add tasksAppConfig ([b794e2f](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/b794e2f1ebabd67a649b3bdc4bc81390fed0bacd))
+* ✨ initial tasks app ([8f2018d](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/8f2018d61e8a61a87f9650fabdc880071d1e7cf4))
+* ✨ remove range args ([e8ca866](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/e8ca866389a38b2828c0d2449845225ca21e1d4a))
+
 # [1.13.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.12.0...v1.13.0) (2024-12-09)
 
 
