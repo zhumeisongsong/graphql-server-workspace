@@ -5,7 +5,6 @@ import { UserTask } from '@tasks/domain';
 export class UserTasksService {
   async findMany(
     userId: string,
-    range?: { from: Date; to: Date },
   ): Promise<UserTask[]> {
     // TODO: Implement this
     return [];

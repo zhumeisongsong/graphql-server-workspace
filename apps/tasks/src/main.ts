@@ -11,9 +11,9 @@ import { AppModule } from './app/app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
+  
   const configService = app.get(ConfigService);
-  const config = configService.get('userApp');
+  const config = configService.get('tasksApp');
 
   await app.listen(config.port);
   Logger.log(
