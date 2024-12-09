@@ -18,7 +18,7 @@ describe('UserTasksService', () => {
 
   describe('findMany', () => {
     it('should return user tasks', async () => {
-      const result = await service.findMany('userId', { from: new Date(), to: new Date() });
+      const result = await service.findMany('userId');
       expect(result).toEqual([]);
     });
   });

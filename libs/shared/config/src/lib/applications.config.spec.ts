@@ -42,7 +42,7 @@ describe('Config Tests', () => {
 
     it('should return user app config with environment variables', () => {
       process.env['PROTOCOL'] = 'https';
-      process.env['USERS_HOST'] = 'user.example.com';
+      process.env['USERS_HOST'] = 'users.example.com';
       process.env['USERS_PORT'] = '5555';
 
       const config = usersAppConfig();
