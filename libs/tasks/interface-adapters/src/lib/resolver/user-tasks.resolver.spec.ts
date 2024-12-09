@@ -14,9 +14,9 @@ describe('UserTasksResolver', () => {
         {
           provide: UserTasksService,
           useValue: {
-            findMany: jest.fn(),
-            createSome: jest.fn(),
-            updateSome: jest.fn(),
+            findMany: jest.fn().mockResolvedValue([]),
+            createSome: jest.fn().mockResolvedValue({ created: true }),
+            updateSome: jest.fn().mockResolvedValue({ updated: true }),
           },
         },
       ],

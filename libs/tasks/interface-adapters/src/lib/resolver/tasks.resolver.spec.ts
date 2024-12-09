@@ -14,10 +14,7 @@ describe('TasksResolver', () => {
         {
           provide: TasksService,
           useValue: {
-            findAll: jest.fn(),
-            findUserTasks: jest.fn(),
-            createUserTasks: jest.fn(),
-            updateUserTasks: jest.fn()
+            findAll: jest.fn().mockResolvedValue([]),
           },
         },
       ],
@@ -31,7 +28,7 @@ describe('TasksResolver', () => {
     expect(resolver).toBeDefined();
   });
 
-  describe('getTasks', () => {
+  describe('findAllTasks', () => {
     it('should return all tasks', async () => {
       const result = await resolver.getTasks();
       expect(result).toEqual([]);

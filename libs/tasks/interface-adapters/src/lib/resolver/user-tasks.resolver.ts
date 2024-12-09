@@ -18,7 +18,7 @@ export class UserTasksResolver {
   constructor(private userTasksService: UserTasksService) {}
 
   @Query(() => [UserTaskDto])
-  async findUserTasks(
+  async getUserTasks(
     @Args('userId', {
       description: 'The ID of the user to find tasks for',
     })
@@ -31,10 +31,6 @@ export class UserTasksResolver {
     try {
       if (!userId?.trim()) {
         throw new BadRequestException('Invalid userId'); // TODO: using error codes
-      }
-
-      if (!range.from || !range.to) {
-        throw new BadRequestException('Invalid date range'); // TODO: using error codes
       }
 
       if (range.from > range.to) {
