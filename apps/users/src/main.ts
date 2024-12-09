@@ -17,7 +17,7 @@ async function bootstrap() {
 
   await app.listen(config.port);
   Logger.log(
-    `    🚀 Application is running on: ${config.protocol}://${config.host}:${config.port}`,
+    `🚀 Application is running on: ${config.protocol}://${config.host}:${config.port}`,
   );
 }
 

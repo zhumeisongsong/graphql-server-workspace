@@ -8,7 +8,7 @@ import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import {
   databaseConfig,
-  userAppConfig,
+  usersAppConfig,
   awsConfig,
   authConfig,
 } from '@shared/config';
@@ -22,7 +22,7 @@ import { AppService } from './app.service';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [userAppConfig, databaseConfig, awsConfig, authConfig],
+      load: [usersAppConfig, databaseConfig, awsConfig, authConfig],
     }),
     GraphQLModule.forRoot<ApolloFederationDriverConfig>({
       driver: ApolloFederationDriver,
