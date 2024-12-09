@@ -34,7 +34,7 @@ describe('UserTasksResolver', () => {
     it('should return user tasks for given userId and range', async () => {
       const userId = 'test-user-id';
       const range = { from: new Date(), to: new Date() };
-      const result = await resolver.findUserTasks(userId, range);
+      const result = await resolver.getUserTasks(userId, range);
       expect(service.findMany).toHaveBeenCalledWith(userId, range);
       expect(result).toEqual([]);
     });
