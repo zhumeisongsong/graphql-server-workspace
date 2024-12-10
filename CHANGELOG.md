@@ -1,3 +1,15 @@
+# [1.15.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.14.3...v1.15.0) (2024-12-10)
+
+
+### Bug Fixes
+
+* 🐛 environment variable inconsistency ([12870f1](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/12870f1661d9b82557bf67bcfd64f6bbc8409d5a))
+
+
+### Features
+
+* ✨ add auth app ([0e660cb](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/0e660cb2669df923516742dd2f1d3b8387c21720))
+
 ## [1.14.3](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.14.2...v1.14.3) (2024-12-10)
 
 
