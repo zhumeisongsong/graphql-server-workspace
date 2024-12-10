@@ -1,6 +1,6 @@
 {
   "name": "@graphql-federation-workspace/source",
-  "version": "1.14.1",
+  "version": "1.14.2",
   "license": "MIT",
   "scripts": {
     "commit": "git-cz",

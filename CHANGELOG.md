@@ -1,3 +1,12 @@
+## [1.14.2](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.14.1...v1.14.2) (2024-12-10)
+
+
+### Bug Fixes
+
+* 🐛 configService is undefined ([1a5bc5b](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/1a5bc5ba41e1581c19f834e7cf29adeabd932ba2))
+* 🐛 remove auth module in subgraphql ([5c01a2d](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/5c01a2d19086bed904196ba51dd671b170a67745))
+* 🐛 UserDto should be sharedable ([501b50a](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/501b50a575922918baf366db8316e0ceb16d27f5))
+
 ## [1.14.1](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.14.0...v1.14.1) (2024-12-09)
 
 
