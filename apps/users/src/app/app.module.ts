@@ -13,7 +13,6 @@ import {
   authConfig,
 } from '@shared/config';
 import { UsersModule } from '@users/interface-adapters';
-import { AuthModule } from '@auth/interface-adapters';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -38,8 +37,7 @@ import { AppService } from './app.service';
       sortSchema: true,
       plugins: [ApolloServerPluginInlineTrace()],
     }),
-    UsersModule,
-    AuthModule,
+    UsersModule
   ],
   controllers: [AppController],
   providers: [AppService],
