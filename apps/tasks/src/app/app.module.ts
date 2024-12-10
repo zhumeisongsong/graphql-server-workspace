@@ -13,7 +13,6 @@ import {
   tasksAppConfig,
 } from '@shared/config';
 import { TasksModule } from '@tasks/interface-adapters';
-import { AuthModule } from '@auth/interface-adapters';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -32,8 +31,7 @@ import { AppService } from './app.service';
       sortSchema: true,
       plugins: [ApolloServerPluginInlineTrace()],
     }),
-    TasksModule,
-    AuthModule,
+    TasksModule
   ],
   controllers: [AppController],
   providers: [AppService],

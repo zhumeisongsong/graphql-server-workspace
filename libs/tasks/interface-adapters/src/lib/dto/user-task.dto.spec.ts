@@ -18,8 +18,7 @@ describe('UserTaskDto', () => {
       updatedAt,
       taskId,
       task,
-      userId,
-      user,
+      userId
     );
 
     expect(userTaskDto.id).toBe(id);
@@ -28,7 +27,6 @@ describe('UserTaskDto', () => {
     expect(userTaskDto.taskId).toBe(taskId);
     expect(userTaskDto.task).toBe(task);
     expect(userTaskDto.userId).toBe(userId);
-    expect(userTaskDto.user).toBe(user);
   });
 
   it('should create a UserTaskDto instance with null values', () => {
@@ -46,8 +44,7 @@ describe('UserTaskDto', () => {
       updatedAt,
       taskId,
       task,
-      userId,
-      user,
+      userId
     );
 
     expect(userTaskDto.id).toBe(id);
@@ -56,6 +53,5 @@ describe('UserTaskDto', () => {
     expect(userTaskDto.taskId).toBe(taskId);
     expect(userTaskDto.task).toBeNull();
     expect(userTaskDto.userId).toBe(userId);
-    expect(userTaskDto.user).toBeNull();
   });
 });
