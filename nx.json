@@ -37,7 +37,8 @@
       "exclude": [
         "apps/gateway-e2e/**/*",
         "apps/users-e2e/**/*",
-        "apps/tasks-e2e/**/*"
+        "apps/tasks-e2e/**/*",
+        "apps/auth-e2e/**/*"
       ]
     }
   ]
