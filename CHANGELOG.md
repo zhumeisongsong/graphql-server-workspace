@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.15.0...v1.16.0) (2024-12-11)
+
+
+### Features
+
+* ✨ add TaskStatusEnum ([4c2737f](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/4c2737feee8835b932442524e9c41536e3168da4))
+
 # [1.15.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.14.3...v1.15.0) (2024-12-10)
 
 
