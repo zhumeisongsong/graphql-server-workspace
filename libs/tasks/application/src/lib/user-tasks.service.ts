@@ -1,11 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { UserTask } from '@tasks/domain';
 
 @Injectable()
 export class UserTasksService {
   async findMany(
     userId: string,
-  ): Promise<UserTask[]> {
+  ): Promise<[]> {
     // TODO: Implement this
     return [];
   }
