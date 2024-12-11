@@ -1,3 +1,15 @@
+# [1.17.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.16.0...v1.17.0) (2024-12-11)
+
+
+### Bug Fixes
+
+* 🐛 type of UserTasksService findMany ([d7595db](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/d7595db45049866d716c916b19bdffdd50b5c0f8))
+
+
+### Features
+
+* ✨ add task domain behaviors ([b46e330](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/b46e330a46fc2e720d1f805a96676c5c892bd051))
+
 # [1.16.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.15.0...v1.16.0) (2024-12-11)
 
 
