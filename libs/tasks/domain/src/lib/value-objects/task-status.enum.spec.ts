@@ -1,16 +1,16 @@
-import { TaskStatus } from './task-status.enum';
+import { TaskStatusEnum } from './task-status.enum';
 
 describe('TaskStatus', () => {
   it('should have TODO status', () => {
-    expect(TaskStatus.TODO).toBe('TODO');
+    expect(TaskStatusEnum.TODO).toBe('TODO');
   });
 
   it('should have IN_PROGRESS status', () => {
-    expect(TaskStatus.IN_PROGRESS).toBe('IN_PROGRESS');
+    expect(TaskStatusEnum.IN_PROGRESS).toBe('IN_PROGRESS');
   });
 
   it('should have DONE status', () => {
-    expect(TaskStatus.DONE).toBe('DONE');
+    expect(TaskStatusEnum.DONE).toBe('DONE');
   });
 
   it('should be immutable', () => {
