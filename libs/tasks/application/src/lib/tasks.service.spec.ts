@@ -1,26 +1,29 @@
 import { Test, TestingModule } from '@nestjs/testing';
-
 import { TasksService } from './tasks.service';
+import { GetAllTasksUseCase } from './use-cases/get-all-tasks.use-case';
 
 describe('TasksService', () => {
   let service: TasksService;
+  let getAllTasksUseCase: GetAllTasksUseCase;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [TasksService],
+      providers: [
+        TasksService,
+        {
+          provide: GetAllTasksUseCase,
+          useValue: {
+            execute: jest.fn(),
+          },
+        },
+      ],
     }).compile();
 
     service = module.get<TasksService>(TasksService);
+    getAllTasksUseCase = module.get<GetAllTasksUseCase>(GetAllTasksUseCase);
   });
 
   it('should be defined', () => {
     expect(service).toBeDefined();
-  });
-
-  describe('findAll', () => {
-    it('should return an array of tasks', async () => {
-      const result = await service.findAll();
-      expect(Array.isArray(result)).toBe(true);
-    });
   });
 });

@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+
 import { UsersService } from './users.service';
 import { GetUserByIdUseCase } from './use-cases/get-user-by-id.use-case';
 import { GetUserByEmailUseCase } from './use-cases/get-user-by-email.use-case';

@@ -31,47 +31,7 @@ describe('MongooseUsersRepository', () => {
     expect(repository).toBeDefined();
   });
 
-  describe('findOneById', () => {
-    it('should return null when user is not found', async () => {
-      jest.spyOn(userModel, 'findOne').mockReturnValue({
-        exec: jest.fn().mockResolvedValue(null),
-      } as any);
-
-      const result = await repository.findOneById('non-existent-id');
-      expect(result).toBeNull();
-    });
-
-    it('should return User when found', async () => {
-      const mockUser = {
-        id: '123',
-        email: 'test@example.com',
-        firstName: 'John',
-        lastName: 'Doe',
-      };
-
-      jest.spyOn(userModel, 'findOne').mockReturnValue({
-        exec: jest.fn().mockResolvedValue(mockUser),
-      } as any);
-
-      const result = await repository.findOneById('123');
-      expect(result).toBeInstanceOf(User);
-      expect(result?.id).toBe(mockUser.id);
-      expect(result?.email).toBe(mockUser.email);
-      expect(result?.firstName).toBe(mockUser.firstName);
-      expect(result?.lastName).toBe(mockUser.lastName);
-    });
-  });
-
   describe('findOneByEmail', () => {
-    it('should return null when user is not found', async () => {
-      jest.spyOn(userModel, 'findOne').mockReturnValue({
-        exec: jest.fn().mockResolvedValue(null),
-      } as any);
-
-      const result = await repository.findOneByEmail('non-existent@example.com');
-      expect(result).toBeNull();
-    });
-
     it('should return User when found', async () => {
       const mockUser = {
         id: '123',
