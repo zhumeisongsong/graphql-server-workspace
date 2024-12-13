@@ -27,6 +27,9 @@
       ],
       "@tasks/application": ["libs/tasks/application/src/index.ts"],
       "@tasks/domain": ["libs/tasks/domain/src/index.ts"],
+      "@tasks/infrastructure-mongoose": [
+        "libs/tasks/infrastructure/mongoose/src/index.ts"
+      ],
       "@tasks/interface-adapters": [
         "libs/tasks/interface-adapters/src/index.ts"
       ],

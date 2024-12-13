@@ -18,6 +18,7 @@ export class MongooseUsersRepository implements UsersRepository {
     if (!userDocument) {
       return null;
     }
+    
     return new User(
       userDocument.id,
       userDocument.email,
