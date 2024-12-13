@@ -1,3 +1,14 @@
+# [1.18.0](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.17.1...v1.18.0) (2024-12-13)
+
+
+### Features
+
+* ✨ add @tasks/infrastructure-mongoose ([c612fd0](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/c612fd03e5cd7413c247d30d7b012053fddcc398))
+* ✨ add GetAllTasksUseCase ([50373c7](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/50373c74bbfec0e28500edb3b3083d458f143fae))
+* ✨ add maxlength and default to UserDocument ([a5dd726](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/a5dd726c2197027e42bb13b821b574fa11c5ba67))
+* ✨ add TaskDocument and TaskSchema ([90385d2](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/90385d2fad28c2686748ff20053c487962517741))
+* ✨ import MongooseModule in TasksModule ([54cbf07](https://github.com/zhumeisongsong/graphql-federation-workspace/commit/54cbf07cd7503a1d48e2eac63d268d5a552c8fc3))
+
 ## [1.17.1](https://github.com/zhumeisongsong/graphql-federation-workspace/compare/v1.17.0...v1.17.1) (2024-12-13)
 
 
