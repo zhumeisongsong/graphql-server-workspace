@@ -1,10 +1,10 @@
-import { Injectable } from '@nestjs/common';
-import { Task, TasksRepository } from '@tasks/domain';
+import { Inject, Injectable } from '@nestjs/common';
+import { Task, TASKS_REPOSITORY, TasksRepository } from '@tasks/domain';
 
 @Injectable()
 export class GetAllTasksUseCase {
   constructor(
-    // @Inject(TASKS_REPOSITORY)
+    @Inject(TASKS_REPOSITORY)
     private readonly tasksRepository: TasksRepository,
   ) {}
 
