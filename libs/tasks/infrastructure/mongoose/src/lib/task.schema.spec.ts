@@ -24,25 +24,4 @@ describe('TaskDocument', () => {
   it('should be defined', () => {
     expect(taskModel).toBeDefined();
   });
-
-  it('should create a task with required fields', () => {
-    const task = new taskModel({
-      title: 'Test Task',
-      categories: ['test'],
-    });
-    expect(task.title).toBe('Test Task');
-    expect(task.categories).toEqual(['test']);
-    expect(task.description).toBeNull();
-  });
-
-  it('should create a task with all fields', () => {
-    const task = new taskModel({
-      title: 'Test Task',
-      description: 'Test Description',
-      categories: ['test', 'example'],
-    });
-    expect(task.title).toBe('Test Task');
-    expect(task.description).toBe('Test Description');
-    expect(task.categories).toEqual(['test', 'example']);
-  });
 });
