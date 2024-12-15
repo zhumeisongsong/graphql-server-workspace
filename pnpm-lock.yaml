@@ -44,6 +44,9 @@ importers:
       '@nestjs/throttler':
         specifier: ^6.2.1
         version: 6.3.0(@nestjs/common@10.4.15(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@10.4.15)(reflect-metadata@0.2.2)
+      '@zhumeisong/semantic-release-config':
+        specifier: ^1.3.3
+        version: 1.3.3
       aws-sdk:
         specifier: ^2.1692.0
         version: 2.1692.0
@@ -2281,6 +2284,9 @@ packages:
 
   '@zhumeisong/git-cz-config@1.2.4':
     resolution: {integrity: sha512-TYG6Mzuy0xGquXlxCkG0fgaPSOr4YwLC/IprXxncWoBJafxloX8FuSIhCsBxYU0P4a+hecJn0Uy8fImJ32njWA==}
+
+  '@zhumeisong/semantic-release-config@1.3.3':
+    resolution: {integrity: sha512-ZSB4ztFvcpbXjhXRx0mZL3g1L+q3hsifWexlADCewFu0czYmbka4q3OOuYJSIB4imTcnKJXP7vsVuSBGGSQTAA==}
 
   '@zkochan/js-yaml@0.0.7':
     resolution: {integrity: sha512-nrUSn7hzt7J6JWgWGz78ZYI8wj+gdIJdk0Ynjpp8l+trkn58Uqsf6RYrYkEK+3X18EX+TNdtJI0WxAtc+L84SQ==}
@@ -10444,6 +10450,8 @@ snapshots:
       tslib: 2.8.1
 
   '@zhumeisong/git-cz-config@1.2.4': {}
+
+  '@zhumeisong/semantic-release-config@1.3.3': {}
 
   '@zkochan/js-yaml@0.0.7':
     dependencies:
