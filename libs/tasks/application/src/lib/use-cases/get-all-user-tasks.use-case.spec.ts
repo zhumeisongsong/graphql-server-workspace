@@ -14,7 +14,7 @@ describe('GetAllUserTasksUseCase', () => {
         {
           provide: UserTasksService,
           useValue: {
-            findAll: jest.fn(),
+            findMany: jest.fn(),
           },
         },
       ],
@@ -38,12 +38,12 @@ describe('GetAllUserTasksUseCase', () => {
         },
       ];
 
-      jest.spyOn(userTasksService, 'findAll').mockResolvedValue(expectedTasks);
+      jest.spyOn(userTasksService, 'findMany').mockResolvedValue(expectedTasks);
 
       const result = await useCase.execute(userId);
 
       expect(result).toBe(expectedTasks);
-      expect(userTasksService.findAll).toHaveBeenCalledWith(userId);
+      expect(userTasksService.findMany).toHaveBeenCalledWith(userId);
     });
   });
 });

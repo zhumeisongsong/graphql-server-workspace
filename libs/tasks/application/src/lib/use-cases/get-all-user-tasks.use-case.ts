@@ -8,6 +8,6 @@ export class GetAllUserTasksUseCase {
   constructor(private readonly userTasksService: UserTasksService) {}
 
   async execute(userId: string): Promise<UserTask[]> {
-    return await this.userTasksService.findAll(userId);
+    return await this.userTasksService.findMany(userId);
   }
 }

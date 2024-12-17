@@ -1,7 +1,7 @@
-import { Task } from './entities/task.entity';
+import { UserTask } from './entities/user-task.entity';
 
 export interface UserTasksRepository {
-  findAll(userId: string): Promise<Task[]>;
+  findMany(userId: string): Promise<UserTask[]>;
 
   /**
    * Creates tasks for a specific user

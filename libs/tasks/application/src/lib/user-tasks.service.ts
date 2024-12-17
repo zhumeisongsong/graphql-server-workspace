@@ -3,7 +3,7 @@ import { UserTask } from '@tasks/domain';
 
 @Injectable()
 export class UserTasksService {
-  async findAll(userId: string): Promise<UserTask[]> {
+  async findMany(userId: string): Promise<UserTask[]> {
     // TODO: Implement this
     return [];
   }

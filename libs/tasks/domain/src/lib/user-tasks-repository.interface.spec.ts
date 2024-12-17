@@ -1,8 +1,8 @@
-import { Task } from './entities/task.entity';
+import { UserTask } from './entities/user-task.entity';
 import { UserTasksRepository } from './user-tasks-repository.interface';
 
 class MockUserTasksRepository implements UserTasksRepository {
-  async findAll(userId: string): Promise<Task[]> {
+  async findMany(userId: string): Promise<UserTask[]> {
     return [];
   }
 
@@ -30,9 +30,8 @@ describe('UserTasksRepository', () => {
 
   describe('findAll', () => {
     it('should return all tasks for a given user', async () => {
-      const tasks = await repository.findAll('user-1');
-      expect(Array.isArray(tasks)).toBe(true);
-      expect(tasks.every((task) => task instanceof Task)).toBe(true);
+      const userTasks = await repository.findMany('user-1');
+      expect(userTasks).toEqual([]);
     });
   });
 

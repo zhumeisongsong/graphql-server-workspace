@@ -1,37 +1,49 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { TasksService } from '@tasks/application';
+import { GetAllTasksUseCase } from '@tasks/application';
 
 import { TasksResolver } from './tasks.resolver';
 
 describe('TasksResolver', () => {
   let resolver: TasksResolver;
-  let service: TasksService;
+  let getAllTasksUseCase: GetAllTasksUseCase;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         TasksResolver,
         {
-          provide: TasksService,
+          provide: GetAllTasksUseCase,
           useValue: {
-            findAll: jest.fn().mockResolvedValue([]),
+            execute: jest.fn().mockResolvedValue([]),
           },
         },
       ],
     }).compile();
 
     resolver = module.get<TasksResolver>(TasksResolver);
-    service = module.get<TasksService>(TasksService);
+    getAllTasksUseCase = module.get<GetAllTasksUseCase>(GetAllTasksUseCase);
   });
 
   it('should be defined', () => {
     expect(resolver).toBeDefined();
   });
 
-  describe('findAllTasks', () => {
-    it('should return all tasks', async () => {
+  describe('getTasks', () => {
+    it('should return tasks', async () => {
+      const mockTasks = [
+        {
+          id: 'task-1',
+          title: 'Task 1',
+          description: 'Description 1',
+          categories: [],
+        },
+      ];
+
+      jest.spyOn(getAllTasksUseCase, 'execute').mockResolvedValue(mockTasks);
+
       const result = await resolver.getTasks();
-      expect(result).toEqual([]);
+      expect(result).toEqual(mockTasks);
+      expect(getAllTasksUseCase.execute).toHaveBeenCalled();
     });
   });
 });
