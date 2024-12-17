@@ -1,5 +1,5 @@
 import { Task } from './entities/task.entity';
-import { UserTasksRepository } from './user-tasks.repository';
+import { UserTasksRepository } from './user-tasks-repository.interface';
 
 class MockUserTasksRepository implements UserTasksRepository {
   async findAll(userId: string): Promise<Task[]> {

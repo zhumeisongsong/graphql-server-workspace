@@ -1,5 +1,5 @@
 import { Task } from './entities/task.entity';
-import { TasksRepository } from './tasks.repository';
+import { TasksRepository } from './tasks-repository.interface';
 
 class MockTasksRepository implements TasksRepository {
   async findAll(): Promise<Task[]> {
