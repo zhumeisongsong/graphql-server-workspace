@@ -1,6 +1,10 @@
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from '@shared/infrastructure-mongoose';
-import { UsersService, GetUserByIdUseCase, GetUserByEmailUseCase } from '@users/application';
+import {
+  UsersService,
+  GetUserByIdUseCase,
+
+} from '@users/application';
 import {
   MongooseUsersRepository,
   UserDocument,
@@ -16,7 +20,6 @@ import { UsersResolver } from './resolver/users.resolver';
     UsersResolver,
     UsersService,
     GetUserByIdUseCase,
-    GetUserByEmailUseCase,
     {
       provide: USERS_REPOSITORY,
       useClass: MongooseUsersRepository,
