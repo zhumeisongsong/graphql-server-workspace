@@ -1,1 +1,1 @@
-export * from './lib/auth.service';
+export * from './lib/use-cases/sign-in.use-case';

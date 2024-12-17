@@ -1,11 +1,9 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { awsConfig } from '@shared/config';
 import * as AWS from 'aws-sdk';
 
 @Injectable()
 export class AwsCognitoService {
-  private readonly logger = new Logger(AwsCognitoService.name);
   // private readonly configService: ConfigService;
   private cognito: AWS.CognitoIdentityServiceProvider;
 
@@ -35,12 +33,7 @@ export class AwsCognitoService {
       ],
     };
 
-    try {
-      return await this.cognito.signUp(params).promise();
-    } catch (error) {
-      this.logger.error('signUp', error);
-      throw error;
-    }
+    return await this.cognito.signUp(params).promise();
   }
 
   async signIn(
@@ -57,12 +50,7 @@ export class AwsCognitoService {
       },
     };
 
-    try {
-      return await this.cognito.initiateAuth(params).promise();
-    } catch (error) {
-      this.logger.error('signIn', error);
-      throw error;
-    }
+    return await this.cognito.initiateAuth(params).promise();
   }
 
   async refreshToken(
@@ -77,12 +65,7 @@ export class AwsCognitoService {
       },
     };
 
-    try {
-      return await this.cognito.initiateAuth(params).promise();
-    } catch (error) {
-      this.logger.error('refreshToken', error);
-      throw error;
-    }
+    return await this.cognito.initiateAuth(params).promise();
   }
 
   async confirmSignUp(email: string, confirmationCode: string): Promise<void> {
@@ -93,11 +76,6 @@ export class AwsCognitoService {
       ConfirmationCode: confirmationCode,
     };
 
-    try {
-      await this.cognito.confirmSignUp(params).promise();
-    } catch (error) {
-      this.logger.error('confirmSignUp', error);
-      throw error;
-    }
+    await this.cognito.confirmSignUp(params).promise();
   }
 }

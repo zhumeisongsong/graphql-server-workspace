@@ -1,50 +1,71 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AuthService } from '@auth/application';
+import { SignInUseCase } from '@auth/application';
+import { UnauthorizedException } from '@nestjs/common';
+
 import { AuthResolver } from './auth.resolver';
 import { SignInInputDto } from '../dto/sign-in-input.dto';
 
 describe('AuthResolver', () => {
   let resolver: AuthResolver;
-  let authService: AuthService;
+  let signInUseCase: SignInUseCase;
+
+  const mockSignInUseCase = {
+    execute: jest.fn(),
+  };
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         AuthResolver,
         {
-          provide: AuthService,
-          useValue: {
-            signIn: jest.fn(),
-          },
+          provide: SignInUseCase,
+          useValue: mockSignInUseCase,
         },
       ],
     }).compile();
 
     resolver = module.get<AuthResolver>(AuthResolver);
-    authService = module.get<AuthService>(AuthService);
+    signInUseCase = module.get<SignInUseCase>(SignInUseCase);
   });
 
-  it('should be defined', () => {
-    expect(resolver).toBeDefined();
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   describe('signIn', () => {
-    it('should call authService.signIn with correct parameters', async () => {
-      const signInInput: SignInInputDto = {
-        email: 'test@example.com',
-        password: 'password123',
-      };
-      const expectedResult = { accessToken: 'testToken' };
-      
-      jest.spyOn(authService, 'signIn').mockResolvedValue(expectedResult);
+    const signInInput: SignInInputDto = {
+      email: 'test@example.com',
+      password: 'password123',
+    };
+
+    const mockResponse = {
+      accessToken: 'mock-access-token',
+    };
+
+    it('should successfully sign in a user', async () => {
+      mockSignInUseCase.execute.mockResolvedValue(mockResponse);
 
       const result = await resolver.signIn(signInInput);
 
-      expect(authService.signIn).toHaveBeenCalledWith(
+      expect(result).toEqual(mockResponse);
+      expect(signInUseCase.execute).toHaveBeenCalledWith(
         signInInput.email,
-        signInInput.password
+        signInInput.password,
       );
-      expect(result).toEqual(expectedResult);
+    });
+
+    it('should throw UnauthorizedException when sign in fails', async () => {
+      mockSignInUseCase.execute.mockRejectedValue(
+        new UnauthorizedException('Invalid credentials'),
+      );
+
+      await expect(resolver.signIn(signInInput)).rejects.toThrow(
+        UnauthorizedException,
+      );
+      expect(signInUseCase.execute).toHaveBeenCalledWith(
+        signInInput.email,
+        signInInput.password,
+      );
     });
   });
 });

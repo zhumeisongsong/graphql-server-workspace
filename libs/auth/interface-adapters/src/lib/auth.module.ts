@@ -1,4 +1,4 @@
-import { AuthService } from '@auth/application';
+import { SignInUseCase } from '@auth/application';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
@@ -7,7 +7,7 @@ import { AwsCognitoService } from '@shared/infrastructure-aws-cognito';
 import { AuthResolver } from './resolver/auth.resolver';
 
 @Module({
-  providers: [AuthResolver, AuthService, AwsCognitoService],
+  providers: [AuthResolver, SignInUseCase, AwsCognitoService],
   imports: [
     JwtModule.registerAsync({
       imports: [ConfigModule],
@@ -22,6 +22,6 @@ import { AuthResolver } from './resolver/auth.resolver';
       },
     }),
   ],
-  exports: [AuthService],
+  exports: [],
 })
 export class AuthModule {}
