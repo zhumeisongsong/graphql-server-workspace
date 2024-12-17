@@ -23,38 +23,4 @@ export class UserTask {
       TaskStatusEnum.TODO,
     );
   }
-
-  /**
-   * Marks the task as in progress
-   */
-  markAsInProgress(): UserTask {
-    if (this.status === TaskStatusEnum.IN_PROGRESS) {
-      return this;
-    }
-    return new UserTask(
-      this.id,
-      this.userId,
-      this.taskId,
-      this.createdAt,
-      new Date(),
-      TaskStatusEnum.IN_PROGRESS,
-    );
-  }
-
-  /**
-   * Marks the task as done
-   */
-  markAsDone(): UserTask {
-    if (this.status === TaskStatusEnum.DONE) {
-      return this;
-    }
-    return new UserTask(
-      this.id,
-      this.userId,
-      this.taskId,
-      this.createdAt,
-      new Date(),
-      TaskStatusEnum.DONE,
-    );
-  }
 }
