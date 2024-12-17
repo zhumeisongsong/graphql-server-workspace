@@ -1,8 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { IsDate, IsNotEmpty, IsOptional, IsUUID } from 'class-validator';
 
-import { TaskDto } from './task.dto';
-
 @ObjectType()
 export class UserTaskDto {
   @Field(() => ID)
@@ -25,10 +23,6 @@ export class UserTaskDto {
   @IsUUID()
   taskId: string;
 
-  @Field(() => TaskDto, { nullable: true })
-  @IsOptional()
-  task: TaskDto | null;
-
   @Field(() => String)
   @IsNotEmpty()
   @IsUUID()
@@ -39,14 +33,12 @@ export class UserTaskDto {
     createdAt: Date,
     updatedAt: Date | null,
     taskId: string,
-    task: TaskDto | null,
-    userId: string
+    userId: string,
   ) {
     this.id = id;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
     this.taskId = taskId;
-    this.task = task;
     this.userId = userId;
   }
 }
