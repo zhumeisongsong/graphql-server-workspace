@@ -20,6 +20,7 @@
     "@nestjs/mongoose": "^10.1.0",
     "@nestjs/platform-express": "^10.4.7",
     "@nestjs/throttler": "^6.2.1",
+    "@zhumeisong/common-error-exception": "^1.0.2",
     "aws-sdk": "^2.1692.0",
     "axios": "^1.7.7",
     "class-validator": "^0.14.1",

@@ -1,4 +1,4 @@
-import { UsersRepository } from './users.repository';
+import { UsersRepository } from './users-repository.interface';
 import { User } from './user.entity';
 
 class MockUsersRepository implements UsersRepository {

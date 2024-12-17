@@ -1,14 +1,14 @@
-import { Inject, Injectable } from "@nestjs/common";
-import { User, USERS_REPOSITORY, UsersRepository } from "@users/domain";
+import { Injectable } from "@nestjs/common";
+import { User } from "@users/domain";
+import { UsersService } from "../users.service";
 
 @Injectable()
 export class GetUserByEmailUseCase {
   constructor(
-    @Inject(USERS_REPOSITORY)
-    private readonly usersRepository: UsersRepository,
+    private readonly usersService: UsersService,
   ) {}
 
-  async execute(email: string): Promise<User | null> {
-    return this.usersRepository.findOneByEmail(email);
+  async execute(email: string): Promise<User> {
+    return this.usersService.findOneByEmail(email);
   }
 }

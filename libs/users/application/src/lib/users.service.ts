@@ -1,21 +1,29 @@
-import { Injectable } from '@nestjs/common';
-import { User } from '@users/domain';
-
-import { GetUserByIdUseCase } from './use-cases/get-user-by-id.use-case';
-import { GetUserByEmailUseCase } from './use-cases/get-user-by-email.use-case';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { User, USERS_REPOSITORY, UsersRepository } from '@users/domain';
+import { userError } from '@zhumeisong/common-error-exception';
 
 @Injectable()
 export class UsersService {
   constructor(
-    private readonly getUserByIdUseCase: GetUserByIdUseCase,
-    private readonly getUserByEmailUseCase: GetUserByEmailUseCase,
+    @Inject(USERS_REPOSITORY)
+    private readonly usersRepository: UsersRepository,
   ) {}
 
-  async findOneById(id: string): Promise<User | null> {
-    return this.getUserByIdUseCase.execute(id);
+  async findOneById(id: string): Promise<User> {
+    const user = await this.usersRepository.findOneById(id);
+    if (!user) {
+      throw new NotFoundException(userError.NOT_FOUND);
+    }
+
+    return user;
   }
 
-  async findOneByEmail(email: string): Promise<User | null> {
-    return this.getUserByEmailUseCase.execute(email);
+  async findOneByEmail(email: string): Promise<User> {
+    const user = await this.usersRepository.findOneByEmail(email);
+    if (!user) {
+      throw new NotFoundException(userError.NOT_FOUND);
+    }
+
+    return user;
   }
 }

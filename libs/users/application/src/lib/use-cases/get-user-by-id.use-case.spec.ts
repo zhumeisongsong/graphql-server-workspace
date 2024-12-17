@@ -1,41 +1,49 @@
+import { Test, TestingModule } from '@nestjs/testing';
+import { NotFoundException } from '@nestjs/common';
 import { GetUserByIdUseCase } from './get-user-by-id.use-case';
-import { UsersRepository } from '@users/domain';
+import { UsersService } from '../users.service';
 
 describe('GetUserByIdUseCase', () => {
-  let getUserByIdUseCase: GetUserByIdUseCase;
-  let usersRepository: UsersRepository;
+  let useCase: GetUserByIdUseCase;
+  let usersService: UsersService;
 
-  beforeEach(() => {
-    usersRepository = {
-      findOneById: jest.fn(),
-      findOneByEmail: jest.fn(),
-    };
-    getUserByIdUseCase = new GetUserByIdUseCase(usersRepository);
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [
+        GetUserByIdUseCase,
+        {
+          provide: UsersService,
+          useValue: {
+            findOneById: jest.fn(),
+          },
+        },
+      ],
+    }).compile();
+
+    useCase = module.get<GetUserByIdUseCase>(GetUserByIdUseCase);
+    usersService = module.get<UsersService>(UsersService);
+  });
+
+  it('should be defined', () => {
+    expect(useCase).toBeDefined();
   });
 
   describe('execute', () => {
-    it('should return user when found', async () => {
-      const mockUser = {
-        id: '1',
-        email: 'test@example.com',
-        firstName: 'John',
-        lastName: 'Doe',
-      };
-      (usersRepository.findOneById as jest.Mock).mockResolvedValue(mockUser);
+    it('should return a user when found', async () => {
+      const mockUser = { id: '1', email: 'test@test.com', firstName: 'John', lastName: 'Doe' };
+      jest.spyOn(usersService, 'findOneById').mockResolvedValue(mockUser);
 
-      const result = await getUserByIdUseCase.execute('1');
+      const result = await useCase.execute('1');
 
-      expect(result).toEqual(mockUser);
-      expect(usersRepository.findOneById).toHaveBeenCalledWith('1');
+      expect(result).toBe(mockUser);
+      expect(usersService.findOneById).toHaveBeenCalledWith('1');
     });
 
-    it('should return null when user not found', async () => {
-      (usersRepository.findOneById as jest.Mock).mockResolvedValue(null);
+    it('should throw NotFoundException when user is not found', async () => {
+      jest.spyOn(usersService, 'findOneById').mockRejectedValue(new NotFoundException());
 
-      const result = await getUserByIdUseCase.execute('1');
-
-      expect(result).toBeNull();
-      expect(usersRepository.findOneById).toHaveBeenCalledWith('1');
+      await expect(useCase.execute('1')).rejects.toThrow(NotFoundException);
+      expect(usersService.findOneById).toHaveBeenCalledWith('1');
     });
   });
 });
