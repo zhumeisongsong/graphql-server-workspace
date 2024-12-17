@@ -33,11 +33,7 @@ export class AwsCognitoService {
       ],
     };
 
-    try {
-      return await this.cognito.signUp(params).promise();
-    } catch (error) {
-      throw error;
-    }
+    return await this.cognito.signUp(params).promise();
   }
 
   async signIn(
@@ -54,11 +50,7 @@ export class AwsCognitoService {
       },
     };
 
-    try {
-      return await this.cognito.initiateAuth(params).promise();
-    } catch (error) {
-      throw error;
-    }
+    return await this.cognito.initiateAuth(params).promise();
   }
 
   async refreshToken(
@@ -73,11 +65,7 @@ export class AwsCognitoService {
       },
     };
 
-    try {
-      return await this.cognito.initiateAuth(params).promise();
-    } catch (error) {
-      throw error;
-    }
+    return await this.cognito.initiateAuth(params).promise();
   }
 
   async confirmSignUp(email: string, confirmationCode: string): Promise<void> {
@@ -88,10 +76,6 @@ export class AwsCognitoService {
       ConfirmationCode: confirmationCode,
     };
 
-    try {
-      await this.cognito.confirmSignUp(params).promise();
-    } catch (error) {
-      throw error;
-    }
+    await this.cognito.confirmSignUp(params).promise();
   }
 }
