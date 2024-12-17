@@ -1,87 +1,75 @@
 import { Test, TestingModule } from '@nestjs/testing';
-
+import { NotFoundException } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { GetUserByIdUseCase } from './use-cases/get-user-by-id.use-case';
-import { GetUserByEmailUseCase } from './use-cases/get-user-by-email.use-case';
+import { USERS_REPOSITORY } from '@users/domain';
+import { userError } from '@zhumeisong/common-error-exception';
 
 describe('UsersService', () => {
   let service: UsersService;
-  let getUserByIdUseCase: GetUserByIdUseCase;
-  let getUserByEmailUseCase: GetUserByEmailUseCase;
+  let usersRepository: any;
 
   beforeEach(async () => {
+    usersRepository = {
+      findOneById: jest.fn(),
+      findOneByEmail: jest.fn(),
+    };
+
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         UsersService,
         {
-          provide: GetUserByIdUseCase,
-          useValue: {
-            execute: jest.fn(),
-          },
-        },
-        {
-          provide: GetUserByEmailUseCase,
-          useValue: {
-            execute: jest.fn(),
-          },
+          provide: USERS_REPOSITORY,
+          useValue: usersRepository,
         },
       ],
     }).compile();
 
     service = module.get<UsersService>(UsersService);
-    getUserByIdUseCase = module.get<GetUserByIdUseCase>(GetUserByIdUseCase);
-    getUserByEmailUseCase = module.get<GetUserByEmailUseCase>(GetUserByEmailUseCase);
   });
 
-  describe('getUserById', () => {
-    it('should return user when found', async () => {
-      const mockUser = {
-        id: '1',
-        email: 'test@example.com',
-        firstName: 'John',
-        lastName: 'Doe',
-      };
-      (getUserByIdUseCase.execute as jest.Mock).mockResolvedValue(mockUser);
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+  });
+
+  describe('findOneById', () => {
+    it('should return a user when found', async () => {
+      const mockUser = { id: '1', email: 'test@test.com', firstName: 'John', lastName: 'Doe' };
+      usersRepository.findOneById.mockResolvedValue(mockUser);
 
       const result = await service.findOneById('1');
 
-      expect(result).toEqual(mockUser);
-      expect(getUserByIdUseCase.execute).toHaveBeenCalledWith('1');
+      expect(result).toBe(mockUser);
+      expect(usersRepository.findOneById).toHaveBeenCalledWith('1');
     });
 
-    it('should return null when user not found', async () => {
-      (getUserByIdUseCase.execute as jest.Mock).mockResolvedValue(null);
+    it('should throw NotFoundException when user is not found', async () => {
+      usersRepository.findOneById.mockResolvedValue(null);
 
-      const result = await service.findOneById('1');
-
-      expect(result).toBeNull();
-      expect(getUserByIdUseCase.execute).toHaveBeenCalledWith('1');
+      await expect(service.findOneById('1')).rejects.toThrow(
+        new NotFoundException(userError.NOT_FOUND)
+      );
+      expect(usersRepository.findOneById).toHaveBeenCalledWith('1');
     });
   });
 
-  describe('getUserByEmail', () => {
-    it('should return user when found', async () => {
-      const mockUser = {
-        id: '1',
-        email: 'test@example.com',
-        firstName: 'John',
-        lastName: 'Doe',
-      };
-      (getUserByEmailUseCase.execute as jest.Mock).mockResolvedValue(mockUser);
+  describe('findOneByEmail', () => {
+    it('should return a user when found', async () => {
+      const mockUser = { id: '1', email: 'test@test.com', firstName: 'John', lastName: 'Doe' };
+      usersRepository.findOneByEmail.mockResolvedValue(mockUser);
 
-      const result = await service.findOneByEmail('test@example.com');
+      const result = await service.findOneByEmail('test@test.com');
 
-      expect(result).toEqual(mockUser);
-      expect(getUserByEmailUseCase.execute).toHaveBeenCalledWith('test@example.com');
+      expect(result).toBe(mockUser);
+      expect(usersRepository.findOneByEmail).toHaveBeenCalledWith('test@test.com');
     });
 
-    it('should return null when user not found', async () => {
-      (getUserByEmailUseCase.execute as jest.Mock).mockResolvedValue(null);
+    it('should throw NotFoundException when user is not found', async () => {
+      usersRepository.findOneByEmail.mockResolvedValue(null);
 
-      const result = await service.findOneByEmail('test@example.com');
-
-      expect(result).toBeNull();
-      expect(getUserByEmailUseCase.execute).toHaveBeenCalledWith('test@example.com');
+      await expect(service.findOneByEmail('test@test.com')).rejects.toThrow(
+        new NotFoundException(userError.NOT_FOUND)
+      );
+      expect(usersRepository.findOneByEmail).toHaveBeenCalledWith('test@test.com');
     });
   });
 });
