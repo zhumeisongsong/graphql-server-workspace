@@ -1,14 +1,13 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { Task, TASKS_REPOSITORY, TasksRepository } from '@tasks/domain';
+import { Injectable } from '@nestjs/common';
+import { Task } from '@tasks/domain';
+
+import { TasksService } from '../tasks.service';
 
 @Injectable()
 export class GetAllTasksUseCase {
-  constructor(
-    @Inject(TASKS_REPOSITORY)
-    private readonly tasksRepository: TasksRepository,
-  ) {}
+  constructor(private readonly tasksService: TasksService) {}
 
   async execute(): Promise<Task[]> {
-    return await this.tasksRepository.findAll();
+    return await this.tasksService.findAll();
   }
 }
