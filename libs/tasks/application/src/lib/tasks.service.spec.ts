@@ -1,29 +1,45 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { TasksService } from './tasks.service';
-import { GetAllTasksUseCase } from './use-cases/get-all-tasks.use-case';
+import { TASKS_REPOSITORY, TasksRepository, Task } from '@tasks/domain';
 
 describe('TasksService', () => {
   let service: TasksService;
-  let getAllTasksUseCase: GetAllTasksUseCase;
+  let mockTasksRepository: TasksRepository;
 
   beforeEach(async () => {
+    mockTasksRepository = {
+      findAll: jest.fn(),
+    };
+
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         TasksService,
         {
-          provide: GetAllTasksUseCase,
-          useValue: {
-            execute: jest.fn(),
-          },
+          provide: TASKS_REPOSITORY,
+          useValue: mockTasksRepository,
         },
       ],
     }).compile();
 
     service = module.get<TasksService>(TasksService);
-    getAllTasksUseCase = module.get<GetAllTasksUseCase>(GetAllTasksUseCase);
   });
 
   it('should be defined', () => {
     expect(service).toBeDefined();
+  });
+
+  describe('findMany', () => {
+    it('should return all tasks', async () => {
+      const mockTasks = [
+        Task.create('task-1', 'Task 1', 'Description 1', ['category-1']),
+        Task.create('task-2', 'Task 2', 'Description 2', ['category-2']),
+      ];
+      mockTasksRepository.findAll = jest.fn().mockResolvedValue(mockTasks);
+
+      const result = await service.findAll();
+
+      expect(result).toEqual(mockTasks);
+      expect(mockTasksRepository.findAll).toHaveBeenCalled();
+    });
   });
 });

@@ -4,6 +4,9 @@ import {
   TasksService,
   UserTasksService,
   GetAllTasksUseCase,
+  GetAllUserTasksUseCase,
+  CreateSomeUserTasksUseCase,
+  UpdateSomeUserTasksUseCase,
 } from '@tasks/application';
 import {
   MongooseTasksRepository,
@@ -23,6 +26,9 @@ import { UserTasksResolver } from './resolver/user-tasks.resolver';
     UserTasksResolver,
     UserTasksService,
     GetAllTasksUseCase,
+    GetAllUserTasksUseCase,
+    CreateSomeUserTasksUseCase,
+    UpdateSomeUserTasksUseCase,
     {
       provide: TASKS_REPOSITORY,
       useClass: MongooseTasksRepository,

@@ -1,11 +1,10 @@
-import {
-  BadRequestException,
-  Injectable,
-  InternalServerErrorException,
-  Logger,
-} from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { UserTasksService } from '@tasks/application';
+import {
+  GetAllUserTasksUseCase,
+  CreateSomeUserTasksUseCase,
+  UpdateSomeUserTasksUseCase,
+} from '@tasks/application';
 
 import { CreateUserTaskDto } from '../dto/create-user-task.dto';
 import { UpdateUserTaskDto } from '../dto/update-user-task.dto';
@@ -14,8 +13,11 @@ import { UserTaskDto } from '../dto/user-task.dto';
 @Injectable()
 @Resolver(() => [UserTaskDto])
 export class UserTasksResolver {
-  private readonly logger = new Logger(UserTasksResolver.name);
-  constructor(private userTasksService: UserTasksService) {}
+  constructor(
+    private readonly getUserTasksUseCase: GetAllUserTasksUseCase,
+    private readonly createSomeUserTasksUseCase: CreateSomeUserTasksUseCase,
+    private readonly updateSomeUserTasksUseCase: UpdateSomeUserTasksUseCase,
+  ) {}
 
   @Query(() => [UserTaskDto])
   async getUserTasks(
@@ -24,16 +26,21 @@ export class UserTasksResolver {
     })
     userId: string,
   ): Promise<UserTaskDto[]> {
-    try {
-      if (!userId?.trim()) {
-        throw new BadRequestException('Invalid userId'); // TODO: using error codes
-      }
-
-      return this.userTasksService.findMany(userId);
-    } catch (error) {
-      this.logger.error('FindUserTasks error:', error);
-      throw new InternalServerErrorException('Failed to fetch user tasks'); // TODO: using error codes
+    if (!userId?.trim()) {
+      throw new BadRequestException('Invalid userId'); // TODO: using error codes
     }
+    const userTasks = await this.getUserTasksUseCase.execute(userId);
+
+    return userTasks.map(
+      (userTask) =>
+        new UserTaskDto(
+          userTask.id,
+          userTask.createdAt,
+          userTask.updatedAt,
+          userTask.taskId,
+          userTask.userId,
+        ),
+    );
   }
 
   @Mutation(() => String)
@@ -42,7 +49,7 @@ export class UserTasksResolver {
     @Args('tasks', { type: () => [CreateUserTaskDto] })
     tasks: CreateUserTaskDto[],
   ): Promise<string> {
-    return this.userTasksService.createSome(userId, tasks);
+    return this.createSomeUserTasksUseCase.execute(userId, tasks);
   }
 
   @Mutation(() => String)
@@ -51,6 +58,6 @@ export class UserTasksResolver {
     @Args('userTasks', { type: () => [UpdateUserTaskDto] })
     userTasks: UpdateUserTaskDto[],
   ): Promise<string> {
-    return this.userTasksService.updateSome(userId, userTasks);
+    return this.updateSomeUserTasksUseCase.execute(userId, userTasks);
   }
 }

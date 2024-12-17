@@ -1,16 +1,16 @@
+import { Injectable } from '@nestjs/common';
 import { Query, Resolver } from '@nestjs/graphql';
-import { TasksService } from '@tasks/application';
+import { GetAllTasksUseCase } from '@tasks/application';
 
 import { TaskDto } from '../dto/task.dto';
-import { Injectable } from '@nestjs/common';
 
 @Injectable()
 @Resolver(() => [TaskDto])
 export class TasksResolver {
-  constructor(private tasksService: TasksService) {}
+  constructor(private getAllTasksUseCase: GetAllTasksUseCase) {}
 
   @Query(() => [TaskDto])
   async getTasks(): Promise<TaskDto[]> {
-    return this.tasksService.findAll();
+    return this.getAllTasksUseCase.execute();
   }
 }
