@@ -5,6 +5,17 @@
   "projectType": "application",
   "tags": [],
   "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/auth",
+        "tsConfig": "apps/auth/tsconfig.app.json",
+        "packageJson": "apps/auth/package.json",
+        "main": "apps/auth/src/index.ts",
+        "assets": ["apps/auth/*.md"]
+      }
+    },
     "serve": {
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
@@ -20,6 +31,12 @@
         "production": {
           "buildTarget": "auth:build:production"
         }
+      }
+    },
+    "type-check": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["apps/auth/**/*.ts"]
       }
     }
   }

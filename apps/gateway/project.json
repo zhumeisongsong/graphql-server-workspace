@@ -5,6 +5,17 @@
   "projectType": "application",
   "tags": [],
   "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/gateway",
+        "tsConfig": "apps/gateway/tsconfig.app.json",
+        "packageJson": "apps/gateway/package.json",
+        "main": "apps/gateway/src/index.ts",
+        "assets": ["apps/gateway/*.md"]
+      }
+    },
     "serve": {
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
@@ -20,6 +31,12 @@
         "production": {
           "buildTarget": "gateway:build:production"
         }
+      }
+    },
+    "type-check": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["apps/gateway/**/*.ts"]
       }
     }
   }
