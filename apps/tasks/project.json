@@ -33,6 +33,12 @@
           "buildTarget": "tasks:build:production"
         }
       }
+    },
+    "type-check": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["apps/tasks/**/*.ts"]
+      }
     }
   }
 }

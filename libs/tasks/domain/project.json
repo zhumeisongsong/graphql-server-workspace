@@ -5,5 +5,12 @@
   "projectType": "library",
   "tags": [],
   "// targets": "to see all targets run: nx show project tasks-domain --web",
-  "targets": {}
+  "targets": {
+    "type-check": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["libs/tasks/domain/**/*.ts"]
+      }
+    }
+  }
 }

@@ -4,5 +4,12 @@
   "sourceRoot": "libs/shared/infrastructure/open-ai/src",
   "projectType": "library",
   "tags": [],
-  "targets": {}
+  "targets": {
+    "type-check": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["libs/shared/infrastructure/open-ai/**/*.ts"]
+      }
+    }
+  }
 }
