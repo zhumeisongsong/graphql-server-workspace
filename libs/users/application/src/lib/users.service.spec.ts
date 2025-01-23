@@ -2,7 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { NotFoundException } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { USERS_REPOSITORY } from '@users/domain';
-import { userError } from '@zhumeisong/common-error-exception';
 
 describe('UsersService', () => {
   let service: UsersService;
@@ -46,7 +45,8 @@ describe('UsersService', () => {
       usersRepository.findOneById.mockResolvedValue(null);
 
       await expect(service.findOneById('1')).rejects.toThrow(
-        new NotFoundException(userError.NOT_FOUND)
+        // new NotFoundException(userError.NOT_FOUND)
+        new NotFoundException('User not found')
       );
       expect(usersRepository.findOneById).toHaveBeenCalledWith('1');
     });
@@ -67,7 +67,8 @@ describe('UsersService', () => {
       usersRepository.findOneByEmail.mockResolvedValue(null);
 
       await expect(service.findOneByEmail('test@test.com')).rejects.toThrow(
-        new NotFoundException(userError.NOT_FOUND)
+        // new NotFoundException(userError.NOT_FOUND)
+        new NotFoundException('User not found')
       );
       expect(usersRepository.findOneByEmail).toHaveBeenCalledWith('test@test.com');
     });

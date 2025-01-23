@@ -1,6 +1,5 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { User, USERS_REPOSITORY, UsersRepository } from '@users/domain';
-import { userError } from '@zhumeisong/common-error-exception';
 
 @Injectable()
 export class UsersService {
@@ -12,7 +11,8 @@ export class UsersService {
   async findOneById(id: string): Promise<User> {
     const user = await this.usersRepository.findOneById(id);
     if (!user) {
-      throw new NotFoundException(userError.NOT_FOUND);
+      // throw new NotFoundException(userError.NOT_FOUND);
+      throw new NotFoundException('User not found');
     }
 
     return user;
@@ -21,7 +21,8 @@ export class UsersService {
   async findOneByEmail(email: string): Promise<User> {
     const user = await this.usersRepository.findOneByEmail(email);
     if (!user) {
-      throw new NotFoundException(userError.NOT_FOUND);
+      // throw new NotFoundException(userError.NOT_FOUND);
+      throw new NotFoundException('User not found');
     }
 
     return user;
