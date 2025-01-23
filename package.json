@@ -13,7 +13,7 @@
     "@apollo/subgraph": "^2.5.5",
     "@nestjs/apollo": "^13.0.0",
     "@nestjs/common": "^11.0.0",
-    "@nestjs/config": "^3.3.0",
+    "@nestjs/config": "^4.0.0",
     "@nestjs/core": "^11.0.0",
     "@nestjs/graphql": "^13.0.0",
     "@nestjs/jwt": "^11.0.0",
