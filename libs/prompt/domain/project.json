@@ -5,5 +5,12 @@
   "projectType": "library",
   "tags": [],
   "// targets": "to see all targets run: nx show project prompt-domain --web",
-  "targets": {}
+  "targets": {
+    "type-check": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["libs/prompt/domain/**/*.ts"]
+      }
+    }
+  }
 }
