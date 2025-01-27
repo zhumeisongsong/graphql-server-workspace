@@ -1,1 +1,1 @@
-export * from './lib/shared-infrastructure-deepseek';
+export * from './lib/deepseek.adapter';
