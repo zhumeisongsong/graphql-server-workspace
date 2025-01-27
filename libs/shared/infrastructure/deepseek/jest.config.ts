@@ -1,10 +1,10 @@
 export default {
-  displayName: 'shared-infrastructure-open-ai',
+  displayName: 'shared-infrastructure-deepseek',
   preset: '../../../../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../../../coverage/libs/shared/infrastructure/open-ai',
+  coverageDirectory: '../../../../coverage/libs/shared/infrastructure/deepseek',
 };

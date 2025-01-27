@@ -1,0 +1,20 @@
+{
+  "name": "shared-infrastructure-deepseek",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/infrastructure/deepseek/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/shared/infrastructure/deepseek",
+        "tsConfig": "libs/shared/infrastructure/deepseek/tsconfig.lib.json",
+        "packageJson": "libs/shared/infrastructure/deepseek/package.json",
+        "main": "libs/shared/infrastructure/deepseek/src/index.ts",
+        "assets": ["libs/shared/infrastructure/deepseek/*.md"]
+      }
+    }
+  }
+}
