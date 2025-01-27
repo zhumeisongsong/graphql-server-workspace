@@ -1,23 +1,21 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { SelfCareTask, SelfCareTopic, SelfCareUserTask } from '@self-care-tasks/domain';
 
 @Injectable()
 export class SelfCareTasksService {
   constructor() {
     //TODO:  add ai service here
   }
-  async findMany(userId: string): Promise<[]> {
+  async findMany(userId: string): Promise<SelfCareUserTask[]> {
     // TODO: Implement this
     return [];
   }
 
   async generateSome(
-    selfCareTopics: {
-      id: string;
-      name: string;
-    }[],
+    selfCareTopics: SelfCareTopic[],
     count: number,
-  ): Promise<[]> {
-    const selfCareTasks: [] = [];
+  ): Promise<SelfCareTask[]> {
+    const selfCareTasks: SelfCareTask[] = [];
 
     if (selfCareTasks.length === 0) {
       throw new InternalServerErrorException(

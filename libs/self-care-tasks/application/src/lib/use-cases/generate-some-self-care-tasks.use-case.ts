@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { SelfCareTask, SelfCareTopic } from '@self-care-tasks/domain';
 
 import { SelfCareTasksService } from '../self-care-tasks.service';
 
@@ -7,12 +8,9 @@ export class GenerateSomeSelfCareTasksUseCase {
   constructor(private readonly selfCareTasksService: SelfCareTasksService) {}
 
   async execute(
-    selfCareTopics: {
-      id: string;
-      name: string;
-    }[],
+    selfCareTopics: SelfCareTopic[],
     count: number,
-  ): Promise<[]> {
+  ): Promise<SelfCareTask[]> {
     return await this.selfCareTasksService.generateSome(selfCareTopics, count);
   }
 }

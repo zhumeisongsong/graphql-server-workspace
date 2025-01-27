@@ -1,5 +1,5 @@
 {
-  "name": "@self-care-tasks/application",
+  "name": "@self-care-tasks/domain",
   "version": "0.0.1",
   "private": true,
   "type": "commonjs",
@@ -15,8 +15,6 @@
     }
   },
   "dependencies": {
-    "@nestjs/common": "11.0.5",
-    "@self-care-tasks/domain": "workspace:*",
-    "@swc/helpers": "~0.5.13"
+    "@swc/helpers": "^0.5.13"
   }
 }
