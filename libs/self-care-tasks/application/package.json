@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@nestjs/common": "11.0.5",
+    "@self-care-tasks/domain": "workspace:*",
     "@swc/helpers": "~0.5.13"
   }
 }
