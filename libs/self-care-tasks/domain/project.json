@@ -1,0 +1,20 @@
+{
+  "name": "self-care-tasks-domain",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/self-care-tasks/domain/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/self-care-tasks/domain",
+        "tsConfig": "libs/self-care-tasks/domain/tsconfig.lib.json",
+        "packageJson": "libs/self-care-tasks/domain/package.json",
+        "main": "libs/self-care-tasks/domain/src/index.ts",
+        "assets": ["libs/self-care-tasks/domain/*.md"]
+      }
+    }
+  }
+}
