@@ -5,17 +5,6 @@
   "projectType": "application",
   "tags": [],
   "targets": {
-    "build": {
-      "executor": "@nx/js:swc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/apps/users",
-        "tsConfig": "apps/users/tsconfig.app.json",
-        "packageJson": "apps/users/package.json",
-        "main": "apps/users/src/index.ts",
-        "assets": ["apps/users/*.md"]
-      }
-    },
     "serve": {
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
