@@ -47,13 +47,11 @@ describe('MongooseTasksRepository', () => {
           id: '123',
           title: 'Test Task',
           description: 'Test Description',
-          categories: ['test'],
         },
         {
           id: '456',
           title: 'Another Task',
           description: null,
-          categories: ['test', 'another'],
         },
       ];
 
@@ -67,13 +65,11 @@ describe('MongooseTasksRepository', () => {
       expect(result[0].id).toBe(mockTasks[0].id);
       expect(result[0].title).toBe(mockTasks[0].title);
       expect(result[0].description).toBe(mockTasks[0].description);
-      expect(result[0].categories).toEqual(mockTasks[0].categories);
 
       expect(result[1]).toBeInstanceOf(Task);
       expect(result[1].id).toBe(mockTasks[1].id);
       expect(result[1].title).toBe(mockTasks[1].title);
       expect(result[1].description).toBe(mockTasks[1].description);
-      expect(result[1].categories).toEqual(mockTasks[1].categories);
     });
   });
 });

@@ -8,9 +8,6 @@ export class TaskDocument extends Document {
 
   @Prop({ required: false, default: null, maxlength: 1000 })
   description!: string;
-
-  @Prop({ required: true, index: true, maxlength: 100 })
-  categories!: string[];
 }
 
 export const TaskSchema = SchemaFactory.createForClass(TaskDocument);

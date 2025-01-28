@@ -3,7 +3,6 @@ export class Task {
     public readonly id: string,
     public readonly title: string,
     public readonly description: string | null,
-    public readonly categories: string[],
   ) {}
 
   /**
@@ -13,8 +12,7 @@ export class Task {
     id: string,
     title: string,
     description: string | null,
-    categories: string[],
   ): Task {
-    return new Task(id, title, description, categories);
+    return new Task(id, title, description);
   }
 }

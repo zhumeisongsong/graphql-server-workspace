@@ -35,17 +35,14 @@ export class TaskDto {
   @IsString({ each: true })
   @MinLength(1, { each: true })
   @MaxLength(255, { each: true })
-  categories: string[];
 
   constructor(
     id: string,
     title: string,
     description: string | null,
-    categories: string[],
   ) {
     this.id = id;
     this.title = title;
     this.description = description;
-    this.categories = categories;
   }
 }
