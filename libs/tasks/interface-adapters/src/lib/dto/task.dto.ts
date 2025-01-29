@@ -29,13 +29,6 @@ export class TaskDto {
   @MaxLength(1000)
   description: string | null;
 
-  @Field(() => [String])
-  @IsNotEmpty()
-  @IsArray()
-  @IsString({ each: true })
-  @MinLength(1, { each: true })
-  @MaxLength(255, { each: true })
-
   constructor(
     id: string,
     title: string,
