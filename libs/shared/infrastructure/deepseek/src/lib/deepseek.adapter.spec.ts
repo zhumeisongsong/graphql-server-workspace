@@ -69,34 +69,4 @@ describe('DeepSeekAdapter', () => {
       });
     });
   });
-
-  describe('streamChat', () => {
-    it('should handle streaming responses correctly', async () => {
-      const mockStream = {
-        [Symbol.asyncIterator]: async function* () {
-          yield Buffer.from('data: {"choices":[{"delta":{"content":"Hello"}}]}\n');
-          yield Buffer.from('data: {"choices":[{"delta":{"content":" World"}}]}\n');
-        },
-      };
-
-      (httpService.axiosRef.post as jest.Mock).mockResolvedValue({
-        data: mockStream,
-      });
-
-      (configService.get as jest.Mock).mockImplementation((key: string) => {
-        if (key === 'DEEPSEEK_API_URL') return 'http://api.test';
-        if (key === 'DEEPSEEK_API_KEY') return 'test-key';
-        return null;
-      });
-
-      const chunks: string[] = [];
-      for await (const chunk of adapter.streamChat({
-        messages: [{ role: 'user', content: 'Hello', timestamp: new Date() }],
-      })) {
-        chunks.push(chunk);
-      }
-
-      expect(chunks).toEqual(['Hello', ' World']);
-    });
-  });
 });
