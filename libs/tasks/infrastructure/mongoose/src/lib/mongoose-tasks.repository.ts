@@ -19,7 +19,7 @@ export class MongooseTasksRepository implements TasksRepository {
     }
 
     return tasks.map((task) =>
-      Task.create(task.id, task.title, task.description, task.categories),
+      Task.create(task.id, task.title, task.description),
     );
   }
 }

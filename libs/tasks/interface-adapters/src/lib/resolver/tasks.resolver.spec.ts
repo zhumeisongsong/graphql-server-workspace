@@ -35,7 +35,6 @@ describe('TasksResolver', () => {
           id: 'task-1',
           title: 'Task 1',
           description: 'Description 1',
-          categories: [],
         },
       ];
 

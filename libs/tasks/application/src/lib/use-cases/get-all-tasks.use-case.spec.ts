@@ -35,7 +35,6 @@ describe('GetAllTasksUseCase', () => {
           id: '1',
           title: 'Test Task',
           description: 'Test Description',
-          categories: ['category-1'],
         },
       ];
 

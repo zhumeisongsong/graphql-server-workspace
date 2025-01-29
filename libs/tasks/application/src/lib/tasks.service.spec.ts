@@ -31,8 +31,8 @@ describe('TasksService', () => {
   describe('findMany', () => {
     it('should return all tasks', async () => {
       const mockTasks = [
-        Task.create('task-1', 'Task 1', 'Description 1', ['category-1']),
-        Task.create('task-2', 'Task 2', 'Description 2', ['category-2']),
+        Task.create('task-1', 'Task 1', 'Description 1'),
+        Task.create('task-2', 'Task 2', 'Description 2'),
       ];
       mockTasksRepository.findAll = jest.fn().mockResolvedValue(mockTasks);
 
