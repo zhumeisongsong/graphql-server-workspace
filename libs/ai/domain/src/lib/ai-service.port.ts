@@ -5,7 +5,7 @@ export type AIMessage = {
 };
 
 export type ChatParams = {
-  messages: AIMessage;
+  messages: AIMessage[];
   temperature?: number;
   maxTokens?: number;
   json?: boolean;

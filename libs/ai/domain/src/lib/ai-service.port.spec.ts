@@ -22,7 +22,7 @@ describe('AIService', () => {
     };
 
     mockParams = {
-      messages: mockMessage,
+      messages: [mockMessage],
       temperature: 0.7,
       maxTokens: 100,
     };
