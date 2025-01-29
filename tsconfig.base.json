@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@ai/domain": ["libs/ai/domain/src/index.ts"],
       "@auth/application": ["libs/auth/application/src/index.ts"],
       "@auth/interface-adapters": ["libs/auth/interface-adapters/src/index.ts"],
       "@self-care-tasks/application": [
