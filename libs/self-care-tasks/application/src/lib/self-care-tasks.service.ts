@@ -1,17 +1,21 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { AI_SERVICE, AIService } from '@ai/domain';
+import {
+  Inject,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import {
   SelfCareTask,
   SelfCareTopic,
   SelfCareUserTask,
 } from '@self-care-tasks/domain';
 
-export interface AIService {
-  generateJsonResponse(prompt: string): Promise<unknown[]>;
-}
-
 @Injectable()
 export class SelfCareTasksService {
-  constructor(private readonly aiService: AIService) {}
+  constructor(
+    @Inject(AI_SERVICE)
+    private aiService: AIService,
+  ) {}
   async findMany(userId: string): Promise<SelfCareUserTask[]> {
     // TODO: Implement this
     return [];
@@ -23,7 +27,15 @@ export class SelfCareTasksService {
   ): Promise<SelfCareTask[]> {
     const prompt = this.buildPrompt(selfCareTopics, count);
 
-    const selfCareTasks: SelfCareTask[] = await this.aiService.generateJsonResponse(prompt);
+    const response = await this.aiService.chat({
+      messages: [{ role: 'user', content: prompt, timestamp: new Date() }],
+      temperature: 0.7,
+      json: true,
+    });
+
+    const selfCareTasks = response.content
+      .split('\n')
+      .map((task) => task.trim());
 
     if (selfCareTasks.length === 0) {
       throw new InternalServerErrorException(
@@ -31,7 +43,7 @@ export class SelfCareTasksService {
       );
     }
 
-    return selfCareTasks;
+    return [];
   }
 
   private buildPrompt(selfCareTopics: SelfCareTopic[], count: number): string {
