@@ -1,0 +1,8 @@
+{
+  "name": "self-care-tasks-interface-adapters",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/self-care-tasks/interface-adapters/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {}
+}
