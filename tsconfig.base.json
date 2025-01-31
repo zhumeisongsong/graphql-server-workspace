@@ -22,12 +22,15 @@
         "libs/self-care-tasks/application/src/index.ts"
       ],
       "@self-care-tasks/domain": ["libs/self-care-tasks/domain/src/index.ts"],
+      "@self-care-tasks/interface-adapters": [
+        "libs/self-care-tasks/interface-adapters/src/index.ts"
+      ],
       "@shared/config": ["libs/shared/config/src/index.ts"],
       "@shared/infrastructure-aws-cognito": [
         "libs/shared/infrastructure/aws-cognito/src/index.ts"
       ],
-      "@shared/infrastructure-deepseek": [
-        "libs/shared/infrastructure/deepseek/src/index.ts"
+      "@shared/infrastructure-deep-seek": [
+        "libs/shared/infrastructure/deep-seek/src/index.ts"
       ],
       "@shared/infrastructure-mongoose": [
         "libs/shared/infrastructure/mongoose/src/index.ts"
