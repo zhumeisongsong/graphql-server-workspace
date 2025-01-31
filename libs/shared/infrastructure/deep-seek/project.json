@@ -1,0 +1,26 @@
+{
+  "name": "shared-infrastructure-deep-seek",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/infrastructure/deep-seek/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/shared/infrastructure/deep-seek",
+        "tsConfig": "libs/shared/infrastructure/deep-seek/tsconfig.lib.json",
+        "packageJson": "libs/shared/infrastructure/deep-seek/package.json",
+        "main": "libs/shared/infrastructure/deep-seek/src/index.ts",
+        "assets": ["libs/shared/infrastructure/deep-seek/*.md"]
+      }
+    },
+    "type-check": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["libs/shared/infrastructure/deep-seek/**/*.ts"]
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
-import { DeepSeekAdapter } from './deepseek.adapter';
+import { DeepSeekAdapter } from './deep-seek.adapter';
 
 describe('DeepSeekAdapter', () => {
   let adapter: DeepSeekAdapter;
