@@ -16,6 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "@ai/domain": ["libs/ai/domain/src/index.ts"],
+      "@applications/self-care-config": [
+        "libs/applications/self-care-config/src/index.ts"
+      ],
       "@auth/application": ["libs/auth/application/src/index.ts"],
       "@auth/interface-adapters": ["libs/auth/interface-adapters/src/index.ts"],
       "@self-care-tasks/application": [
@@ -23,7 +26,7 @@
       ],
       "@self-care-tasks/domain": ["libs/self-care-tasks/domain/src/index.ts"],
       "@self-care-tasks/interface-adapters": [
-        "libs/self-care-tasks/interface-adapters/src/index.ts"
+        "libs/self-care-tasks/interface-adapters/src/index.js"
       ],
       "@shared/config": ["libs/shared/config/src/index.ts"],
       "@shared/infrastructure-aws-cognito": [

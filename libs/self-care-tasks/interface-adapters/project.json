@@ -4,5 +4,6 @@
   "sourceRoot": "libs/self-care-tasks/interface-adapters/src",
   "projectType": "library",
   "tags": [],
+  "// targets": "to see all targets run: nx show project self-care-tasks-interface-adapters --web",
   "targets": {}
 }
