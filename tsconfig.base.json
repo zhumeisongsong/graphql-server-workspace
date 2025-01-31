@@ -25,6 +25,9 @@
         "libs/self-care-tasks/application/src/index.ts"
       ],
       "@self-care-tasks/domain": ["libs/self-care-tasks/domain/src/index.ts"],
+      "@self-care-tasks/interface-adapters": [
+        "libs/self-care-tasks/interface-adapters/src/index.js"
+      ],
       "@shared/config": ["libs/shared/config/src/index.ts"],
       "@shared/infrastructure-aws-cognito": [
         "libs/shared/infrastructure/aws-cognito/src/index.ts"
