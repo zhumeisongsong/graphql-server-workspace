@@ -53,13 +53,3 @@ export const tasksAppConfig = registerAs(
     name: 'tasks',
   }),
 );
-
-export const authAppConfig = registerAs(
-  'authApp',
-  (): ServiceConfig => ({
-    protocol: process.env['PROTOCOL'] ?? DEFAULT_PROTOCOL,
-    host: process.env['AUTH_HOST'] ?? DEFAULT_HOST,
-    port: process.env['AUTH_PORT'] ? Number(process.env['AUTH_PORT']) : DEFAULT_PORT.auth,
-    name: 'auth',
-  }),
-);
