@@ -4,17 +4,5 @@
   "sourceRoot": "libs/self-care-tasks/application/src",
   "projectType": "library",
   "tags": [],
-  "targets": {
-    "build": {
-      "executor": "@nx/js:swc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/self-care-tasks/application",
-        "tsConfig": "libs/self-care-tasks/application/tsconfig.lib.json",
-        "packageJson": "libs/self-care-tasks/application/package.json",
-        "main": "libs/self-care-tasks/application/src/index.ts",
-        "assets": ["libs/self-care-tasks/application/*.md"]
-      }
-    }
-  }
+  "targets": {}
 }
