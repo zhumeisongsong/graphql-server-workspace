@@ -4,5 +4,12 @@
   "sourceRoot": "libs/ai/domain/src",
   "projectType": "library",
   "tags": [],
-  "targets": {}
+  "targets": {
+    "type-check": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["libs/ai/domain/**/*.ts"]
+      }
+    }
+  }
 }

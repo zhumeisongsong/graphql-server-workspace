@@ -5,5 +5,11 @@
   "projectType": "library",
   "tags": [],
   "targets": {
+    "type-check": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["libs/shared/infrastructure/deep-seek/**/*.ts"]
+      }
+    }
   }
 }
