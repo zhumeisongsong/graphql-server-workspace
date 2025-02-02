@@ -3,7 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import * as AWS from 'aws-sdk';
 
 @Injectable()
-export class AwsCognitoService {
+export class AwsCognitoAdapter {
   // private readonly configService: ConfigService;
   private cognito: AWS.CognitoIdentityServiceProvider;
 
