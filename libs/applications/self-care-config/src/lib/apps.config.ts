@@ -15,8 +15,7 @@ const DEFAULT_HOST = 'localhost' as const;
 const DEFAULT_PORT = {
   gateway: 3333,
   users: 15001,
-  tasks: 15002,
-  auth: 15003,
+  selfCareTasks: 15002,
 } as const;
 
 export const gatewayConfig = registerAs(
@@ -42,14 +41,14 @@ export const usersAppConfig = registerAs(
   }),
 );
 
-export const tasksAppConfig = registerAs(
-  'tasksApp',
+export const selfCareTasksAppConfig = registerAs(
+  'selfCareTasksApp',
   (): ServiceConfig => ({
     protocol: process.env['PROTOCOL'] ?? DEFAULT_PROTOCOL,
-    host: process.env['TASKS_HOST'] ?? DEFAULT_HOST,
-    port: process.env['TASKS_PORT']
-      ? Number(process.env['TASKS_PORT'])
-      : DEFAULT_PORT.tasks,
-    name: 'tasks',
+    host: process.env['SELF_CARE_TASKS_HOST'] ?? DEFAULT_HOST,
+    port: process.env['SELF_CARE_TASKS_PORT']
+      ? Number(process.env['SELF_CARE_TASKS_PORT'])
+      : DEFAULT_PORT.selfCareTasks,
+    name: 'selfCareTasks',
   }),
 );

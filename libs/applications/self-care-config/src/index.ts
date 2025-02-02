@@ -1,1 +1,1 @@
-export * from './lib/applications-self-care-config';
+export * from './lib/apps.config';

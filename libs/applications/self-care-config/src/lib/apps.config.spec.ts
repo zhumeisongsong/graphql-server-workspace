@@ -1,4 +1,4 @@
-import { gatewayConfig, tasksAppConfig, usersAppConfig } from './applications.config';
+import { gatewayConfig, usersAppConfig, selfCareTasksAppConfig } from './apps.config';
 
 describe('Config Tests', () => {
   describe('gatewayConfig', () => {
@@ -59,28 +59,28 @@ describe('Config Tests', () => {
     });
   });
 
-  describe('tasksAppConfig', () => {
+  describe('selfCareTasksAppConfig', () => {
     it('should return default tasks app config when no environment variables are set', () => {
-      const config = tasksAppConfig();
+      const config = selfCareTasksAppConfig();
       expect(config).toEqual({
         protocol: 'http',
         host: 'localhost',
         port: 15002,
-        name: 'tasks',
+        name: 'selfCareTasks',
       });
     });
 
     it('should return tasks app config with environment variables', () => {
       process.env['PROTOCOL'] = 'https';
-      process.env['TASKS_HOST'] = 'tasks.example.com';
-      process.env['TASKS_PORT'] = '6666';
+      process.env['SELF_CARE_TASKS_HOST'] = 'selfCareTasks.example.com';
+      process.env['SELF_CARE_TASKS_PORT'] = '6666';
 
-      const config = tasksAppConfig();
+      const config = selfCareTasksAppConfig();
       expect(config).toEqual({
         protocol: 'https',
-        host: 'tasks.example.com',
+        host: 'selfCareTasks.example.com',
         port: 6666,
-        name: 'tasks',
+        name: 'selfCareTasks',
       });
     });
   });

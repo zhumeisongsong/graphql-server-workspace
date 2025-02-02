@@ -4,6 +4,5 @@
   "sourceRoot": "libs/self-care-tasks/application/src",
   "projectType": "library",
   "tags": [],
-  "targets": {
-  }
+  "targets": {}
 }

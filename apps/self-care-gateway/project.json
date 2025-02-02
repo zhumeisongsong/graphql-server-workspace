@@ -33,6 +33,11 @@
           "buildTarget": "self-care-gateway:build:production"
         }
       }
+    },
+    "test": {
+      "options": {
+        "passWithNoTests": true
+      }
     }
   }
 }
