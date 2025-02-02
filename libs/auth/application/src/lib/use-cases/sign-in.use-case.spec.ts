@@ -1,70 +1,83 @@
 import { Test } from '@nestjs/testing';
+import { SignInUseCase } from './sign-in.use-case';
+import { AUTH_SERVICE } from '@auth/domain';
 import { JwtService } from '@nestjs/jwt';
 import { UnauthorizedException } from '@nestjs/common';
-import { AwsCognitoService } from '@shared/infrastructure-aws-cognito';
-import { SignInUseCase } from './sign-in.use-case';
 
 describe('SignInUseCase', () => {
-  let signInUseCase: SignInUseCase;
-  let awsCognitoService: AwsCognitoService;
-  let jwtService: JwtService;
+  let useCase: SignInUseCase;
+  let authService: { signIn: jest.Mock };
+  let jwtService: { signAsync: jest.Mock };
 
   beforeEach(async () => {
+    authService = {
+      signIn: jest.fn(),
+    };
+
+    jwtService = {
+      signAsync: jest.fn(),
+    };
+
     const moduleRef = await Test.createTestingModule({
       providers: [
         SignInUseCase,
         {
-          provide: AwsCognitoService,
-          useValue: {
-            signIn: jest.fn(),
-          },
+          provide: AUTH_SERVICE,
+          useValue: authService,
         },
         {
           provide: JwtService,
-          useValue: {
-            signAsync: jest.fn(),
-          },
+          useValue: jwtService,
         },
       ],
     }).compile();
 
-    signInUseCase = moduleRef.get<SignInUseCase>(SignInUseCase);
-    awsCognitoService = moduleRef.get<AwsCognitoService>(AwsCognitoService);
-    jwtService = moduleRef.get<JwtService>(JwtService);
+    useCase = moduleRef.get<SignInUseCase>(SignInUseCase);
   });
 
-  describe('execute', () => {
+  it('should successfully sign in and return access token', async () => {
     const email = 'test@example.com';
     const password = 'password123';
-    const mockAccessToken = 'mock.access.token';
+    const mockToken = 'mock.jwt.token';
 
-    it('should successfully sign in and return access token', async () => {
-      jest.spyOn(awsCognitoService, 'signIn').mockResolvedValue(undefined);
-      jest.spyOn(jwtService, 'signAsync').mockResolvedValue(mockAccessToken);
+    authService.signIn.mockResolvedValue(undefined);
+    jwtService.signAsync.mockResolvedValue(mockToken);
 
-      const result = await signInUseCase.execute(email, password);
+    const result = await useCase.execute(email, password);
 
-      expect(awsCognitoService.signIn).toHaveBeenCalledWith(email, password);
-      expect(jwtService.signAsync).toHaveBeenCalledWith({ email });
-      expect(result).toEqual({ accessToken: mockAccessToken });
+    expect(authService.signIn).toHaveBeenCalledWith(email, password);
+    expect(jwtService.signAsync).toHaveBeenCalledWith({
+      email: email,
     });
+    expect(result).toEqual({ accessToken: mockToken });
+  });
 
-    it('should throw UnauthorizedException when AWS Cognito sign in fails', async () => {
-      const error = new Error('Invalid credentials');
-      jest.spyOn(awsCognitoService, 'signIn').mockRejectedValue(error);
+  it('should throw UnauthorizedException when auth service fails', async () => {
+    const email = 'test@example.com';
+    const password = 'password123';
+    const error = new Error('Auth failed');
 
-      await expect(signInUseCase.execute(email, password)).rejects.toThrow(
-        UnauthorizedException,
-      );
-    });
+    authService.signIn.mockRejectedValue(error);
 
-    it('should throw UnauthorizedException when JWT signing fails', async () => {
-      jest.spyOn(awsCognitoService, 'signIn').mockResolvedValue(undefined);
-      jest.spyOn(jwtService, 'signAsync').mockRejectedValue(new Error());
+    await expect(useCase.execute(email, password)).rejects.toThrow(
+      UnauthorizedException,
+    );
+    expect(authService.signIn).toHaveBeenCalledWith(email, password);
+  });
 
-      await expect(signInUseCase.execute(email, password)).rejects.toThrow(
-        UnauthorizedException,
-      );
+  it('should throw UnauthorizedException when JWT signing fails', async () => {
+    const email = 'test@example.com';
+    const password = 'password123';
+
+    authService.signIn.mockResolvedValue(undefined);
+    jwtService.signAsync.mockRejectedValue(new Error('JWT signing failed'));
+
+    await expect(useCase.execute(email, password)).rejects.toThrow(
+      UnauthorizedException,
+    );
+    expect(authService.signIn).toHaveBeenCalledWith(email, password);
+    expect(jwtService.signAsync).toHaveBeenCalledWith({
+      email: email,
     });
   });
 });
