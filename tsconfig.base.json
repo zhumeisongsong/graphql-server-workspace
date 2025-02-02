@@ -20,6 +20,7 @@
         "libs/applications/self-care-config/src/index.ts"
       ],
       "@auth/application": ["libs/auth/application/src/index.ts"],
+      "@auth/domain": ["libs/auth/domain/src/index.ts"],
       "@auth/interface-adapters": ["libs/auth/interface-adapters/src/index.ts"],
       "@self-care-tasks/application": [
         "libs/self-care-tasks/application/src/index.ts"
