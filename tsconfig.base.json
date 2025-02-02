@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@ai/domain": ["libs/ai/domain/src/index.ts"],
+      "@ai/interface-adapters": ["libs/ai/interface-adapters/src/index.ts"],
       "@applications/self-care-config": [
         "libs/applications/self-care-config/src/index.ts"
       ],
