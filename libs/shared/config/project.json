@@ -4,7 +4,6 @@
   "sourceRoot": "libs/shared/config/src",
   "projectType": "library",
   "tags": [],
-  "// targets": "to see all targets run: nx show project config --web",
   "targets": {
     "type-check": {
       "executor": "@nx/eslint:lint",

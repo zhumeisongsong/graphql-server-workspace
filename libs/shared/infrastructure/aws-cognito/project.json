@@ -4,7 +4,6 @@
   "sourceRoot": "libs/shared/infrastructure/aws-cognito/src",
   "projectType": "library",
   "tags": [],
-  "// targets": "to see all targets run: nx show project aws-cognito --web",
   "targets": {
     "type-check": {
       "executor": "@nx/eslint:lint",
