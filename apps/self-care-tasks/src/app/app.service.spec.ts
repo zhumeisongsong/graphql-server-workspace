@@ -13,8 +13,8 @@ describe('AppService', () => {
   });
 
   describe('getData', () => {
-    it('should return "Hello API"', () => {
-      expect(service.getData()).toEqual({ message: 'Hello API' });
+    it('should return "Hello Self Care Tasks Service"', () => {
+      expect(service.getData()).toEqual({ message: 'Hello Self Care Tasks Service' });
     });
   });
 });
