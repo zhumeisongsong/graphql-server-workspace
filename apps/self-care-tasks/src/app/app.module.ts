@@ -7,9 +7,11 @@ import {
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
+import { SelfCareTasksModule } from '@self-care-tasks/interface-adapters';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -25,6 +27,7 @@ import { AppService } from './app.service';
       sortSchema: true,
       plugins: [ApolloServerPluginInlineTrace()],
     }),
+    SelfCareTasksModule,
   ],
   controllers: [AppController],
   providers: [AppService],
