@@ -33,6 +33,11 @@
           "buildTarget": "self-care-tasks:build:production"
         }
       }
+    },
+    "test": {
+      "options": {
+        "passWithNoTests": true
+      }
     }
   }
 }
