@@ -65,7 +65,7 @@ describe('Config Tests', () => {
       expect(config).toEqual({
         protocol: 'http',
         host: 'localhost',
-        port: 15005,
+        port: 15002,
         name: 'selfCareTasks',
       });
     });
