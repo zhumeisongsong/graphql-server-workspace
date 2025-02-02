@@ -1,4 +1,3 @@
-import { selfCareTasksAppConfig } from '@applications/self-care-config';
 import { ApolloServerPluginInlineTrace } from '@apollo/server/plugin/inlineTrace';
 import {
   ApolloFederationDriver,
@@ -8,6 +7,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { SelfCareTasksModule } from '@self-care-tasks/interface-adapters';
+import { selfCareTasksAppConfig } from '@shared/config';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';

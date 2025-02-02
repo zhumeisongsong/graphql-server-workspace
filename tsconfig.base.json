@@ -17,9 +17,6 @@
     "paths": {
       "@ai/domain": ["libs/ai/domain/src/index.ts"],
       "@ai/interface-adapters": ["libs/ai/interface-adapters/src/index.ts"],
-      "@applications/self-care-config": [
-        "libs/applications/self-care-config/src/index.ts"
-      ],
       "@auth/application": ["libs/auth/application/src/index.ts"],
       "@auth/domain": ["libs/auth/domain/src/index.ts"],
       "@auth/interface-adapters": ["libs/auth/interface-adapters/src/index.ts"],
