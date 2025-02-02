@@ -1,4 +1,4 @@
-import { gatewayConfig, usersAppConfig, selfCareTasksAppConfig } from './applications.config';
+import { gatewayConfig, usersAppConfig, selfCareTasksAppConfig } from './apps.config';
 
 describe('Config Tests', () => {
   describe('gatewayConfig', () => {
