@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   displayName: 'self-care-tasks-interface-adapters',
   preset: '../../../jest.preset.js',
   testEnvironment: 'node',
