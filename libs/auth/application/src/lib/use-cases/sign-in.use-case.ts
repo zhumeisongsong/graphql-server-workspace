@@ -1,11 +1,12 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { AuthService, AUTH_SERVICE } from '@auth/domain';
+import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { AwsCognitoService } from '@shared/infrastructure-aws-cognito';
 
 @Injectable()
 export class SignInUseCase {
   constructor(
-    private awsCognitoService: AwsCognitoService,
+    @Inject(AUTH_SERVICE)
+    private authService: AuthService,
     private jwtService: JwtService,
   ) {}
 
@@ -17,7 +18,7 @@ export class SignInUseCase {
     accessToken: string;
   }> {
     try {
-      await this.awsCognitoService.signIn(email, pass);
+      await this.authService.signIn(email, pass);
     } catch (error) {
       throw new UnauthorizedException(error); // TODO: return error code
     }
