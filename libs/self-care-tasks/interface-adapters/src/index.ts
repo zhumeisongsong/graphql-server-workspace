@@ -1,1 +1,1 @@
-export * from './lib/self-care-tasks-interface-adapters';
+export * from './lib/self-care-tasks.module';
