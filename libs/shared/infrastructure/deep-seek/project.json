@@ -1,7 +1,7 @@
 {
-  "name": "shared-infrastructure-deepseek",
+  "name": "shared-infrastructure-deep-seek",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/shared/infrastructure/deepseek/src",
+  "sourceRoot": "libs/shared/infrastructure/deep-seek/src",
   "projectType": "library",
   "tags": [],
   "targets": {

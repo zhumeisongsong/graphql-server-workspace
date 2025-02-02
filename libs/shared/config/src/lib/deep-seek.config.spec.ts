@@ -1,8 +1,8 @@
 
 import { z } from 'zod';
-import { deepseekConfig } from './deepseek.config';
+import { deepSeekConfig } from './deep-seek.config';
 
-describe('deepseekConfig', () => {
+describe('deepSeekConfig', () => {
   const originalEnv = process.env;
 
   beforeEach(() => {
@@ -16,10 +16,10 @@ describe('deepseekConfig', () => {
 
 
   it('should load configuration from environment', () => {
-    process.env['DEEPSEEK_API_URL'] = 'https://api.deepseek.com';
-    process.env['DEEPSEEK_API_KEY'] = 'test-api-key';
+    process.env['DEEP_SEEK_API_URL'] = 'https://api.deepseek.com';
+    process.env['DEEP_SEEK_API_KEY'] = 'test-api-key';
 
-    const config = deepseekConfig();
+    const config = deepSeekConfig();
 
     expect(config).toEqual({
       apiUrl: 'https://api.deepseek.com',

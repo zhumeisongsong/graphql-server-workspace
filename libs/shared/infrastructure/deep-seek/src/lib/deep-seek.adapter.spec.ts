@@ -1,6 +1,6 @@
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
-import { DeepSeekAdapter } from './deepseek.adapter';
+import { DeepSeekAdapter } from './deep-seek.adapter';
 
 describe('DeepSeekAdapter', () => {
   let adapter: DeepSeekAdapter;
@@ -35,8 +35,8 @@ describe('DeepSeekAdapter', () => {
 
       (httpService.axiosRef.post as jest.Mock).mockResolvedValue(mockResponse);
       (configService.get as jest.Mock).mockImplementation((key: string) => {
-        if (key === 'DEEPSEEK_API_URL') return 'http://api.test';
-        if (key === 'DEEPSEEK_API_KEY') return 'test-key';
+        if (key === 'DEEP_SEEK_API_URL') return 'http://api.test';
+        if (key === 'DEEP_SEEK_API_KEY') return 'test-key';
         return null;
       });
 

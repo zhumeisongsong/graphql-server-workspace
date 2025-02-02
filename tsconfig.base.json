@@ -32,8 +32,8 @@
       "@shared/infrastructure-aws-cognito": [
         "libs/shared/infrastructure/aws-cognito/src/index.ts"
       ],
-      "@shared/infrastructure-deepseek": [
-        "libs/shared/infrastructure/deepseek/src/index.ts"
+      "@shared/infrastructure-deep-seek": [
+        "libs/shared/infrastructure/deep-seek/src/index.ts"
       ],
       "@shared/infrastructure-mongoose": [
         "libs/shared/infrastructure/mongoose/src/index.ts"

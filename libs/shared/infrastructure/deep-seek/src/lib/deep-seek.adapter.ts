@@ -9,8 +9,8 @@ export class DeepSeekAdapter implements AIService {
   ) {}
 
   async chat(params: ChatParams): Promise<ChatResponse> {
-    const apiUrl: string = this.configService.get('DEEPSEEK_API_URL') ?? '';
-    const apiKey: string = this.configService.get('DEEPSEEK_API_KEY') ?? '';
+    const apiUrl: string = this.configService.get('DEEP_SEEK_API_URL') ?? '';
+    const apiKey: string = this.configService.get('DEEP_SEEK_API_KEY') ?? '';
     const response = await this.httpService.axiosRef.post(
       apiUrl,
       {
