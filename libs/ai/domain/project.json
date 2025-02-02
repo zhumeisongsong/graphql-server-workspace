@@ -4,17 +4,5 @@
   "sourceRoot": "libs/ai/domain/src",
   "projectType": "library",
   "tags": [],
-  "targets": {
-    "build": {
-      "executor": "@nx/js:swc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/ai/domain",
-        "tsConfig": "libs/ai/domain/tsconfig.lib.json",
-        "packageJson": "libs/ai/domain/package.json",
-        "main": "libs/ai/domain/src/index.ts",
-        "assets": ["libs/ai/domain/*.md"]
-      }
-    }
-  }
+  "targets": {}
 }
