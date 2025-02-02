@@ -38,7 +38,8 @@
         "apps/gateway-e2e/**/*",
         "apps/users-e2e/**/*",
         "apps/tasks-e2e/**/*",
-        "apps/self-care-tasks-e2e/**/*"
+        "apps/self-care-tasks-e2e/**/*",
+        "apps/self-care-gateway-e2e/**/*"
       ]
     }
   ],
