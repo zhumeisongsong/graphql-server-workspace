@@ -5,7 +5,6 @@ import {
   GenerateSomeSelfCareTasksUseCase,
 } from '@self-care-tasks/application';
 
-
 @Module({
   providers: [
     GenerateSomeSelfCareTasksUseCase,
