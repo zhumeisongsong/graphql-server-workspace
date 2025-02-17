@@ -1,7 +1,9 @@
 import { AIService, ChatParams, ChatResponse } from '@ai/domain';
 import { HttpService } from '@nestjs/axios';
+import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
+@Injectable()
 export class DeepSeekAdapter implements AIService {
   constructor(
     private readonly httpService: HttpService,
