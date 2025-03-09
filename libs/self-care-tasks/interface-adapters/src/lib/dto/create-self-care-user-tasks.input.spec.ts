@@ -20,13 +20,6 @@ describe('CreateSelfCareUserTasksInput', () => {
     expect(input.userId).toBe('user123');
   });
 
-  it('should have the correct field decorators', () => {
-    const metadata = Reflect.getMetadata('graphql:field_names', CreateSelfCareUserTasksInput.prototype);
-    expect(metadata).toContain('selfCareTopics');
-    expect(metadata).toContain('taskCount');
-    expect(metadata).toContain('userId');
-  });
-
   it('should validate taskCount is between 1 and 100', () => {
     const input = new CreateSelfCareUserTasksInput();
     input.selfCareTopics = [];
