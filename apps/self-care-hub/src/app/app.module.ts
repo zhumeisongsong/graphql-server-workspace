@@ -4,7 +4,6 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { SelfCareTasksModule } from '@self-care-tasks/interface-adapters';
 import { TasksModule } from '@tasks/interface-adapters';
 import { UsersModule } from '@users/interface-adapters';
-import { join } from 'path';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -25,4 +24,4 @@ import { AppService } from './app.service';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class SelfCareHubAppModule {}
