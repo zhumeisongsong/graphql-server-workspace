@@ -34,8 +34,7 @@
       "options": {
         "targetName": "test"
       },
-      "exclude": [
-      ]
+      "exclude": ["apps/self-care-hub-e2e/**/*"]
     }
   ],
   "targetDefaults": {

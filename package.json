@@ -1,5 +1,5 @@
 {
-  "name": "@graphql-federation-workspace/source",
+  "name": "@graphql-server-workspace/source",
   "version": "1.18.0",
   "license": "MIT",
   "scripts": {
@@ -8,9 +8,7 @@
   },
   "private": true,
   "dependencies": {
-    "@apollo/gateway": "^2.5.5",
     "@apollo/server": "^4.11.2",
-    "@apollo/subgraph": "^2.5.5",
     "@nestjs/apollo": "^13.0.0",
     "@nestjs/axios": "^4.0.0",
     "@nestjs/common": "^11.0.0",
