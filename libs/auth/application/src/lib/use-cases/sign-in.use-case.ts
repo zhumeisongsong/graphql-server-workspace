@@ -25,7 +25,6 @@ export class SignInUseCase {
 
     try {
       const accessToken = await this.jwtService.signAsync({
-        // sub: user.id, // TODO: Id from cognito
         email: email,
       });
 
