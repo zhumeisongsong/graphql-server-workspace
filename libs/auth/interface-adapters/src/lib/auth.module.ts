@@ -3,7 +3,6 @@ import { AUTH_SERVICE } from '@auth/domain';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
-import { AwsCognitoAdapter } from '@shared/infrastructure-aws-cognito';
 
 import { AuthResolver } from './resolver/auth.resolver';
 
@@ -11,10 +10,6 @@ import { AuthResolver } from './resolver/auth.resolver';
   providers: [
     AuthResolver,
     SignInUseCase,
-    {
-      provide: AUTH_SERVICE,
-      useClass: AwsCognitoAdapter,
-    },
   ],
   imports: [
     JwtModule.registerAsync({
