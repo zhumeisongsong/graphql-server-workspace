@@ -73,10 +73,10 @@
       "main"
     ]
   },
-  "packageManager": "pnpm@10.11.0",
+  "packageManager": "pnpm@10.18.3",
   "volta": {
     "node": "22.20.0",
-    "pnpm": "10.11.0"
+    "pnpm": "10.18.3"
   },
   "config": {
     "commitizen": {
