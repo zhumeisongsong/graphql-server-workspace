@@ -2,11 +2,17 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
   "labels": ["type: dependencies"],
-  "dependencyDashboard": true,
-  "baseBranches": ["main","/^release\\/.*/"],
+  "dependencyDashboard": {
+    "enabled": true
+  },
+  "baseBranchPatterns": ["main", "/^release\\/.*/"],
   "separateMultipleMajor": true,
   "timezone": "Asia/Tokyo",
-  "schedule": ["after 10pm and before 5am every weekday", "every weekend"],
+  "schedule": [
+    "after 10pm every weekday",
+    "every weekend",
+    "before 5am every weekday"
+  ],
   "prConcurrentLimit": 0,
   "prHourlyLimit": 0,
   "packageRules": [
@@ -26,4 +32,3 @@
     }
   ]
 }
-  
